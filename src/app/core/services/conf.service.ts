@@ -15,7 +15,7 @@ export class ConfService {
 
   public app(): Observable<Response<any>>
   {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + '/conf')
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'conf')
   }
 
 }

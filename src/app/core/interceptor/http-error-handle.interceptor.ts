@@ -7,7 +7,7 @@ import {
   HttpErrorResponse,
   HttpResponse
 } from '@angular/common/http';
-import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, Observable, of, retry, tap, throwError } from 'rxjs';
 import { Response } from '../interfaces/response';
 
 @Injectable()
@@ -17,8 +17,9 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
+      retry(1),
       catchError(error => {
-        this.parseError(error )
+        this.parseError(error)
         return of()
       }),
       tap(
