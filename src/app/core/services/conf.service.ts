@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { conf } from 'src/conf';
 import { Response } from '../interfaces/response';
 
@@ -9,13 +9,16 @@ import { Response } from '../interfaces/response';
 })
 export class ConfService {
 
-  constructor(private httpClient: HttpClient) { }
+
+  private conf$: Observable<any>
+  constructor(private httpClient: HttpClient) {
+    this.conf$ = httpClient.get(conf.baseUrl + 'conf').pipe(shareReplay())
+  }
 
 
 
-  public app(): Observable<Response<any>>
-  {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'conf')
+  config(): Observable<any> {
+    return this.conf$;
   }
 
 }

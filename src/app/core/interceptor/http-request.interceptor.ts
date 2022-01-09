@@ -15,6 +15,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.progressBarService.add()
-    return next.handle(request).pipe(finalize(() => this.progressBarService.clear()))
+    return next.handle(request).pipe( finalize(() => this.progressBarService.clear()))
   }
 }

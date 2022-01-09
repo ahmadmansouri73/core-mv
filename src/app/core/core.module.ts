@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpRequestInterceptor } from './interceptor/http-request.interceptor';
 import { HttpErrorHandleInterceptor } from './interceptor/http-error-handle.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    CookieService,
     {provide: HTTP_INTERCEPTORS , useClass: HttpRequestInterceptor , multi: true },
     {provide: HTTP_INTERCEPTORS , useClass: HttpErrorHandleInterceptor , multi: true}
   ]

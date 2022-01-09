@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfService } from '../core/services/conf.service';
+import { JwtService } from '../core/services/jwt.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,29 @@ import { ConfService } from '../core/services/conf.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private confService: ConfService){
+  constructor(private confService: ConfService, private jwtService: JwtService ){
 
-    confService.app().subscribe(data => console.log(data , 'res') ,error => console.warn(error , 'err') , () => console.info('com'))
+  }
+
+  value() {
+    console.log(
+      this.jwtService.cookieGet('test')
+    )
+  }
+
+  delete() {
+    this.jwtService.cookieDelete('test')
+  }
+
+
+  click() {
+    this.confService.config().subscribe(
+
+      event => {
+        this.jwtService.cookieSet( 'test', event)
+        console.log('set');
+
+      }
+    )
   }
 }
