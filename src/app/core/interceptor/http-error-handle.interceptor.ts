@@ -19,7 +19,6 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      retry(1),
       catchError(error => {
         this.parseError(error)
         return of()
@@ -46,7 +45,6 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
     const status = error.status
 
 
-    alert(error.message)
     if (status === 404) {
       alert('not found')
     }
@@ -57,6 +55,8 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
     }
     if (status === 401) {
       this.authService.logOut();
+      console.warn('logOut');
+
       this.router.navigate(['/'])
     }
     if (status === 403) {

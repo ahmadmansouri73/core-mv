@@ -12,7 +12,7 @@ export class ConfService {
 
   private conf$: Observable<any>
   constructor(private httpClient: HttpClient) {
-    this.conf$ = httpClient.get(conf.baseUrl + 'conf').pipe(shareReplay())
+    this.conf$ = httpClient.get(conf.baseUrl + 'conf').pipe(shareReplay(1))
   }
 
 

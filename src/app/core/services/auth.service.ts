@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject, take, tap } from 'rxjs';
+import { Observable, of, ReplaySubject, take, tap } from 'rxjs';
 import { conf } from 'src/conf';
 import { Response } from '../interfaces/response';
+import { JwtService } from './jwt.service';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -10,14 +11,30 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, private userService: UserService) { }
+  constructor(private httpClient: HttpClient,private jwtSerivce: JwtService, private userService: UserService) { }
 
   private subjectAttempAuth = new ReplaySubject<boolean>(1)
   private is_guest: boolean = true
   public readonly observableAttempAuth = this.subjectAttempAuth.asObservable()
 
   public attempAuth(): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'user/confirm').pipe(
+
+    if (this.jwtSerivce.cookieCheck('token') == false) {
+      this.subjectAttempAuth.next(false)
+      let response: Response<null> =
+      {
+        data: null,
+        message: '',
+        status: false,
+        errors: [],
+        code: 200
+      }
+
+      return of(response)
+    }
+
+
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'user').pipe(
       tap(response => {
         if (response.status && response.data.user)
         {
@@ -29,8 +46,7 @@ export class AuthService {
         {
           this.subjectAttempAuth.next(false)
         }
-      },
-      take(1))
+      })
     );
   }
 
