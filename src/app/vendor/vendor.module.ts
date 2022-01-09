@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { VendorRoutingModule } from './vendor-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { VDataModule } from './v-data/v-data.module';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
   ],
   imports: [
     CommonModule,
-    VendorRoutingModule
+    VendorRoutingModule,
+    VDataModule
   ]
 })
 export class VendorModule {
