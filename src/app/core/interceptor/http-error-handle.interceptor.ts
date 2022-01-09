@@ -9,11 +9,13 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, of, retry, tap, throwError } from 'rxjs';
 import { Response } from '../interfaces/response';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpErrorHandleInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -46,19 +48,22 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
 
     alert(error.message)
     if (status === 404) {
-
+      alert('not found')
     }
 
     if (status >= 500 && status <= 599) {
-      // alert('سایت با مشکلات فنی دچار شده است , با پشتیبانی تماس بگیرین')
+      alert('سایت با مشکلات فنی دچار شده است , با پشتیبانی تماس بگیرین')
 
     }
     if (status === 401) {
+      this.authService.logOut();
+      this.router.navigate(['/'])
     }
     if (status === 403) {
-
+      alert('Forbidden')
     }
     if (status === 0) {
+      alert('پاسخی وجود ندارد')
     }
 
 
