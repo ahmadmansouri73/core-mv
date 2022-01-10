@@ -11,15 +11,21 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient,private jwtSerivce: JwtService, private userService: UserService) { }
+  constructor(
+    private httpClient:  HttpClient,
+    private jwtSerivce:  JwtService,
+    private userService: UserService,
+  ) { }
 
+
+  public readonly auth_kay_name = 'token'
   private subjectAttempAuth = new ReplaySubject<boolean>(1)
   private is_guest: boolean = true
   public readonly observableAttempAuth = this.subjectAttempAuth.asObservable()
 
   public attempAuth(): Observable<Response<any>> {
 
-    if (this.jwtSerivce.cookieCheck('token') == false) {
+    if (this.jwtSerivce.cookieCheck(this.auth_kay_name) == false) {
       this.subjectAttempAuth.next(false)
       let response: Response<null> =
       {
@@ -61,6 +67,11 @@ export class AuthService {
     this.is_guest = true
   }
 
+
+
+  public setToken(token: string){
+    this.jwtSerivce.cookieSet(this.auth_kay_name , token)
+  }
 
 
 }
