@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter, Observable, switchMap } from 'rxjs';
+import { filter, tap } from 'rxjs';
 import { ReqisterVendorService } from '../../v-data/services/reqister-vendor.service';
 
 @Component({
@@ -16,6 +16,14 @@ export class VRegisterComponent implements OnInit {
 
 
   form: FormGroup = new FormGroup({
+    address: new FormControl(null , Validators.required),
+    brand_name_farsi: new FormControl(null , Validators.required),
+    brand_name_english: new FormControl(null , Validators.required),
+    call_number: new FormControl(null , Validators.required),
+    city_id: new FormControl(null , Validators.required),
+    province_id: new FormControl(null , Validators.required),
+    owner_first_name: new FormControl(null , Validators.required),
+    owner_last_name: new FormControl(null , Validators.required),
     owner_call_number: new FormControl(null , Validators.required),
     code: new FormControl(null , Validators.required),
   })
@@ -48,6 +56,12 @@ export class VRegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.subject_Valid.valueChanges
+      .pipe(
+        filter(data => data == false && this.form.valid),
+        tap( _ => this.form.get('code')?.setValue(null))
+      )
+      .subscribe()
   }
 
 }

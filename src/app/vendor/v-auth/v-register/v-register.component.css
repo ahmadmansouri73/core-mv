@@ -1,0 +1,11 @@
+p {
+  direction: rtl;
+  text-align: center;
+  margin-right: auto;
+  font-size: medium;
+}
+
+
+input ,textarea {
+  direction: rtl;
+}

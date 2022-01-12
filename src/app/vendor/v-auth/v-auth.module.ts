@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { VAuthRoutingModule } from './v-auth-routing.module';
 import { VLoginComponent } from './v-login/v-login.component';
 import { VRegisterComponent } from './v-register/v-register.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { VRegisterComponent } from './v-register/v-register.component';
   ],
   imports: [
     CommonModule,
-    VAuthRoutingModule
+    VAuthRoutingModule,
+    SharedModule
   ]
 })
 export class VAuthModule { }
