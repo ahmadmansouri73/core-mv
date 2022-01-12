@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProgressBarComponent,
     FormsModule,
     ReactiveFormsModule,
+
   ]
 })
 export class SharedModule { }

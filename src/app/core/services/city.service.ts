@@ -27,8 +27,12 @@ export class CityService {
     return this.httpClient.get(conf.baseUrl + 'api/cities' + query )
   }
 
+  public cityOne(id: number): Observable<any>
+  {
+    return this.httpClient.get(conf.baseUrl + 'api/citie?id=' + id)
+  }
 
-  public cities(): Observable<any> {
+  public get cities(): Observable<any> {
     return this.$cities$
   }
 

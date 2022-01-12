@@ -6,6 +6,6 @@ p {
 }
 
 
-input ,textarea {
+input ,textarea , select{
   direction: rtl;
 }

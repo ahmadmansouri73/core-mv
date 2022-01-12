@@ -28,7 +28,13 @@ export class ProvinceService {
     return this.httpClient.get(conf.baseUrl + 'api/provinces' + query)
   }
 
-  public provinces(): Observable<any> {
+  public provinceOne(id: number): Observable<any>
+  {
+    return this.httpClient.get(conf.baseUrl + 'api/province?id=' + id)
+  }
+
+
+  public get provinces(): Observable<any> {
     return this.provinces$
   }
 }

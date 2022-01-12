@@ -15,11 +15,17 @@
 
           <div class="col-md-6">
             <label class="small text-muted float-end p-3" for="province_id">استان</label>
-            <input type="text" formControlName="province_id" id="province_id" class="form-control" autocomplete="off">
+            <select class="form-control form-select"  formControlName="province_id">
+              <option [ngValue]="null">none</option>
+              <option *ngFor="let item of provinces"  [value]="item.id">{{item?.name}}</option>
+            </select>
           </div>
           <div class="col-md-6">
             <label class="small text-muted float-end p-3" for="city_id">شهر</label>
-            <input type="text" formControlName="city_id" id="city_id" class="form-control" autocomplete="off">
+            <select class="form-control form-select"  formControlName="city_id">
+              <option [ngValue]="null">none</option>
+              <option *ngFor="let item of cities"  [value]="item.id">{{item?.name}}</option>
+            </select>
           </div>
 
 

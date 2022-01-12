@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter, tap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
+import { CityService } from 'src/app/core/services/city.service';
+import { ProvinceService } from 'src/app/core/services/province.service';
 import { ReqisterVendorService } from '../../v-data/services/reqister-vendor.service';
 
 @Component({
@@ -12,7 +14,14 @@ import { ReqisterVendorService } from '../../v-data/services/reqister-vendor.ser
 export class VRegisterComponent implements OnInit {
 
 
-  constructor(private registerService: ReqisterVendorService, private router:Router) { }
+  provinces: any[] = []
+  cities: any[] = []
+  constructor(
+    private registerService: ReqisterVendorService,
+    private provinceService: ProvinceService,
+    private cityService: CityService,
+    private router:Router,
+  ) { }
 
 
   form: FormGroup = new FormGroup({
@@ -62,6 +71,26 @@ export class VRegisterComponent implements OnInit {
         tap( _ => this.form.get('code')?.setValue(null))
       )
       .subscribe()
+
+
+      this.provinceService.provinces.subscribe(data => {
+        this.provinces = data.data
+      })
+
+
+      this.form.get('province_id')?.valueChanges
+        .pipe(
+          tap(_ => {
+            this.cities = []
+          }),
+          filter(next => next != null),
+          switchMap(next => this.cityService.search({province_id: next}))
+        )
+        .subscribe(data => {
+          this.cities = data.data
+        })
+
+
   }
 
 }
