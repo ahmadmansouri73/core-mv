@@ -34,7 +34,7 @@ export class VRegisterComponent implements OnInit {
     owner_first_name: new FormControl(null , Validators.required),
     owner_last_name: new FormControl(null , Validators.required),
     owner_call_number: new FormControl(null , Validators.required),
-    code: new FormControl(null , Validators.required),
+    code: new FormControl(null),
   })
 
 
@@ -46,10 +46,13 @@ export class VRegisterComponent implements OnInit {
   }
 
   callNumberConfirm(): void {
-    if (this.form.get('owner_call_number')?.valid)
+    if (this.form.valid)
       this.registerService.callNumberConfirm(this.form.get("owner_call_number")?.value)
         .pipe(filter(next => next.status == true))
-        .subscribe( _ => this.subject_Valid.setValue(true))
+        .subscribe( _ => {
+          this.subject_Valid.setValue(true)
+          this.form.controls['code'].enable()
+        })
   }
 
   register(): void {
@@ -64,7 +67,11 @@ export class VRegisterComponent implements OnInit {
   }
 
 
+
+
   ngOnInit(): void {
+    this.form.controls['code'].disable();
+
     this.subject_Valid.valueChanges
       .pipe(
         filter(data => data == false && this.form.valid),

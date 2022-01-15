@@ -13,7 +13,7 @@ export class ReqisterVendorService {
 
 
   register(vendor: any): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/register' , vendor)
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/register' , {VendorRegister: vendor})
   }
 
 
