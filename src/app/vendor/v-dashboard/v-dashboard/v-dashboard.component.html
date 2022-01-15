@@ -1,14 +1,69 @@
-<nb-layout windowMode>
+<nb-layout >
   <nb-layout-header subheader>
-    ahmad
-    <input type="button" (click)="click()" value="click">
+
+    
+    test
+
   </nb-layout-header>
+
+  
+  <nb-sidebar  right state="compacted"   responsive  >
+    <nb-menu tag="menu" [autoCollapse]="true"  [items]="[
+    {
+      title: 'پروفایل',
+      link: '/vendor/profile',
+      icon: 'person-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'checkmark-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'shopping-cart-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'home-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'bell-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'message-circle-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'pie-chart-outline'
+    },
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'email-outline'
+    },
+    
+    {
+      title: 'دست بندی میوه ها',
+      link: '/vendor/categories',
+      icon: 'menu-2-outline'
+    }
+    
+    ]"></nb-menu>
+  </nb-sidebar>
   <nb-layout-column>
+
     <router-outlet></router-outlet>
   </nb-layout-column>
-  <nb-sidebar  right  state="compacted" [responsive]="true" >
-  </nb-sidebar>
-  <nb-layout-footer fixed>
+
+  <nb-layout-footer>
     KhaneMiveh
   </nb-layout-footer>
 </nb-layout>

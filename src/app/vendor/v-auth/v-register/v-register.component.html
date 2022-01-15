@@ -1,79 +1,25 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <form [formGroup]="form" (ngSubmit)="register()">
-        <div class="row flex-row-reverse">
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="brand_name_farsi">نام فروشکاه به فارسی</label>
-            <input type="text" formControlName="brand_name_farsi" id="brand_name_farsi" class="form-control" autocomplete="off">
-          </div>
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="brand_name_english">نام فروشکاه به انگلیسی</label>
-            <input type="text" formControlName="brand_name_english" id="brand_name_english" class="form-control" autocomplete="off">
-          </div>
 
+<nb-layout center>
+  <nb-layout-column>  
 
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="province_id">استان</label>
-            <select class="form-control form-select"  formControlName="province_id">
-              <option [ngValue]="null">none</option>
-              <option *ngFor="let item of provinces"  [value]="item.id">{{item?.name}}</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="city_id">شهر</label>
-            <select class="form-control form-select"  formControlName="city_id">
-              <option [ngValue]="null">none</option>
-              <option *ngFor="let item of cities"  [value]="item.id">{{item?.name}}</option>
-            </select>
+    <nb-card>
+      <nb-card-header>
+        <p class="text-center">ثبت نام</p>
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="form">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="brand_name" class="p-3">نام فروشگاه</label>
+              <input  formControlName="brand_name"  [status]="(form.controls['brand_name'].valid && form.controls['brand_name'].dirty)? 'success': ''" type="text" nbInput fullWidth >
+            </div>
           </div>
 
 
 
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="call_number">تلفن فروشگاه</label>
-            <input type="text" formControlName="call_number" id="call_number" class="form-control" autocomplete="off">
-          </div>
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="address">آدرس</label>
-            <textarea type="text" formControlName="address" id="address" class="form-control" autocomplete="off"></textarea>
-          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
 
-        </div>
-
-        <br>
-        <div class="row flex-row-reverse">
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="owner_first_name">نام</label>
-            <input type="text" formControlName="owner_first_name" id="owner_first_name" class="form-control" autocomplete="off">
-          </div>
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="owner_last_name">نام خانوادگی</label>
-            <input type="text" formControlName="owner_last_name" id="owner_last_name" class="form-control" autocomplete="off">
-          </div>
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="owner_call_number">شماره مبایل مالک</label>
-            <input type="text" formControlName="owner_call_number" id="owner_call_number" class="form-control " autocomplete="off">
-            <p  class="bg-warning mt-1 w-100 p-2" >کد تایید ثبت نام به شماره مبایل مالک فروشگاه ارسال میشود</p>
-
-          </div>
-
-          <div class="col-md-6">
-            <label class="small text-muted float-end p-3" for="code">کد تایید</label>
-            <input  type="text" formControlName="code"   id="code" class="form-control text-center " autocomplete="off" >
-
-          </div>
-        </div>
-
-
-        <div class="row mt-3 flex-row-reverse">
-          <div class="col-md-6">
-            <input type="button" [disabled]="form.invalid" class="btn btn-primary w-100 " (click)="callNumberConfirm()" value="تایید">
-          </div>
-        </div>
-
-
-      </form>
-    </div>
-  </div>
-</div>
+  </nb-layout-column>
+</nb-layout>

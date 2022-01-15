@@ -11,7 +11,8 @@ import {
   NB_MEDIA_BREAKPOINTS,
   NbLayoutDirection,
   NbLayoutModule, NbSidebarModule,
-  NbThemeModule
+  NbThemeModule,
+  NbMenuModule
 } from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -23,8 +24,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({name: 'dark'} , [DEFAULT_THEME , DARK_THEME] ,[] ,NbLayoutDirection.RTL),
+    NbThemeModule.forRoot({name: 'default'} , [] ,[] ,NbLayoutDirection.RTL),
     NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
 

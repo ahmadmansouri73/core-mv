@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter, switchMap, tap } from 'rxjs';
+import { filter, map, switchMap, tap } from 'rxjs';
 import { CityService } from 'src/app/core/services/city.service';
 import { ProvinceService } from 'src/app/core/services/province.service';
+import { BrandnameCheckingDirective } from '../../v-data/directive/brandname-checking.directive';
 import { ReqisterVendorService } from '../../v-data/services/reqister-vendor.service';
 
 @Component({
@@ -26,8 +27,7 @@ export class VRegisterComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     address: new FormControl(null , Validators.required),
-    brand_name_farsi: new FormControl(null , Validators.required),
-    brand_name_english: new FormControl(null , Validators.required),
+    brand_name: new FormControl(null , [Validators.required , this.checkingName() ]),
     call_number: new FormControl(null , Validators.required),
     city_id: new FormControl(null , Validators.required),
     province_id: new FormControl(null , Validators.required),
@@ -38,7 +38,20 @@ export class VRegisterComponent implements OnInit {
   })
 
 
-  subject_Valid = new FormControl(false)
+  checking =  new FormControl(null)
+
+  public checkingName(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors|null => {
+
+      this.registerService.checkingExistBrandName(control.value).subscribe(data => this.checking.setValue(data.data))
+      return null
+    }
+  }
+
+  subject_Valid = new FormControl()
+
+
+
 
 
   changeCallNumber(): void {
@@ -71,6 +84,15 @@ export class VRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.controls['code'].disable();
+    this.checking.valueChanges.subscribe(data => {
+      console.log(
+      data,'log 1'
+      );
+            
+    })
+
+
+
 
     this.subject_Valid.valueChanges
       .pipe(
