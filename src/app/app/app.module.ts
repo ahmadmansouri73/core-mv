@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import {NbSidebarModule} from "@nebular/theme";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { NotFoundComponent } from '../not-found/not-found.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

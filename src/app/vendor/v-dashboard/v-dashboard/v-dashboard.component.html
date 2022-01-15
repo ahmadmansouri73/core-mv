@@ -1,1 +1,14 @@
-<p>v-dashboard works!</p>
+<nb-layout windowMode>
+  <nb-layout-header subheader>
+    ahmad
+    <input type="button" (click)="click()" value="click">
+  </nb-layout-header>
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+  <nb-sidebar  right  state="compacted" [responsive]="true" >
+  </nb-sidebar>
+  <nb-layout-footer fixed>
+    KhaneMiveh
+  </nb-layout-footer>
+</nb-layout>

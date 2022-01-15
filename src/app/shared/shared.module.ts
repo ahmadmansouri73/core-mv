@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NbIconModule, NbLayoutModule} from "@nebular/theme";
 
 
 
@@ -18,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProgressBarComponent,
     FormsModule,
     ReactiveFormsModule,
+    NbIconModule,
+    NbLayoutModule,
 
   ]
 })
