@@ -27,7 +27,7 @@ export class VRegisterComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     address: new FormControl(null , Validators.required),
-    brand_name: new FormControl(null , Validators.required ),
+    brand_name: new FormControl(null ,[ Validators.required , Validators.minLength(6)] ),
     office_phone: new FormControl(null , [Validators.required , Validators.pattern(/^(\+98|0)?\d{11}$/),Validators.pattern(/^\d+$/) ]),
     city_id: new FormControl(null , Validators.required),
     province_id: new FormControl(null , Validators.required),
@@ -82,7 +82,7 @@ export class VRegisterComponent implements OnInit {
     this.form.controls['brand_name'].valueChanges.pipe(
       tap(_ => this.checking.setValue(null)),
       debounceTime(300),
-      filter((data: string) => data.trim() != ''), 
+      filter((data: string) => data.trim() != '' && data.length > 6), 
       switchMap((next: string) => this.registerService.checkingExistBrandName(next))
     ).subscribe((data: boolean) => this.checking.setValue(data))
 
