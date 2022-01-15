@@ -11,7 +11,12 @@
           <div class="row">
             <div class="col-md-12">
               <label for="brand_name" class="p-3">نام فروشگاه</label>
-              <input  formControlName="brand_name"  [status]="(form.controls['brand_name'].valid && form.controls['brand_name'].dirty)? 'success': ''" type="text" nbInput fullWidth >
+              <input  formControlName="brand_name"  [status]="(form.controls['brand_name'].valid && checking.value == false && form.controls['brand_name'].dirty)? 'success': ''" type="text" nbInput fullWidth >
+            </div>
+
+            <div class="col-md-12">
+              <label for="office_phone" class="p-3">شماره مبایل</label>
+              <input  formControlName="office_phone"  [status]="(form.controls['office_phone'].valid  && form.controls['office_phone'].dirty)? 'success': ''" type="text" nbInput fullWidth >
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter, map, switchMap, tap } from 'rxjs';
+import { debounce, debounceTime, filter, map, switchMap, tap } from 'rxjs';
 import { CityService } from 'src/app/core/services/city.service';
 import { ProvinceService } from 'src/app/core/services/province.service';
 import { BrandnameCheckingDirective } from '../../v-data/directive/brandname-checking.directive';
@@ -27,8 +27,8 @@ export class VRegisterComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     address: new FormControl(null , Validators.required),
-    brand_name: new FormControl(null , [Validators.required , this.checkingName() ]),
-    call_number: new FormControl(null , Validators.required),
+    brand_name: new FormControl(null , Validators.required ),
+    office_phone: new FormControl(null , [Validators.required , Validators.pattern(/^(\+98|0)?\d{11}$/),Validators.pattern(/^\d+$/) ]),
     city_id: new FormControl(null , Validators.required),
     province_id: new FormControl(null , Validators.required),
     owner_first_name: new FormControl(null , Validators.required),
@@ -40,13 +40,7 @@ export class VRegisterComponent implements OnInit {
 
   checking =  new FormControl(null)
 
-  public checkingName(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors|null => {
 
-      this.registerService.checkingExistBrandName(control.value).subscribe(data => this.checking.setValue(data.data))
-      return null
-    }
-  }
 
   subject_Valid = new FormControl()
 
@@ -84,13 +78,13 @@ export class VRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.controls['code'].disable();
-    this.checking.valueChanges.subscribe(data => {
-      console.log(
-      data,'log 1'
-      );
-            
-    })
 
+    this.form.controls['brand_name'].valueChanges.pipe(
+      tap(_ => this.checking.setValue(null)),
+      debounceTime(300),
+      filter((data: string) => data.trim() != ''), 
+      switchMap((next: string) => this.registerService.checkingExistBrandName(next))
+    ).subscribe((data: boolean) => this.checking.setValue(data))
 
 
 

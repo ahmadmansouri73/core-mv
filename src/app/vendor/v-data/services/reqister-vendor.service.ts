@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Response } from 'src/app/core/interfaces/response';
 import { conf } from 'src/conf';
 
@@ -24,7 +24,7 @@ export class ReqisterVendorService {
 
   checkingExistBrandName(name: string): Observable<any> {
     
-    return this.httpClient.post<any>(conf.baseUrl + 'vendor/exist-brand-name?name=' + name , {})
+    return this.httpClient.post<any>(conf.baseUrl + 'vendor/exist-brand-name?name=' + name , {}).pipe(map(data => data.data))
     
   }
 
