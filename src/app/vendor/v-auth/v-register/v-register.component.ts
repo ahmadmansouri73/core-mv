@@ -55,22 +55,9 @@ export class VRegisterComponent implements OnInit {
 
 
 
-  subject_Valid = new FormControl()
-
-
-
-
-
-
-
-
-  changeCallNumber(): void {
-    this.subject_Valid.setValue(false)
-  }
-
   callNumberConfirm(): void {
 
-    if (this.form.valid)
+    if (this.form.valid && this.submitStepOne == false)
     {
       this.submitStepOne = true
       this.registerService.callNumberConfirm(this.form.get("owner_call_number")?.value)
@@ -78,7 +65,6 @@ export class VRegisterComponent implements OnInit {
       .subscribe( _ => {
 
         this.step = 2
-        this.subject_Valid.setValue(true)
       } , error => {
 
       }, 
@@ -90,7 +76,7 @@ export class VRegisterComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.form.valid && (this.form.controls['code'].value.trim().length == 6)) {
+    if (this.form.valid && (this.form.controls['code'].value.trim().length == 6 && this.submitStepTwo == false)) {
       this.submitStepTwo = true
       this.registerService.register(this.form.value).subscribe(data => {
         if (data.status) {
@@ -119,13 +105,6 @@ export class VRegisterComponent implements OnInit {
     ).subscribe((data: boolean) => this.checking.setValue(data))
 
 
-
-    this.subject_Valid.valueChanges
-      .pipe(
-        filter(data => data == false && this.form.valid),
-        tap( _ => this.form.get('code')?.setValue(null))
-      )
-      .subscribe()
 
 
       this.provinceService.provinces.subscribe(data => {

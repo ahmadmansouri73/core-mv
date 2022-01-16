@@ -16,11 +16,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
+    
     const auth_kay = this.jwtService.cookieGet(this.AuthService.auth_kay_name);
 
 
     if (auth_kay != null && auth_kay.toString().trim() != '') {
-      request.headers.set('Authorization' , `Bearer ${auth_kay}`)
+      const clonedRequest = request.clone({setHeaders: {'AUTHORIZATION': `Bearer ${auth_kay}`}})    
+      return next.handle(clonedRequest);
+
     }
 
 

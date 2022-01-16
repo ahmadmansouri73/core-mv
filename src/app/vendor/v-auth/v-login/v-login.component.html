@@ -1,1 +1,66 @@
-<p>v-login works!</p>
+
+<nb-layout>
+    <nb-layout-header>
+        <h4 class='text-center text-muted w-100'>ورود</h4>
+    </nb-layout-header>
+    <nb-layout-column >
+        <div class="row m-0 p-0 justify-content-center w-100  align-content-center "  style="height:100%">
+            <div class="col-md-6 col-sm-6 col-12 m-0 p-0 ">
+
+                <nb-card>
+                    <nb-card-body>
+                        <div class="row">
+                            <form [formGroup]="form">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <label class="p-3 text-muted" for="username">نام کاربری</label>
+                                    <input type="text" appOnlyNumbers nbInput fullWidth formControlName="username" id="username">
+                                </div>
+    
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <label class="p-3 text-muted" for="password">پسورد</label>
+                                    <input type="text" nbInput fullWidth formControlName="password" id="password">
+                                </div>
+
+                                <div class="col-md-12 mt-3 col-12 col-sm-12">
+                                    <button type="button" class="text-center"  (click)="submit()" size="small" [disabled]="form.invalid  " fullWidth shape="semi-round" nbButton [status]="is_submit ? 'info':'primary'"  >
+
+                                        {{is_submit ? '' : 'تایید'}}
+                                        <div *ngIf="is_submit" class="spinner-border spinner-border-sm small text-light  " role="status">
+                                          <span class="sr-only"></span>
+                                        </div>
+                    
+                                      </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+    </nb-layout-column>
+
+    <nb-layout-footer>
+        <h4 class='text-center text-muted w-100'>خانه میوه</h4>
+    </nb-layout-footer>
+</nb-layout>
+
+
+
+
+<!-- <div class="containe m-0 p-0" style="height: 100vh;">
+
+    <div class="row justify-content-center align-content-center m-0 p-0" style="height: 100vh">
+
+        <div class="col-md-6 borer shadow">
+                <nb-card>
+                    <nb-card-body>
+                        <h1>ahmad</h1>
+                    </nb-card-body>
+                   </nb-card>
+          
+       </div>
+
+   </div>
+
+</div> -->

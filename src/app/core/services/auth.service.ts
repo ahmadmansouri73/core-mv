@@ -21,7 +21,7 @@ export class AuthService {
   public readonly auth_kay_name = 'token'
   private subjectAttempAuth = new ReplaySubject<boolean>(1)
   private is_guest: boolean = true
-  public readonly observableAttempAuth = this.subjectAttempAuth.asObservable()
+  public  readonly  observableAttempAuth = this.subjectAttempAuth.asObservable()
 
   public attempAuth(): Observable<Response<any>> {
 
@@ -70,7 +70,11 @@ export class AuthService {
 
 
   public setToken(token: string){
+    console.log(token);
+    
     this.jwtSerivce.cookieSet(this.auth_kay_name , token)
+
+    
   }
 
 

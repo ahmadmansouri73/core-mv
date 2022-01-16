@@ -20,14 +20,16 @@ export class VLoginComponent implements OnInit {
 
 
   public form: FormGroup = new FormGroup({
-    username: new FormControl(null , [Validators.required]),
+    username: new FormControl(null , [Validators.required , Validators.pattern(/09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}/) , Validators.pattern(/^\d+$/)]),
     password: new FormControl(null , [Validators.required]),
   })
 
 
-  public login(): void {
-    if (this.form.valid)
+  is_submit = false
+  public submit(): void {
+    if (this.form.valid && this.is_submit == false)
     {
+      this.is_submit = true
       this.loginService.login(this.form.value).pipe(
           filter(next => next.status == true),
           switchMap(_ => this.authService.attempAuth())
@@ -36,6 +38,10 @@ export class VLoginComponent implements OnInit {
           alert(data.message)
           this.router.navigate(['/vendor']) // root projact module angular navigate checking guard set router
         }
+      }, error => {
+
+      }, () => {
+        this.is_submit = false
       })
     }
   }
