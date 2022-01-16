@@ -17,7 +17,6 @@ import {
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-
 @NgModule({
   declarations: [],
   imports: [

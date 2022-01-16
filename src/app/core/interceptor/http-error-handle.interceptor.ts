@@ -24,7 +24,10 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
         return of()
       }),
       tap(
-      (response) => this.parseResponseBody(response instanceof HttpResponse),
+      (response) => {
+        if (response instanceof HttpResponse)
+          this.parseResponseBody(response)
+      },
     ));
   }
 
@@ -34,8 +37,8 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
     let res: Response<any> = response.body;
 
     const status = res?.status
-
-    if (status === false)
+    
+    if (status == false)
       alert(res?.message)
 
   }

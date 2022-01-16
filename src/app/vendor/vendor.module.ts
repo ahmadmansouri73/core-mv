@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { VendorRoutingModule } from './vendor-routing.module';
 import { VDataModule } from './v-data/v-data.module';
 import {SharedModule} from "../shared/shared.module";
-import {NbSidebarModule} from "@nebular/theme";
 
 
 @NgModule({

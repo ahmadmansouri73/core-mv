@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule, NbSelectModule, NbSidebarModule} from "@nebular/theme";
+import {NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule, NbSelectModule, NbSidebarModule} from "@nebular/theme";
 
+import { NgOtpInputModule } from  'ng-otp-input';
+import { OnlyNumbersDirective } from './directive/only-numbers.directive';
 
 
 @NgModule({
   declarations: [
-    ProgressBarComponent
+    ProgressBarComponent,
+    OnlyNumbersDirective
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,9 @@ import {NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule,
     NbCardModule,
     NbInputModule,
     NbSelectModule,
-
+    NbButtonModule,
+    NgOtpInputModule,
+    OnlyNumbersDirective
   ]
 })
 export class SharedModule { }
