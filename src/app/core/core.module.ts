@@ -12,7 +12,8 @@ import {
   NbLayoutDirection,
   NbLayoutModule, NbSidebarModule,
   NbThemeModule,
-  NbMenuModule
+  NbMenuModule,
+  NbDialogModule
 } from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -26,6 +27,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     NbThemeModule.forRoot({name: 'default'} , [] ,[] ,NbLayoutDirection.RTL),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
+    NbDialogModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
 
