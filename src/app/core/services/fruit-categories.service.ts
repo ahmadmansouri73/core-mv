@@ -6,14 +6,16 @@ import { conf } from 'src/conf';
 @Injectable({
   providedIn: 'root'
 })
-export class CityService {
-
+export class FruitCategoriesService {
 
   constructor(private httpClient: HttpClient) {
-    this.$cities$ = this.httpClient.get(conf.baseUrl + 'public/cities').pipe(shareReplay(1))
+    this.fruitCategories$ = this.httpClient.get(conf.baseUrl + 'public/fruit-categories').pipe(shareReplay(1))
   }
 
-  private $cities$: Observable<any>
+
+  private readonly fruitCategories$: Observable<any>
+
+
   public search(filter: any = {}): Observable<any> {
     let query = '?'
     for (let data in filter) {
@@ -24,16 +26,12 @@ export class CityService {
 
     query =  query.replace(/[&,?]$/,"")
 
-    return this.httpClient.get(conf.baseUrl + 'public/cities' + query )
+    return this.httpClient.get(conf.baseUrl + 'public/fruit-categories' + query)
   }
 
-  public cityOne(id: number): Observable<any>
-  {
-    return this.httpClient.get(conf.baseUrl + 'public/citie?id=' + id)
-  }
 
-  public get cities(): Observable<any> {
-    return this.$cities$
+  public get fruitCategories(): Observable<any> {
+    return this.fruitCategories$
   }
 
 

@@ -11,7 +11,7 @@ export class CategoryVendorService {
 
 
 
-  public isActiveCategories(filter: any = {}) {
+  public activeCategories(filter: any = {}) {
     return this.httpClient.get(conf.baseUrl + 'vendor/cateogries')
   }
 

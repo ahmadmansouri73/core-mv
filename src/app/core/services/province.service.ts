@@ -9,7 +9,7 @@ import { conf } from 'src/conf';
 export class ProvinceService {
 
   constructor(private httpClient: HttpClient) {
-    this.provinces$ = this.httpClient.get(conf.baseUrl + 'api/provinces').pipe(shareReplay(1))
+    this.provinces$ = this.httpClient.get(conf.baseUrl + 'public/provinces').pipe(shareReplay(1))
   }
 
   private provinces$: Observable<any>
@@ -25,12 +25,12 @@ export class ProvinceService {
 
     query =  query.replace(/[&,?]$/,"")
 
-    return this.httpClient.get(conf.baseUrl + 'api/provinces' + query)
+    return this.httpClient.get(conf.baseUrl + 'public/provinces' + query)
   }
 
   public provinceOne(id: number): Observable<any>
   {
-    return this.httpClient.get(conf.baseUrl + 'api/province?id=' + id)
+    return this.httpClient.get(conf.baseUrl + 'public/province?id=' + id)
   }
 
 
