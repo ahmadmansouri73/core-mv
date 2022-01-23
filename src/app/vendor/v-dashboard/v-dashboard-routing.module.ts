@@ -4,7 +4,8 @@ import { VDashboardComponent } from './v-dashboard/v-dashboard.component';
 
 const routes: Routes = [
   {path: '' , component: VDashboardComponent , children: [
-    {path: 'category' , loadChildren: ()=>import('../category/category.module').then(m => m.CategoryModule)}
+    {path: 'category' , loadChildren: ()=>import('../category/category.module').then(m => m.CategoryModule)},
+    {path: 'storage' , loadChildren: () => import('../v-storage/v-storage.module').then(m => m.VStorageModule)}
   ]}
 ];
 

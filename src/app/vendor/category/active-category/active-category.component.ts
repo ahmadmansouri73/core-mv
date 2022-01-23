@@ -24,7 +24,7 @@ export class ActiveCategoryComponent implements OnInit {
     if (this.form.valid && this.is_submit == false)
     {
       this.is_submit =true
-      this.categoryVendorService.activeCategory(this.form.value.category_id).subscribe(data => {
+      this.categoryVendorService.appendCategory(this.form.value.category_id).subscribe(data => {
       } , err => {
   
       }, () => {
