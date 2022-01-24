@@ -1,0 +1,19 @@
+.dashboard_box{
+  background: var(--c-primary);
+  color: var(--c-text-primary);
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 12px 10px;
+  border-radius: 5px;
+  margin-top: 0;
+}
+.dashboard_box_content{
+  text-align: right;
+}
+.dashboard_box_icon{
+  margin: auto auto auto 10px;
+  font-size: 36px;
+}
+.not-active {
+  background: rgba(43, 144, 184, 0.51);
+}

@@ -1,72 +1,35 @@
-<nb-layout windowMode >
-  <nb-layout-header subheader>
-    <div class="row w-100">
-      <div class="col-md-4">
-        <h4 class="text-center text-muted">
-          خانه میوه
-        </h4>
+<div class="row dashboard">
+<div class="col-md-12">
+  <nav class="navbar p-2">
+    <!--<nav class="navbar navbar-expand-lg p-2">-->
+    <div class="dashboard_navbar_user" id="navbar_user_details" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">
+      <div class="d-flex align-items-center p-2">
+        <div class="navbar_user_image">
+
+          <img
+            class="img-fluid"
+            src= 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'>
+          <!--               [src]="avatarUrl" class="img-fluid">-->
+
+        </div>
+        <div class="navbar_user_info">
+          <span>{{'ahmad'}}</span>
+        </div>
+      </div>
+      <div class="dropdown-menu rtl text-right" aria-labelledby="navbar_user_details">
+        <a (click)="logout()" class="dropdown-item" style="color: #de1503" href="#"><i class="fa fa-power-off"></i> خروج
+          از حساب</a>
       </div>
     </div>
-  </nb-layout-header>
+    <button routerLink="/" class="navbar-toggler m-2" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!--      <img height="60" [src]="conf.in_app_icon">-->
+    </button>
+  </nav>
 
-  
-  <nb-sidebar  right state="compacted"   responsive  >
-    <nb-menu tag="menu" [autoCollapse]="true"  [items]="[
-    {
-      title: 'پروفایل',
-      link: '/vendor/profile',
-      icon: 'person-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'checkmark-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'shopping-cart-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'home-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'bell-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'message-circle-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'pie-chart-outline'
-    },
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'email-outline'
-    },
-    
-    {
-      title: 'دست بندی میوه ها',
-      link: '/vendor/categories',
-      icon: 'menu-2-outline'
-    }
-    
-    ]"></nb-menu>
-  </nb-sidebar>
-  <nb-layout-column>
-
-    <router-outlet></router-outlet>
-  </nb-layout-column>
-
-  <nb-layout-footer>
-    KhaneMiveh
-  </nb-layout-footer>
-</nb-layout>
+  <hr style="margin-top: 0">
+  <router-outlet></router-outlet>
+</div>
+</div>

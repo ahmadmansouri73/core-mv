@@ -1,5 +1,4 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import {NbSidebarComponent, NbSidebarService} from "@nebular/theme";
 
 @Component({
   selector: 'app-v-dashboard',
@@ -8,17 +7,13 @@ import {NbSidebarComponent, NbSidebarService} from "@nebular/theme";
 })
 export class VDashboardComponent implements OnInit {
 
-  constructor(private sidebarService: NbSidebarService) { }
-
-  @ViewChild('sidebar') sidebar: NbSidebarComponent | undefined
+  constructor() { }
 
 
-  click () {
-    this.sidebarService.toggle(true)
-  }
 
   ngOnInit(): void {
-    
+
   }
 
+  logout() {}
 }

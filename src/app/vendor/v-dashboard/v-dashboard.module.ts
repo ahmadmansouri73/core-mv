@@ -5,11 +5,13 @@ import { VDashboardRoutingModule } from './v-dashboard-routing.module';
 import { VDashboardComponent } from './v-dashboard/v-dashboard.component';
 import {SharedModule} from "../../shared/shared.module";
 import {NbSidebarModule} from "@nebular/theme";
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
-    VDashboardComponent
+    VDashboardComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

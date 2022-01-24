@@ -1,63 +1,105 @@
+<h4 class="header-title">گروه ها</h4>
 
-        <nb-card>
-            <nb-card-header>
+<div class="row">
+  <div class="col-md-5 col-sm-12 col-12 text-center">
 
-                <div class="row w-100 justify-content-between">
-                    <div class="col-md-2" >
-                        <h4 class="text-muted p-2" >دسته بندی ها</h4>
+    <input type="button" class="btn w-50 btn-info" value="ایجاد">
 
-                    </div>
-                    <div class="col-md-2 text-center" >
-                        <input type="button"  (click)="create()" nbButton status="info" value="ایجاد">
-                    </div>
-                </div>
+  </div>
+  <div class="col-md-7 col-12 col-sm-12 invoice_box_list">
+    <p *ngIf="categories.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
+    <div  *ngFor="let item of categories;let index = index">
+      <div class="col-md-12 p-0">
+        <div class="prescription_box">
+          <div class="prescription_box_title d-flex">
+            <div class="prescription_title w-100 rtl">
+              <p class="text-white">{{item?.category?.category_name}}</p>
+            </div>
+          </div>
+          <div  class="prescription_box_details">
+            <div class="prescription_box_contact">
+              <ul class="list-group p-0">
+                <li class="list-group-item">وضعیت :
+                  <span class="prescription_box_contact_set">{{item?.status}}</span>
+                </li>
+                <li class="list-group-item"> آیدی : <span
+                  class="prescription_box_contact_set">{{item?.id}}</span></li>
+                <li class="list-group-item">تاریخ بروز رسانی : <span class="prescription_box_contact_set">{{item?.updated_at}}</span>
+                </li>
+                <li class="list-group-item">تغییر وضعیت :
 
-            </nb-card-header>
-            <nb-card-body>
-                
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12">
-                        <h4 *ngIf="categories.length == 0">هیچ دست بندی وجود ندارد</h4>
-
-                        <table class="table table-striped table-hover table-bordered  table-sm center" *ngIf="categories.length > 0">
-                            <thead  >
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">آیدی</th>
-                                <th scope="col">نام</th>
-                                <th scope="col">وضعیت</th>
-                                <th scope="col">تاریخ ساخت</th>
-                                <th scope="col">تغییر وضعیت</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let item of categories;let index = index">
-                                <th scope="row">{{index + 1}}</th>
-                                <td>{{item?.id}}</td>
-                                <td>{{item?.category.category_name}}</td>
-                                <td>{{item?.status}}</td>
-                                <td>{{item?.created_at}}</td>
-                                <td class="text-center">
-                                    <button (click)="active(item.id)" *ngIf="item.status != 1  && ( item_submit != item.id)" type="button" class="btn btn-link btn-sm text-info w-25">
-                                        فعال 
-                                    </button>
-                                    <button (click)="not_active(item.id)" *ngIf="item.status == 1  && (item_submit != item.id)"  type="button" class="btn btn-link btn-sm text-danger w-25">
-                                        غیر فعال 
-                                    </button>
-
-                                    <div *ngIf="(submit && (item_submit == item.id))" class="spinner-border spinner-border-sm small text-info  " role="status">
-
-                                        <span class="sr-only"></span>
-                                    </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-
-                    </div>
-                </div>
+                  <a
+                    (click)="active(item.id)" *ngIf="item?.status != 1  && ( item_submit != item?.id)"
+                  class="text-primary ">
+                    فعال
+                  </a>
 
 
+                  <a
+                    (click)="not_active(item.id)" *ngIf="item?.status == 1  && ( item_submit != item?.id)"
+                    class="text-danger ">
+                    غیر فعال
+                  </a>
 
-            </nb-card-body>
-        </nb-card>
+                </li>
+              </ul>
+            </div>
+<!--            <img [src]="''" class="prescription_box_status">-->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--                <div class="row w-100 justify-content-between">-->
+<!--                    <div class="col-md-2" >-->
+<!--                        <h4 class="text-muted p-2" >دسته بندی ها</h4>-->
+
+<!--                    </div>-->
+<!--                    <div class="col-md-2 text-center" >-->
+<!--                        <input type="button"  (click)="create()" nbButton status="info" value="ایجاد">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12 col-sm-12 col-12">-->
+<!--                        <h4 *ngIf="categories.length == 0">هیچ دست بندی وجود ندارد</h4>-->
+
+<!--                        <table class="table table-striped table-hover table-bordered  table-sm center" *ngIf="categories.length > 0">-->
+<!--                            <thead  >-->
+<!--                              <tr>-->
+<!--                                <th scope="col">#</th>-->
+<!--                                <th scope="col">آیدی</th>-->
+<!--                                <th scope="col">نام</th>-->
+<!--                                <th scope="col">وضعیت</th>-->
+<!--                                <th scope="col">تاریخ ساخت</th>-->
+<!--                                <th scope="col">تغییر وضعیت</th>-->
+<!--                              </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                              <tr *ngFor="let item of categories;let index = index">-->
+<!--                                <th scope="row">{{index + 1}}</th>-->
+<!--                                <td>{{item?.id}}</td>-->
+<!--                                <td>{{item?.category.category_name}}</td>-->
+<!--                                <td>{{item?.status}}</td>-->
+<!--                                <td>{{item?.created_at}}</td>-->
+<!--                                <td class="text-center">-->
+
+
+<!--                                    <div *ngIf="(submit && (item_submit == item.id))" class="spinner-border spinner-border-sm small text-info  " role="status">-->
+
+<!--                                        <span class="sr-only"></span>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                              </tr>-->
+<!--                            </tbody>-->
+<!--                          </table>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+
+
