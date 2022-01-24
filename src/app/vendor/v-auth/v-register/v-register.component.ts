@@ -67,7 +67,7 @@ export class VRegisterComponent implements OnInit {
         this.step = 2
       } , error => {
 
-      }, 
+      },
       () => {
         this.submitStepOne = false
       })
@@ -76,7 +76,7 @@ export class VRegisterComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.form.valid && (this.form.controls['code'].value.trim().length == 6 && this.submitStepTwo == false)) {
+    if (this.form.valid && (this.form.controls['code'].value.trim().length == 6 && !this.submitStepTwo)) {
       this.submitStepTwo = true
       this.registerService.register(this.form.value).subscribe(data => {
         if (data.status) {
@@ -96,11 +96,12 @@ export class VRegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe(data => console.log(data))
 
     this.form.controls['brand_name'].valueChanges.pipe(
       tap(_ => this.checking.setValue(null)),
       debounceTime(300),
-      filter((data: string) => data.trim() != '' && data.length > 4), 
+      filter((data: string) => data.trim() != '' && data.length > 4),
       switchMap((next: string) => this.registerService.checkingExistBrandName(next))
     ).subscribe((data: boolean) => this.checking.setValue(data))
 

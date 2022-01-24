@@ -1,13 +1,10 @@
-<nb-layout windowMode>
-    <nb-layout-column>
-
 
         <nb-card>
             <nb-card-header>
 
                 <div class="row w-100 justify-content-between">
                     <div class="col-md-2" >
-                        <h4 class="text-muted p-2" >دسته بندی فعال</h4>
+                        <h4 class="text-muted p-2" >دسته بندی ها</h4>
 
                     </div>
                     <div class="col-md-2 text-center" >
@@ -41,13 +38,17 @@
                                 <td>{{item?.status}}</td>
                                 <td>{{item?.created_at}}</td>
                                 <td class="text-center">
-                                    <button *ngIf="item.status != 1" type="button" class="btn btn-link btn-sm text-info w-25">
+                                    <button (click)="active(item.id)" *ngIf="item.status != 1  && ( item_submit != item.id)" type="button" class="btn btn-link btn-sm text-info w-25">
                                         فعال 
                                     </button>
-                                    <button *ngIf="item.status == 1"  type="button" class="btn btn-link btn-sm text-danger w-25">
+                                    <button (click)="not_active(item.id)" *ngIf="item.status == 1  && (item_submit != item.id)"  type="button" class="btn btn-link btn-sm text-danger w-25">
                                         غیر فعال 
                                     </button>
-                                    
+
+                                    <div *ngIf="(submit && (item_submit == item.id))" class="spinner-border spinner-border-sm small text-info  " role="status">
+
+                                        <span class="sr-only"></span>
+                                    </div>
                                 </td>
                               </tr>
                             </tbody>
@@ -60,7 +61,3 @@
 
             </nb-card-body>
         </nb-card>
-
-
-    </nb-layout-column>
-</nb-layout>
