@@ -22,6 +22,7 @@ import { OnlyNumbersDirective } from './directive/only-numbers.directive';
     ProgressBarComponent,
     FormsModule,
     ReactiveFormsModule,
+    OnlyNumbersDirective,
     NbIconModule,
     NbLayoutModule,
     NbMenuModule,
@@ -31,7 +32,6 @@ import { OnlyNumbersDirective } from './directive/only-numbers.directive';
     NbSelectModule,
     NbButtonModule,
     NgOtpInputModule,
-    OnlyNumbersDirective,
     NbStepperModule
   ]
 })

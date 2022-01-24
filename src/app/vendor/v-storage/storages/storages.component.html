@@ -32,6 +32,7 @@
                                 <th scope="col">قیمت</th>
                                 <th scope="col">وضعیت</th>
                                 <th scope="col">تاریخ بروز رسانی</th>
+                                <th scope="col"></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -47,14 +48,14 @@
                                 <td>{{item?.status}}</td>
                                 <td>{{item?.updated_at}}</td>
                                 <td class="text-center">
-                                    <button (click)="active(item.id_vendor_storage)" *ngIf="item.status != 1  && ( item_submit != item.id_vendor_storage)" type="button" class="btn btn-link btn-sm text-info w-100">
+                                    <button (click)="active(item.id_vendor_storage)" *ngIf="item.status != 1  && ( submit == false && item_submit != item.id_vendor_storage)" type="button" class="btn btn-link btn-sm text-info w-100">
                                         فعال 
                                     </button>
-                                    <button (click)="not_active(item.id_vendor_storage)" *ngIf="item.status == 1  && (item_submit != item.id_vendor_storage)"  type="button" class="btn btn-link btn-sm text-danger w-100">
+                                    <button (click)="not_active(item.id_vendor_storage)" *ngIf="item.status == 1  && (submit == false && item_submit != item.id_vendor_storage)"  type="button" class="btn btn-link btn-sm text-danger w-100">
                                         غیر فعال 
                                     </button>
 
-                                    <div *ngIf="(submit && (item_submit == item.id_vendor_storage))" class="spinner-border spinner-border-sm small text-info  " role="status">
+                                    <div *ngIf="submit == true" class="spinner-border spinner-border-sm small text-info  w-100 " role="status">
 
                                         <span class="sr-only"></span>
                                     </div>

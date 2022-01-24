@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter, finalize, switchMap } from 'rxjs';
+import { filter, finalize, switchMap, tap } from 'rxjs';
 import { StorageVendorService } from '../../v-data/services/storage-vendor.service';
 
 @Component({
@@ -24,8 +24,8 @@ export class StoragesComponent implements OnInit {
     if (this.submit == false)
     {
       this.submit = true
-      this.storageService.active(id).pipe(finalize(() => this.submit = false))
-      .pipe(filter(next => next.status == true), switchMap(_ => this.storageService.storages()))
+      this.storageService.active(id)
+      .pipe(tap(_ => this.submit = false), filter(next => next.status == true), switchMap(_ => this.storageService.storages()))
       .subscribe(data => this.storages = data.data)
     }
   }
@@ -34,8 +34,8 @@ export class StoragesComponent implements OnInit {
     if (this.submit == false)
     {
       this.submit = true
-      this.storageService.not_active(id).pipe(finalize(() => this.submit = false))
-      .pipe(filter(next => next.status == true), switchMap(_ => this.storageService.storages()))
+      this.storageService.not_active(id)
+      .pipe(tap(_ => this.submit = false), filter(next => next.status == true), switchMap(_ => this.storageService.storages()))
       .subscribe(data => this.storages = data.data)
     }
   }
