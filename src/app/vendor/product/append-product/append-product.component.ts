@@ -5,6 +5,7 @@ import { combineLatest, filter, switchMap, tap } from 'rxjs';
 import { CategoriesService } from 'src/app/core/services/categories.service';
 import { FruitCategoriesService } from 'src/app/core/services/fruit-categories.service';
 import { FruitsService } from 'src/app/core/services/fruits.service';
+import { ImageCompressorService } from 'src/app/core/services/image-compressor.service';
 import { ValueTypeService } from 'src/app/core/services/value-type.service';
 import { ProductVendorService } from '../../v-data/services/product-vendor.service';
 
@@ -16,6 +17,7 @@ import { ProductVendorService } from '../../v-data/services/product-vendor.servi
 export class AppendProductComponent implements OnInit {
 
   constructor(
+    private imageCompressorService: ImageCompressorService,
     private router: Router,
     private categoriesService: CategoriesService,
     private fruitCategoryService: FruitCategoriesService,
@@ -51,6 +53,16 @@ export class AppendProductComponent implements OnInit {
         }
       })
     }
+  }
+
+
+
+  setFileLogo(event: any) {
+
+    this.imageCompressorService.compress(event.target.files[0]).then(data => {
+      console.log(data);
+
+    })
   }
 
 

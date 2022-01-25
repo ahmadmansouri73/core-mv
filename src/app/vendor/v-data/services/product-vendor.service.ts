@@ -9,11 +9,7 @@ import { conf } from 'src/conf';
 })
 export class ProductVendorService {
 
-  constructor(private httpClient: HttpClient) {
-
-
-
-  }
+  constructor(private httpClient: HttpClient) {}
 
 
 

@@ -51,6 +51,14 @@
               <label class="rtl float-right text-secondary p-2"  for="discount">discount</label>
               <input type="text" class="form-control rtl" autocomplete="off" id="product_price" appOnlyNumbers formControlName="discount">
             </div>
+
+
+            <div class="col-ms-12 col-12 col-md-6">
+              <label class="rtl float-right text-secondary p-2" for="logo_address_image">logo_address_image</label>
+              <input type="file"  (change)="setFileLogo($event)"  >
+            </div>
+
+
           </div>
 
           <div class="row mt-5 justify-content-center">
