@@ -35,7 +35,11 @@ export class AppendProductComponent implements OnInit {
     fruit_category: new FormControl(null , Validators.required),
     fruit: new FormControl(null , Validators.required),
     value_type: new FormControl(null , Validators.required),
-
+    product_price: new FormControl(null , Validators.required),
+    value: new FormControl(null , Validators.required),
+    discount: new FormControl(null , Validators.required),
+    logo_address_image: new FormControl(null),
+    image_address: new FormControl(null)
   })
 
 

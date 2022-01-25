@@ -22,7 +22,7 @@ export class ProductVendorService {
 
   public apend(item: any): Observable<Response<any>> {
     return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/create-product' , {
-      Product: item
+      VendorCreatedProduct: item
     })
   }
 
@@ -34,7 +34,7 @@ export class ProductVendorService {
         query += `${data}=${filter[data]}&`
       }
     }
-    
+
     query =  query.replace(/[&,?]$/,"")
 
     return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/products' + query)
