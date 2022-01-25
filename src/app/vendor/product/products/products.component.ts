@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { filter, finalize, retry, switchMap, tap } from 'rxjs';
+import { ProductVendorService } from '../../v-data/services/product-vendor.service';
 
 @Component({
   selector: 'app-products',
@@ -7,9 +11,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductVendorService
+  ) { }
+
+
+  product: any[] = []
+
+  is_submit: boolean = false
+
+
+  active(id: number): void {
+    if (this.is_submit == false) {
+      this.is_submit = true
+      this.productService.active(id)
+      .pipe(
+        finalize(() => this.is_submit = false),
+        filter(next => next.status),
+        tap(_ => this.product = []),
+        switchMap(next => this.productService.search()))
+      .subscribe(data => {
+        this.product = data.data
+      })
+    }
+  }
+
+
+  notactive(id: number) {
+    if (this.is_submit == false) {
+      this.is_submit = true
+      this.productService.not_active(id)
+      .pipe(
+        finalize(() => this.is_submit = false),
+        filter(next => next.status),
+        tap(_ => this.product = []),
+        switchMap(next => this.productService.search()))
+      .subscribe(data => {
+        this.product = data.data
+      })
+    }
+  }
 
   ngOnInit(): void {
+    this.is_submit = true
+    this.productService.search(this.activatedRoute.snapshot.queryParams)
+    .pipe(retry(1), finalize(() => this.is_submit = false))
+    .subscribe(data => {
+      this.product = data.data
+    })
   }
 
 }

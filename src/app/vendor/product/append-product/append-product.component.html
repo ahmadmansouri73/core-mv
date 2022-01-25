@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-5">
+
+  </div>
+  <div class="col-md-7">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="row flex-row-reverse">
+            <div class="col-md-12">
+              <label for="product_name" class="rtl text-secondary float-right text-muted p-2">product_name</label>
+              <input type="text" class="form-control rtl" formControlName="product_name" id="product_name" >
+            </div>
+            <div class="col-ms-12 col-12 col-md-6">
+              <label  class="rtl float-right text-secondary p-2" for="category">category</label>
+              <select formControlName="category" class="form-control rtl">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let item of categories" [ngValue]="item">{{item.category_name}}</option>
+              </select>
+            </div>
+            <div class="col-ms-12 col-12 col-md-6">
+              <label  class="rtl float-right text-secondary p-2" for="category">fruit_category</label>
+              <select formControlName="fruit_category" class="form-control rtl">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let item of fruit_categories" [ngValue]="item">{{item.fruit_category_name}}</option>
+              </select>
+            </div>
+            <div class="col-ms-12 col-12 col-md-6">
+              <label  class="rtl float-right text-secondary p-2" for="category">fruit</label>
+              <select formControlName="fruit" class="form-control rtl">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let item of fruits" [ngValue]="item">{{item.fruit_name}}</option>
+              </select>
+            </div>
+            <div class="col-ms-12 col-12 col-md-6">
+              <label  class="rtl float-right text-secondary p-2" for="category">value_type</label>
+              <select formControlName="value_type" class="form-control rtl">
+                <option [ngValue]="null"></option>
+                <option *ngFor="let item of valueTypes" [ngValue]="item">{{item.type_name}}</option>
+              </select>
+            </div>
+          </div>
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
