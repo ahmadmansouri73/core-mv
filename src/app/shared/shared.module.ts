@@ -7,22 +7,30 @@ import {NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModul
 
 import { NgOtpInputModule } from  'ng-otp-input';
 import { OnlyNumbersDirective } from './directive/only-numbers.directive';
+import { NgxCurrencyModule } from 'ngx-currency';
+import { ImagePickerComponent } from './image-picker/image-picker.component';
+import { ImageComponent } from './image/image.component';
 
 
 @NgModule({
   declarations: [
     ProgressBarComponent,
-    OnlyNumbersDirective
+    OnlyNumbersDirective,
+    ImagePickerComponent,
+    ImageComponent
   ],
   imports: [
     CommonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   exports: [
     ProgressBarComponent,
     FormsModule,
+    ImagePickerComponent,
+    ImageComponent,
     ReactiveFormsModule,
     OnlyNumbersDirective,
+    NgxCurrencyModule,
     NbIconModule,
     NbLayoutModule,
     NbMenuModule,
@@ -32,7 +40,8 @@ import { OnlyNumbersDirective } from './directive/only-numbers.directive';
     NbSelectModule,
     NbButtonModule,
     NgOtpInputModule,
-    NbStepperModule
+    NbStepperModule,
+
   ]
 })
 export class SharedModule { }

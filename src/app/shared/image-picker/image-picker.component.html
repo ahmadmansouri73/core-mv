@@ -1,0 +1,20 @@
+
+<div class="row text-center   position-relative rtl">
+  <div class=" d-flex flex-row flex-nowrap upload" >
+    <div (click)="file.click()"  class="card card-body text-center upload_card_img">
+      <img width="50px" height="50px" src="assets/img/upload-img-listing.png">
+      <span class="small mt-2">افزودن تصویر</span>
+      <input #file type="file" accept="image/jpeg" (change)="handleFileInput($event)" hidden>
+    </div>
+
+
+    <div *ngIf="item"
+    class="card card-body box_image"
+    data-placement="bottom">
+      <img  [src]="item.image" alt="image" style="border-radius: 8px">
+
+    </div>
+
+  </div>
+</div>
+
