@@ -13,7 +13,16 @@ export class ProductVendorService {
 
 
 
+  public one(id: number): Observable<Response<any>> {
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/product?id_product=' + id)
+  }
 
+
+  public update(item: any): Observable<Response<any>> {
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/update-product' , {
+      VendorUpdateProduct: item
+    })
+  }
 
 
   public apend(item: any): Observable<Response<any>> {
@@ -37,12 +46,12 @@ export class ProductVendorService {
   }
 
   public active(id: number): Observable<Response<any>>  {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/active-product?id=' + id)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/active-product?id_product=' + id)
   }
 
 
   public not_active(id: number): Observable<Response<any>>   {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/notactive-product?id=' + id)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/notactive-product?id_product=' + id)
   }
 
 }

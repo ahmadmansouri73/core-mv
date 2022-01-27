@@ -1,1 +1,57 @@
-<p>products works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <h4 class="header-title">product</h4>
+  </div>
+  <div class="col-md-12">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-12 col-sm-12 invoice_box_list">
+        <p *ngIf="product.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
+        <div  *ngFor="let item of product;let index = index">
+          <div class="col-md-12 p-0">
+            <div class="prescription_box">
+              <div class="prescription_box_title d-flex">
+                <div class="prescription_title w-100 rtl">
+                  <p class="text-white">{{item?.product_name}}</p>
+                </div>
+              </div>
+              <div  class="prescription_box_details">
+                <div class="prescription_box_contact">
+                  <ul class="list-group p-0">
+                    <li class="list-group-item">وضعیت :
+                      <span class="prescription_box_contact_set">{{item?.status}}</span>
+                    </li>
+                    <li class="list-group-item"> آیدی : <span
+                      class="prescription_box_contact_set">{{item?.id_product}}</span></li>
+                    <li class="list-group-item">تاریخ بروز رسانی : <span class="prescription_box_contact_set">{{item?.updated_at}}</span>
+                    </li>
+                    <li class="list-group-item">تغییر وضعیت :
+
+                      <a
+                        (click)="active(item.id_product)" *ngIf="item?.status != 1  && ( item_submit != item?.id)"
+                      class="text-primary ">
+                        فعال
+                      </a>
+
+
+                      <a
+                        (click)="notactive(item.id_product)" *ngIf="item?.status == 1  && ( item_submit != item?.id)"
+                        class="text-danger ">
+                        غیر فعال
+                      </a>
+
+                    </li>
+                    <li>
+                      <p (click)="update(item.id_product)">update</p>
+                    </li>
+                  </ul>
+                </div>
+    <!--            <img [src]="''" class="prescription_box_status">-->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

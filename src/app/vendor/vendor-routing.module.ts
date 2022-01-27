@@ -13,6 +13,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class VendorRoutingModule {
-  constructor(){console.log('Hi ahmad');
+  constructor(){
   }
  }

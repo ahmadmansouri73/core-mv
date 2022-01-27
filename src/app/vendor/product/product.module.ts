@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { AppendProductComponent } from './append-product/append-product.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ViewNewProductComponent } from './append-product/view-new-product/view-new-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ViewNewProductComponent } from './append-product/view-new-product/view-
     ProductComponent,
     ProductsComponent,
     AppendProductComponent,
-    ViewNewProductComponent
+    ViewNewProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,

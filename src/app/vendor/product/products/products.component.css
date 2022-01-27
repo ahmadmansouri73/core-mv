@@ -1,0 +1,114 @@
+.invoice_box_list {
+  /*max-height: 700px;*/
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.invoice_box_list::-webkit-scrollbar {
+  display: none;
+}
+
+.prescription_box {
+  border: 1px solid #cbcbcb;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.prescription_box_title {
+  background-color: #2885a7;
+  border-radius: 8px 8px 0 0;
+}
+
+.prescription_title {
+  text-align: center;
+  padding: 10px 0;
+  margin: auto;
+}
+
+.prescription_box_dots_menu {
+  padding-left: 14px;
+  padding-top: 14px;
+}
+
+.prescription_title p {
+  display: inline-block;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  margin: 0;
+  font-size: 14px;
+}
+
+.prescription_box_details {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.prescription_box_image {
+  width: 90px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--c-primary);
+  margin: auto 10px;
+  padding: 6px;
+}
+
+.prescription_box_contact {
+  font-size: 14px;
+  text-align: right;
+  width: 100%;
+}
+
+.prescription_box_contact {
+  direction: rtl;
+}
+
+.prescription_box_contact li {
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  direction: rtl;
+  position: relative;
+  display: block;
+  padding: .25rem .8rem;
+  border: none;
+  max-width: 100%;
+}
+
+.prescription_box_contact_set {
+  font-weight: bold;
+}
+
+.prescription_box_status {
+  width: 80px;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-left: 4px;
+}
+
+.list_prescription_action_details {
+  box-shadow: 0 2px 8px #8d8d8d;
+}
+
+@media only screen and (min-width: 400px) {
+  .prescription_box_contact .list-group-item {
+    width: 100%;
+  }
+}
+
+/*@media (prefers-color-scheme: dark){*/
+/*  .prescription_box_contact ul li{*/
+/*    background-color: transparent;*/
+/*  }*/
+/*  .prescription_box_title{*/
+/*    background-color: #333333;*/
+/*    color: #fff;*/
+/*    border-bottom: 1px solid #fff;*/
+/*  }*/
+/*}*/
