@@ -5,7 +5,7 @@
   <div class="col-md-7">
     <div class="row p-2">
       <div class="col-12">
-        <h4 class="header-title">ثبت محصول</h4>
+        <h4 class="header-title">بروز رسانی محصول</h4>
       </div>
       <div class="col-md-12" *ngIf="step == 1">
         <form [formGroup]="form" (ngSubmit)="update()">
@@ -16,30 +16,30 @@
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label  class="rtl float-right text-secondary p-2" for="category">گروه</label>
-              <select formControlName="category" class="form-control rtl">
+              <select formControlName="category_id" class="form-control rtl">
                 <option [ngValue]="null"></option>
-                <option *ngFor="let item of categories" [ngValue]="item">{{item.category_name}}</option>
+                <option *ngFor="let item of categories" [ngValue]="item.id_category">{{item.category_name}}</option>
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label  class="rtl float-right text-secondary p-2" for="category">میوه</label>
-              <select formControlName="fruit_category" class="form-control rtl">
+              <select formControlName="fruit_category_id" class="form-control rtl">
                 <option [ngValue]="null"></option>
-                <option *ngFor="let item of fruit_categories" [ngValue]="item">{{item.fruit_category_name}}</option>
+                <option *ngFor="let item of fruit_categories" [ngValue]="item.id_fruit_category">{{item.fruit_category_name}}</option>
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label  class="rtl float-right text-secondary p-2" for="category">نوع</label>
-              <select formControlName="fruit" class="form-control rtl">
+              <select formControlName="fruit_id" class="form-control rtl">
                 <option [ngValue]="null"></option>
-                <option *ngFor="let item of fruits" [ngValue]="item">{{item.fruit_name}}</option>
+                <option *ngFor="let item of fruits" [ngValue]="item.id_fruit">{{item.fruit_name}}</option>
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label  class="rtl float-right text-secondary p-2" for="category">واحد</label>
-              <select formControlName="value_type" class="form-control rtl">
+              <select formControlName="value_type_id" class="form-control rtl">
                 <option [ngValue]="null"></option>
-                <option *ngFor="let item of valueTypes" [ngValue]="item">{{item.type_name}}</option>
+                <option *ngFor="let item of valueTypes" [ngValue]="item.id">{{item.type_name}}</option>
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
@@ -62,13 +62,13 @@
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl w-100 text-right text-secondary p-2" for="logo_address_image">لوگو</label>
-              <app-image-picker (image)="setFileLogo($event)"></app-image-picker>
+              <app-image-picker [default_image]="logo_address_image" (image)="setFileLogo($event)"></app-image-picker>
             </div>
 
 
             <div class="col-sm-12 col-12 col-md-12">
-              <label class="rtl text-right  w-100 text-secondary p-2" for="logo_address_image">عکس پس زمینه</label>
-              <app-image-picker (image)="setFileImage($event)"></app-image-picker>
+              <label class="rtl text-right  w-100 text-secondary p-2" for="image_address">عکس پس زمینه</label>
+              <app-image-picker [default_image]="image_address" (image)="setFileImage($event)"></app-image-picker>
             </div>
 
 

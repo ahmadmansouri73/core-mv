@@ -19,7 +19,7 @@ export class ProductVendorService {
 
 
   public update(item: any): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/update-product' , {
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/update-product?id_product=' + item.id_product , {
       VendorUpdateProduct: item
     })
   }

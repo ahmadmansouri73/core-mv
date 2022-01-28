@@ -106,7 +106,6 @@ export class AppendProductComponent implements OnInit {
     })
 
 
-    this.form.valueChanges.subscribe(data => console.log(data))
 
 
     this.form.controls['category'].valueChanges
@@ -133,6 +132,7 @@ export class AppendProductComponent implements OnInit {
       switchMap(next => this.fruitService.search({category_id: this.form.value.category.id_category , fruit_category_id: next.id_fruit_category }))
     )
     .subscribe(data => this.fruits = data.data)
+    
   }
 
 }
