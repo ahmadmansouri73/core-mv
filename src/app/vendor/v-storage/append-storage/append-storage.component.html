@@ -1,25 +1,152 @@
-<nb-card size="medium">
+<div class="row">
+  <div class="col-md-5 d-none d-sm-none d-md-block">
+
+  </div>
+  <div class="col-md-7 col-sm-12 col-12 ">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div [hidden]="step != 1" class="row flex-row-reverse">
+        <div class="col-md-12">
+          <label class="rtl text-muted float-right p-2" for="storage_name">نام مخزن  ذخیر سازی</label>
+          <input type="text" formControlName="storage_name" id="storage_name" class="form-control rtl" >
+        </div>
+
+        <div class="col-md-6">
+          <label for="category_id" class="text-muted rtl float-right p-2"> دسته بندی</label>
+          <select id="category_id" formControlName="category_id" class="form-control" >
+            <option *ngFor="let item of categories" [ngValue]="item">{{item.category_name}}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="fruit_category_id" class="text-muted rtl float-right p-2">دسته بندی میوه</label>
+          <select id="fruit_category_id" formControlName="fruit_category_id" class="form-control" >
+            <option *ngFor="let item of fruit_categories" [ngValue]="item">{{item.fruit_category_name}}</option>
+          </select>
+        </div>
+
+
+        <div class="col-md-6">
+          <label for="fruit_id" class="text-muted rtl float-right p-2">میوه</label>
+          <select id="fruit_id" formControlName="fruit_id" class="form-control" >
+            <option *ngFor="let item of fruits" [ngValue]="item">{{item.fruit_name}}</option>
+          </select>
+        </div>
+
+
+        <div class="col-md-6">
+          <label for="value_type_id" class="text-muted rtl float-right p-2">واحد اندازه گیری</label>
+          <select id="value_type_id" formControlName="value_type_id" class="form-control" >
+            <option *ngFor="let item of value_types" [ngValue]="item">{{item.type_name}}</option>
+          </select>
+        </div>
+
+
+        <div class="col-md-6">
+          <label class="rtl text-muted float-right p-2"  for="value">مقدار</label>
+          <input type="text" formControlName="value" id="value" currencyMask [options]="{suffix: form.value['value_type_id'] != null ? ' ' + form.value['value_type_id'].type_name + ' ' : '',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" appOnlyNumbers class="form-control rtl" >
+        </div>
+
+
+        <div class="col-md-6">
+          <label class="rtl text-muted float-right p-2"  for="price">قیمت</label>
+          <input type="text" formControlName="price" id="price" currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" appOnlyNumbers class="form-control rtl" >
+        </div>
+
+
+        <div class="col-md-12 mt-3 mb-3 ">
+          <input type="button" class="btn btn-primary btn-block" [disabled]="form.invalid" (click)="step = 2" value="تایید">
+        </div>
+
+
+      </div>
+
+      <div class="row" [hidden]="step != 2">
+        <div class="col-md-12">
+
+          <div class="row flex-row-reverse">
+            <div class="col-md-6">
+                <table class="table table-striped table-hover  center">
+                    <tbody>
+                        <tr>
+                            <td class="text-muted text-right">نام مخزن : </td>
+                            <td class="text-center">{{form.value['storage_name']}}</td>
+
+                        </tr>
+                         <tr>
+                            <td class="text-muted text-right ">دسته بندی : </td>
+                            <td  class="text-center">{{form.value['category_id']?.category_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted text-right">  دسته بندی میوه : </td>
+                            <td  class="text-center">{{form.value['fruit_category_id']?.fruit_category_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted text-right"> میوه : </td>
+                            <td  class="text-center">{{form.value['fruit_id']?.fruit_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped table-hover  center">
+                    <tbody>
+                        <tr>
+                            <td class="text-muted text-right">مقدار : </td>
+                            <td  class="text-center">{{form.value['value']}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted text-right">  قیمت  : </td>
+                            <td  class="text-center">{{form.value['price']|number}} &nbsp; (تومن)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted text-right"> واحد اندازه گیری : </td>
+                            <td  class="text-center">{{form.value['value_type_id']?.type_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5" style="height: 100%;">
+            <div class="col-md-12 mt-3 mb-3">
+                <input type="submit" value="ثبت"  class="btn btn-success btn-block" [disabled]="form.invalid">
+            </div>
+        </div>
+
+        </div>
+      </div>
+
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- <nb-card size="medium">
     <nb-card-header></nb-card-header>
 
     <nb-card-body>
         <nb-stepper orientation="horizontal">
             <nb-step [stepControl]="one"  label="نام گذاری">
-               
+
                 <form [formGroup]="one"  class="step-container">
 
                     <div class="row">
                         <div class="col-md-4">
                             <input type="text" placeholder="نام مخزن  ذخیر سازی" nbInput fullWidth  formControlName="storage_name">
-                            
+
                             <button type="submit" [status]="one.invalid ? 'default': 'primary' " class="mt-2" fullWidth nbButton nbStepperNext>تایید</button>
 
                         </div>
-                        
+
                         <div class="col-md-4">
 
                         </div>
 
-                        
+
                         <div class="col-md-4">
                             <p class="text-center p-1 ">
                                 نام مخزن ذخیر سازی میوه
@@ -37,7 +164,7 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <form [formGroup]="two"> 
+                            <form [formGroup]="two">
 
                                 <div class="row">
                                     <div class="row">
@@ -46,7 +173,7 @@
                                             <nb-select [status]="(two.controls['category_id'].dirty && two.controls['category_id'].invalid  ) ? 'danger': (two.controls['category_id'].dirty && two.controls['category_id'].valid )? 'success' : 'basic' " formControlName="category_id" fullWidth="">
                                                 <nb-option  [value]="null">انتخاب کنید</nb-option>
                                                 <nb-option *ngFor="let item of categories" [value]="item">{{item.category_name}}</nb-option>
-                                            </nb-select> 
+                                            </nb-select>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="category_id" class="text-muted p-2"> دسته بندی میوه</label>
@@ -54,7 +181,7 @@
                                             <nb-select [status]="(two.controls['fruit_category_id'].dirty && two.controls['fruit_category_id'].invalid  ) ? 'danger': (two.controls['fruit_category_id'].dirty && two.controls['fruit_category_id'].valid )? 'success' : 'basic' " formControlName="fruit_category_id" fullWidth="">
                                                 <nb-option  [value]="null">انتخاب کنید</nb-option>
                                                 <nb-option *ngFor="let item of fruit_categories" [value]="item">{{item.fruit_category_name}}</nb-option>
-                                            </nb-select> 
+                                            </nb-select>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="category_id" class="text-muted p-2"> میوه</label>
@@ -62,7 +189,7 @@
                                             <nb-select [status]="(two.controls['fruit_id'].dirty && two.controls['fruit_id'].invalid  ) ? 'danger': (two.controls['fruit_id'].dirty && two.controls['fruit_id'].valid )? 'success' : 'basic' " formControlName="fruit_id" fullWidth="">
                                                 <nb-option  [value]="null">انتخاب کنید</nb-option>
                                                 <nb-option *ngFor="let item of fruits" [value]="item">{{item.fruit_name}}</nb-option>
-                                            </nb-select> 
+                                            </nb-select>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +214,7 @@
                     </div>
 
 
-                  
+
 
                 </form>
             </nb-step>
@@ -107,12 +234,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="category_id" class="text-muted p-2"> واحد اندازه گیری</label>
-                                    <nb-select 
+                                    <nb-select
                                     [status]="(tree.controls['value_type_id'].dirty && tree.controls['value_type_id'].invalid  ) ? 'danger': (tree.controls['value_type_id'].dirty && tree.controls['value_type_id'].valid )? 'success' : 'basic' "
                                     formControlName="value_type_id" fullWidth="">
                                         <nb-option  [value]="null">انتخاب کنید</nb-option>
                                         <nb-option *ngFor="let item of value_types" [value]="item">{{item.type_name}}</nb-option>
-                                    </nb-select> 
+                                    </nb-select>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="category_id"  class="text-muted p-2">قیمت</label>
@@ -131,7 +258,7 @@
                         </div>
                         <div class="col-md-4">
                         </div>
-                        
+
                         <div class="col-md-4">
 
                         </div>
@@ -203,4 +330,4 @@
 
         </nb-stepper>
     </nb-card-body>
-</nb-card>
+</nb-card> -->

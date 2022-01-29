@@ -6,6 +6,7 @@ import { ProductsComponent } from './products/products.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 
 const routes: Routes = [
+  {path: '' , redirectTo: 'index' , pathMatch: 'full'},
   {path: '' , component: ProductComponent , children: [
     {path: 'create' , component: AppendProductComponent},
     {path: 'index' , component: ProductsComponent},

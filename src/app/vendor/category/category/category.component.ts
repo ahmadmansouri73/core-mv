@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
 import { filter, switchMap } from 'rxjs';
 import { CategoryVendorService } from '../../v-data/services/category-vendor.service';
 import { ActiveCategoryComponent } from '../active-category/active-category.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-category',
@@ -11,18 +11,21 @@ import { ActiveCategoryComponent } from '../active-category/active-category.comp
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryVendorService: CategoryVendorService , private dialogService: NbDialogService) { }
+  constructor(private categoryVendorService: CategoryVendorService , public dialog: MatDialog) { }
 
 
   public submit: boolean = false
   public item_submit: number = 0
 
   create() {
-    this.dialogService.open(ActiveCategoryComponent , {
-      closeOnEsc: true,
-      hasBackdrop: true,
-      autoFocus: true
-    })
+   let dialogRef = this.dialog.open(ActiveCategoryComponent , {
+    width: '30%'
+
+   })
+
+    dialogRef.afterClosed().pipe(filter(next => next == true), switchMap(_ => this.categoryVendorService.categories())).subscribe(result => {
+      this.categories = result.data
+    });
   }
 
 
@@ -40,7 +43,7 @@ export class CategoryComponent implements OnInit {
       .subscribe(data => {
         this.categories = data.data
       }, erro => {
-  
+
       } , () => {
         this.submit = false
         this.item_submit = 0
@@ -64,7 +67,7 @@ export class CategoryComponent implements OnInit {
       .subscribe(data => {
         this.categories = data.data
       }, erro => {
-  
+
       } , () => {
         this.submit = false
         this.item_submit = 0
@@ -79,7 +82,7 @@ export class CategoryComponent implements OnInit {
     this.categoryVendorService.categories().subscribe(data => {
       this.categories = data.data
     })
-  
+
   }
 
 }

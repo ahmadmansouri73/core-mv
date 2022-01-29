@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NbDialogRef } from '@nebular/theme';
 import { CategoriesService } from 'src/app/core/services/categories.service';
 import { CategoryVendorService } from '../../v-data/services/category-vendor.service';
+import { MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-active-category',
@@ -11,7 +11,9 @@ import { CategoryVendorService } from '../../v-data/services/category-vendor.ser
 })
 export class ActiveCategoryComponent implements OnInit {
 
-  constructor(private categorySrvice: CategoriesService, private dialogRef: NbDialogRef<ActiveCategoryComponent> , private categoryVendorService: CategoryVendorService) { }
+  constructor(private categorySrvice: CategoriesService,
+    public dialogRef: MatDialogRef<ActiveCategoryComponent>,
+    private categoryVendorService: CategoryVendorService) { }
 
   form = new FormGroup({
     category_id: new FormControl(null , Validators.required)
@@ -25,11 +27,12 @@ export class ActiveCategoryComponent implements OnInit {
     {
       this.is_submit =true
       this.categoryVendorService.appendCategory(this.form.value.category_id).subscribe(data => {
+        this.dialogRef.close(data.status)
+
       } , err => {
-  
+
       }, () => {
         this.is_submit = false
-        this.dialogRef.close()
       })
     }
 

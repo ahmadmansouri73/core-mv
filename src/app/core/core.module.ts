@@ -5,17 +5,7 @@ import {HttpRequestInterceptor} from './interceptor/http-request.interceptor';
 import {HttpErrorHandleInterceptor} from './interceptor/http-error-handle.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
-import {
-  DARK_THEME,
-  DEFAULT_THEME,
-  NB_MEDIA_BREAKPOINTS,
-  NbLayoutDirection,
-  NbLayoutModule, NbSidebarModule,
-  NbThemeModule,
-  NbMenuModule,
-  NbDialogModule
-} from "@nebular/theme";
-import {NbEvaIconsModule} from "@nebular/eva-icons";
+
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -24,12 +14,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({name: 'default'} , [] ,[] ,NbLayoutDirection.RTL),
-    NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
-    NbDialogModule.forRoot(),
-    NbLayoutModule,
-    NbEvaIconsModule,
 
   ],
   providers: [
