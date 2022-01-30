@@ -1,3 +1,4 @@
+import { NotifyService } from './../core/services/ui/notify.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BootRoutingModule } from './boot-routing.module';
@@ -16,11 +17,11 @@ import { combineLatest } from 'rxjs';
   providers: [BootService]
 })
 export class BootModule {
-  constructor(private authService: AuthService , private confService: ConfService){
+  constructor(private notify: NotifyService ,   private authService: AuthService , private confService: ConfService){
     combineLatest(authService.attempAuth() , confService.config()).subscribe(
       ([auth , conf]) => {
         if (conf.status == false)
-          alert('system offline')
+          notify.info('system offline')
       }
     )
   }

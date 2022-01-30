@@ -1,3 +1,4 @@
+import { NotifyService } from './../services/ui/notify.service';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -15,7 +16,10 @@ import { Router } from '@angular/router';
 @Injectable()
 export class HttpErrorHandleInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private notify: NotifyService,
+    private authService: AuthService,
+    private router: Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -37,9 +41,9 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
     let res: Response<any> = response.body;
 
     const status = res?.status
-    
+
     if (status == false)
-      alert(res?.message)
+      this.notify.warning(res?.message)
 
   }
 
@@ -49,24 +53,24 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
 
 
     if (status === 404) {
-      alert('not found')
+      this.notify.warning('not found')
     }
 
     if (status >= 500 && status <= 599) {
-      alert('سایت با مشکلات فنی دچار شده است , با پشتیبانی تماس بگیرین')
+      this.notify.error('سایت با مشکلات فنی دچار شده است , با پشتیبانی تماس بگیرین')
 
     }
     if (status === 401) {
       this.authService.logOut();
-      console.warn('logOut');
+      this.notify.error('logOut');
 
       this.router.navigate(['/'])
     }
     if (status === 403) {
-      alert('Forbidden')
+      this.notify.error('Forbidden')
     }
     if (status === 0) {
-      alert('پاسخی وجود ندارد')
+      this.notify.warning('پاسخی وجود ندارد')
     }
 
 

@@ -5,16 +5,23 @@ import {HttpRequestInterceptor} from './interceptor/http-request.interceptor';
 import {HttpErrorHandleInterceptor} from './interceptor/http-error-handle.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
-
+import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [],
   imports: [
+
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    ToastrModule.forRoot({
+      timeOut: 15000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+      progressBar: true,
+      closeButton: true
+    })
   ],
   providers: [
     CookieService,

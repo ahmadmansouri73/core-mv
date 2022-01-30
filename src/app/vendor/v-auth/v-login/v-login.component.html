@@ -1,11 +1,11 @@
-<!--
-<div class="row  flex-row-reverse">
+
+<div class="row  flex-row-reverse p-4">
   <div class=" col-md-6 col-12 col-sm-12">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-12">
           <label class="p-3 text-muted rtl float-right" for="username">نام کاربری</label>
-          <input type="text" appOnlyNumbers class="form-control rtl"  formControlName="username" id="username">
+          <input type="text" placeholder="شماره مبایل " appOnlyNumbers class="form-control rtl" autocomplete="off"  formControlName="username" id="username">
         </div>
 
         <div class="col-md-12 col-sm-12 col-12">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-md-12 mt-3 col-12 col-sm-12">
-          <button type="button"  class="text-center btn btn-primary btn-block" (click)="submit()"  [disabled]="form.invalid  "   >
+          <button type="submit"  class="text-center btn btn-primary btn-block"  [disabled]="form.invalid  "   >
 
             {{is_submit ? '' : 'تایید'}}
             <div *ngIf="is_submit" class="spinner-border spinner-border-sm small text-light  " role="status">
@@ -29,4 +29,4 @@
   <div class="col-md-6  d-none d-md-block d-sm-none d-xl-block">
   ahmad
   </div>
-</div> -->
+</div>
