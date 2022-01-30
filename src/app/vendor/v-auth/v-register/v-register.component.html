@@ -1,5 +1,8 @@
-<!-- <div class="row flex-row-reverse">
-  <div class=" col-md-6 col-12 col-sm-12">
+<div class="row bg-white flex-row-reverse">
+  <div class=" col-md-6 col-12 col-sm-12 ">
+    <div class="col-md-12">
+      <h4 class="header-title">ثبت نام</h4>
+    </div>
     <div [hidden]="step != 1" class="row">
       <div class="col-md-12">
         <form [formGroup]="form" (ngSubmit)="callNumberConfirm()">
@@ -90,7 +93,7 @@
                          formControlName="owner_call_number">
                 </div>
 
-                <div class="col-md-12 mt-5 col-12 col-sm-12">
+                <div class="col-md-12 mt-3 mb-3 col-12 col-sm-12">
                   <button type="submit"
                           class="btn btn-primary btn-block "
                           [disabled]="form.invalid || checking.value != false "
@@ -137,7 +140,7 @@
           <div class="col-md-8">
             <button type="button"
               (click)="submit()"
-              class="btn btn-primary btn-block "
+              class="btn btn-primary mt-3 mb-3 btn-block "
               [disabled]="form.controls['code'].value?.length !=  6  || submitStepTwo "
             >
               {{submitStepTwo ? '' : 'تایید'}}
@@ -161,4 +164,4 @@
 </div>
 
 
- -->
+

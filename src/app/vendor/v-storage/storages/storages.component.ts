@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { filter, finalize, switchMap, tap } from 'rxjs';
@@ -10,7 +11,10 @@ import { StorageVendorService } from '../../v-data/services/storage-vendor.servi
 })
 export class StoragesComponent implements OnInit {
 
-  constructor(private storageService: StorageVendorService , private router: Router) { }
+  constructor(
+    private notifyService: NotifyService,
+    private storageService: StorageVendorService,
+    private router: Router) { }
 
 
   storages: any [] = []
@@ -25,7 +29,12 @@ export class StoragesComponent implements OnInit {
     {
       this.submit = true
       this.storageService.active(id)
-      .pipe(tap(_ => this.submit = false), filter(next => next.status == true), switchMap(_ => this.storageService.storages()))
+      .pipe(
+        finalize(() => this.submit = false),
+        filter(next => next.status == true),
+        tap(next => this.notifyService.success(next.message)),
+        switchMap(_ => this.storageService.storages())
+      )
       .subscribe(data => this.storages = data.data)
     }
   }
@@ -35,7 +44,12 @@ export class StoragesComponent implements OnInit {
     {
       this.submit = true
       this.storageService.not_active(id)
-      .pipe(tap(_ => this.submit = false), filter(next => next.status == true), switchMap(_ => this.storageService.storages()))
+      .pipe(
+        finalize(() => this.submit = false),
+        filter(next => next.status == true),
+        tap(next => this.notifyService.success(next.message)),
+        switchMap(_ => this.storageService.storages())
+      )
       .subscribe(data => this.storages = data.data)
     }
   }

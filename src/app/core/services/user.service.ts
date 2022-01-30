@@ -14,7 +14,7 @@ export class UserService {
 
   public setUser(user: any) {
     this.subjectUser.next(user)
-    this.user
+    this._user = user
   }
 
   public cleanUser(){

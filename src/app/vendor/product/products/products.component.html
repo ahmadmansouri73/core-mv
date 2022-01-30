@@ -1,10 +1,19 @@
 <div class="row">
   <div class="col-md-12">
-    <h4 class="header-title">product</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="header-title">محصولات</h4>
+      </div>
+    </div>
+
   </div>
   <div class="col-md-12">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-12 col-sm-12 invoice_box_list">
+    <div class="row">
+      <div class="col-md-5 d-none d-md-block ">
+        <input type="button" (click)="create()" class="btn w-50 btn-info" value="ایجاد">
+
+      </div>
+      <div class="col-md-7 col-12 col-sm-12 invoice_box_list">
         <p *ngIf="product.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
         <div  *ngFor="let item of product;let index = index">
           <div class="col-md-12 p-0">

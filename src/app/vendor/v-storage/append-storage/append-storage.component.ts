@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,6 +18,7 @@ export class AppendStorageComponent implements OnInit {
 
   constructor(
     private fruitService: FruitsService,
+    private notifyService: NotifyService,
     private fruitCategoryService: FruitCategoriesService,
     private categoryService: CategoriesService,
     private valueTypeService: ValueTypeService,
@@ -62,7 +64,13 @@ export class AppendStorageComponent implements OnInit {
     }
 
     this.is_submit = true
-    this.storageService.append(item_submit).pipe(finalize(() => this.is_submit = false) , filter(next => next.status == true)).subscribe(_ => this.router.navigate(['vendor/dashboard/storage/storages']))
+    this.storageService.append(item_submit)
+    .pipe(
+      finalize(() => this.is_submit = false),
+      filter(next => next.status == true),
+      tap(next => this.notifyService.success(next.message))
+    )
+    .subscribe(_ => this.router.navigate(['vendor/dashboard/storage/storages']))
 
   }
 

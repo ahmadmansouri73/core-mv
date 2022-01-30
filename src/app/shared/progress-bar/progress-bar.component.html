@@ -1,5 +1,2 @@
-<div [hidden]="progressBarService.status() == false" class="row position-absolute  fixed-top top-0">
-  <div class="col-12">
-    <mat-progress-bar class="spinner" [color]="'primary'" mode="indeterminate"></mat-progress-bar>
-  </div>
-</div>
+<mat-progress-bar *ngIf="progressBarService.status() == true" class="spinner" [color]="'primary'" mode="indeterminate"></mat-progress-bar>
+

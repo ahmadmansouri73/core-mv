@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/app/core/services/categories.service';
@@ -13,6 +14,7 @@ export class ActiveCategoryComponent implements OnInit {
 
   constructor(private categorySrvice: CategoriesService,
     public dialogRef: MatDialogRef<ActiveCategoryComponent>,
+    private notifyService: NotifyService,
     private categoryVendorService: CategoryVendorService) { }
 
   form = new FormGroup({
@@ -28,7 +30,8 @@ export class ActiveCategoryComponent implements OnInit {
       this.is_submit =true
       this.categoryVendorService.appendCategory(this.form.value.category_id).subscribe(data => {
         this.dialogRef.close(data.status)
-
+        if(data.status)
+          this.notifyService.success(data.message)
       } , err => {
 
       }, () => {

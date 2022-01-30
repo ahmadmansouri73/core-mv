@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject, take, tap } from 'rxjs';
@@ -15,6 +16,7 @@ export class AuthService {
     private httpClient:  HttpClient,
     private jwtSerivce:  JwtService,
     private userService: UserService,
+    private Router: Router
   ) { }
 
 
@@ -27,6 +29,7 @@ export class AuthService {
 
     if (this.jwtSerivce.cookieCheck(this.auth_kay_name) == false) {
       this.subjectAttempAuth.next(false)
+      this.is_guest = true
       let response: Response<null> =
       {
         data: null,
@@ -45,36 +48,38 @@ export class AuthService {
         if (response.status && response.data.user)
         {
           this.userService.setUser(response.data.user)
-          this.subjectAttempAuth.next(true)
           this.is_guest = false
+          this.subjectAttempAuth.next(true)
         }
         else
         {
+          this.is_guest = true
           this.subjectAttempAuth.next(false)
         }
       })
     );
   }
 
-  public isLogin(): boolean {
+  public get isLogin(): boolean {
     return this.is_guest == false
   }
 
 
   public logOut(): void {
-    this.subjectAttempAuth.next(false);
+    this.jwtSerivce.cookieDelete(this.auth_kay_name)
     this.userService.cleanUser()
     this.is_guest = true
+    this.subjectAttempAuth.next(false)
   }
 
 
 
   public setToken(token: string){
     console.log(token);
-    
+
     this.jwtSerivce.cookieSet(this.auth_kay_name , token)
 
-    
+
   }
 
 

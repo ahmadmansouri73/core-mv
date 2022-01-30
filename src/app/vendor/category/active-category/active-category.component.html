@@ -1,8 +1,12 @@
 
-        <div class="row w-100 p-5 ">
+        <div class="row w-100 p-2">
           <div class="col-md-12 col-sm-12 ">
               <form [formGroup]="form" (ngSubmit)="submit()">
                   <div class="row">
+
+                    <div class="col-md-12">
+                      <h5 class="header-title">ثبت</h5>
+                    </div>
 
                     <div class="col-12">
                       <select formControlName="category_id" class="form-control">
@@ -10,12 +14,6 @@
                         <option *ngFor="let item of categories" [ngValue]="item.id_category">{{item.category_name}}</option>
                       </select>
                     </div>
-                      <!-- <div class="col-md-12 col-12 col-sm-12">
-                          <nb-select [status]="(form.controls['category_id'].dirty && form.controls['category_id'].invalid  ) ? 'danger': (form.controls['category_id'].dirty && form.controls['category_id'].valid )? 'success' : 'basic' " formControlName="category_id" fullWidth>
-                              <nb-option  [value]="null">انتخاب کنید</nb-option>
-                              <nb-option *ngFor="let item of categories" [value]="item.id_category">{{item.category_name}}</nb-option>
-                          </nb-select>
-                      </div> -->
 
                       <div class="col-md-12 mt-3 col-12 col-sm-12">
                           <button type="submit" class="text-center btn btn-primary btn-block " size="small" [disabled]="form.invalid || is_submit  "     >

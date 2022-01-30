@@ -7,6 +7,7 @@ import { VRegisterComponent } from './v-register/v-register.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { VConfirmComponent } from './v-register/v-confirm/v-confirm.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { VConfirmComponent } from './v-register/v-confirm/v-confirm.component';
     CommonModule,
     VAuthRoutingModule,
     SharedModule,
+    NgOtpInputModule
 
   ]
 })

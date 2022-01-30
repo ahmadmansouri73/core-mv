@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,13 +16,14 @@ export class VLoginComponent implements OnInit {
   constructor(
     private loginService: LoginVendorService,
     private authService:  AuthService,
-    private router: Router
+    private router: Router,
+    private notify: NotifyService
   ) { }
 
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(null , [Validators.required , Validators.pattern(/09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}/) , Validators.pattern(/^\d+$/)]),
-    password: new FormControl(null , [Validators.required]),
+    password: new FormControl(null , [Validators.required , Validators.minLength(6)]),
   })
 
 
@@ -35,7 +37,7 @@ export class VLoginComponent implements OnInit {
           switchMap(_ => this.authService.attempAuth())
         ).subscribe(data => {
         if (data.status == true) {
-          alert(data.message)
+          this.notify.success(data.message)
           this.router.navigate(['/vendor']) // root projact module angular navigate checking guard set router
         }
       }, error => {

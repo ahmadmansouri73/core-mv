@@ -27,6 +27,10 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/vendor/dashboard/product/update' , id])
   }
 
+  create() {
+    this.router.navigate(['/vendor/dashboard/product/create'])
+  }
+
   active(id: number): void {
     if (this.is_submit == false) {
       this.is_submit = true

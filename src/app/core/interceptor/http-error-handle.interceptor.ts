@@ -63,6 +63,7 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
     if (status === 401) {
       this.authService.logOut();
       this.notify.error('logOut');
+      this.router.navigate(['/boot'])
 
       this.router.navigate(['/'])
     }

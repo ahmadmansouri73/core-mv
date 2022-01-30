@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,6 +22,7 @@ export class AppendProductComponent implements OnInit {
   constructor(
     private imageCompressorService: ImageCompressorService,
     private imageUpdateService: ImageUploadingService,
+    private notifyService: NotifyService,
     private router: Router,
     private categoriesService: CategoriesService,
     private fruitCategoryService: FruitCategoriesService,
@@ -81,6 +83,7 @@ export class AppendProductComponent implements OnInit {
       console.log(this.items_submit);
       this.productVendorService.apend(this.items_submit).subscribe(data => {
         if (data.status) {
+          this.notifyService.success(data.message)
           this.router.navigate(['/vendor/dashboard/product'])
         }
       })
@@ -132,7 +135,7 @@ export class AppendProductComponent implements OnInit {
       switchMap(next => this.fruitService.search({category_id: this.form.value.category.id_category , fruit_category_id: next.id_fruit_category }))
     )
     .subscribe(data => this.fruits = data.data)
-    
+
   }
 
 }

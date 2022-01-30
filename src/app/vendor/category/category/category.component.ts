@@ -1,5 +1,6 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
-import { filter, switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { CategoryVendorService } from '../../v-data/services/category-vendor.service';
 import { ActiveCategoryComponent } from '../active-category/active-category.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -11,7 +12,10 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryVendorService: CategoryVendorService , public dialog: MatDialog) { }
+  constructor(
+    private notifyService: NotifyService,
+    private categoryVendorService: CategoryVendorService,
+    public dialog: MatDialog) { }
 
 
   public submit: boolean = false
@@ -39,7 +43,9 @@ export class CategoryComponent implements OnInit {
           this.submit = false
         }
         return next.status == true
-      }), switchMap(_ => this.categoryVendorService.categories()))
+      }),
+      tap(next => this.notifyService.success(next.message)),
+      switchMap(_ => this.categoryVendorService.categories()))
       .subscribe(data => {
         this.categories = data.data
       }, erro => {
@@ -63,7 +69,9 @@ export class CategoryComponent implements OnInit {
           this.submit = false
         }
         return next.status == true
-      }),switchMap(_ => this.categoryVendorService.categories()))
+      }),
+      tap(next => this.notifyService.success(next.message)),
+      switchMap(_ => this.categoryVendorService.categories()))
       .subscribe(data => {
         this.categories = data.data
       }, erro => {

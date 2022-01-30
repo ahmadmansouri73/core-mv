@@ -11,11 +11,12 @@ export class DashboardGuard implements CanActivate, CanLoad{
   constructor(private authSerivce: AuthService, private router: Router){}
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+
     return this.authSerivce.observableAttempAuth.pipe(map(data => {
 
-      console.log('guard');
-      
-      if (data == false)
+      console.log('canLoad');
+
+      if (data == false && this.authSerivce.isLogin == false)
       {
         this.router.navigate(['/vendor/auth'])
       }
@@ -26,7 +27,19 @@ export class DashboardGuard implements CanActivate, CanLoad{
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+
+
+      return this.authSerivce.observableAttempAuth.pipe(map(data => {
+
+        console.log('canActivate');
+
+        if (data == false && this.authSerivce.isLogin == false)
+        {
+          this.router.navigate(['/vendor/auth'])
+        }
+
+        return data
+      }))
   }
-  
+
 }
