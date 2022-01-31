@@ -23,6 +23,9 @@ export class StoragesComponent implements OnInit {
 
   item_submit: number = 0
 
+  update(id: number) {
+    this.router.navigate(['/vendor/dashboard/storage/update' , id])
+  }
 
   active(id: number): void {
     if (this.submit == false)

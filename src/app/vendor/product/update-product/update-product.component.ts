@@ -64,7 +64,7 @@ export class UpdateProductComponent implements OnInit {
       this.items_submit = this.form.value
       this.items_submit.product_price = ConvertNumber.arabicToEnglish(this.form.value['product_price'].toString())
       this.items_submit.value = ConvertNumber.arabicToEnglish(this.form.value['value'].toString())
-      this.items_submit.discount = ConvertNumber.arabicToEnglish( this.form.value['discount'].toString())
+      this.items_submit.discount = ConvertNumber.arabicToEnglish( this.form.value['discount'] ? this.form.value['discount'].toString() : '')
       if (this.items_submit.logo_address_image)
         this.items_submit.logo_address_image =  this.imageUpdateService.base64ImageEncoder( this.form.value['logo_address_image'])
       if (this.items_submit.image_address)

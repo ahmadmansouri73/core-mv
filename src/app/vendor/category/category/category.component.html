@@ -1,18 +1,48 @@
 <h4 class="header-title">گروه ها</h4>
 
 <div class="row">
-  <div class="col-md-5 col-sm-12 col-12 text-center">
-
-    <input type="button" (click)="create()" class="btn w-50 btn-info" value="ایجاد">
-
+  <div class="col-md-12">
+    <div class="row flex-row-reverse">
+      <div class="col-md-4 col-sm-6 col-6">
+        <input type="button" (click)="create()" class="btn btn-outline-info btn-block" value="ایجاد">
+      </div>
+    </div>
   </div>
-  <div class="col-md-7 col-12 col-sm-12 invoice_box_list">
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-12 col-sm-12 invoice_box_list">
 
 
 
     <p *ngIf="categories.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
     <div  *ngFor="let item of categories;let index = index">
-      <div class="col-md-12 p-0">
+
+      <div class="col-md-12 mt-3 mb-3 shadow border border-info " style="border-radius: 12px;">
+        <div class="row flex-row-reverse">
+          <div class="col-md-3 col-sm-3 col-3 text-center pt-2">
+            {{item.category.category_name}}
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 text-center pr-3 pt-2">
+            آیدی :  {{item.id}}
+          </div>
+          <div class="col-md-6 col-sm-6 col-6 text-center pr-3 pt-2">
+            <p class="text-center">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} ( {{item.status|| 'تنظیم نشده'}} )</p>
+          </div>
+          <div class="col-12">
+            <hr class="text-info">
+          </div>
+        </div>
+        <div class="row flex-row-reverse">
+
+          <div class="col-md-12 col-sm-12 col-12">
+            <input type="button" (click)="item.status == 1 ? not_active(item.id) : active(item.id) " class="btn btn-link text-info  btn-sm btn-block" value="تغییر وضعیت">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="col-md-12 p-0">
         <div class="prescription_box">
           <div class="prescription_box_title d-flex">
             <div class="prescription_title w-100 rtl">
@@ -47,10 +77,9 @@
                 </li>
               </ul>
             </div>
-<!--            <img [src]="''" class="prescription_box_status">-->
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>

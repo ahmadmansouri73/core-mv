@@ -58,6 +58,8 @@ export class AppendProductComponent implements OnInit {
 
   checkingValue() {
 
+    console.log(this.form.value);
+
 
     if (this.form.valid) {
       this.items_submit = {
@@ -68,7 +70,7 @@ export class AppendProductComponent implements OnInit {
         value_type_id: this.form.value['value_type'].id,
         product_price: ConvertNumber.arabicToEnglish(this.form.value['product_price'].toString()),
         value: ConvertNumber.arabicToEnglish(this.form.value['value'].toString()),
-        discount: ConvertNumber.arabicToEnglish( this.form.value['discount']),
+        discount: ConvertNumber.arabicToEnglish( this.form.value['discount']|| ''),
         logo_address_image: this.imageUpdateService.base64ImageEncoder( this.form.value['logo_address_image']?.image || ''),
         image_address: this.imageUpdateService.base64ImageEncoder(this.form.value['image_address']?.image || '')
       }

@@ -1,35 +1,35 @@
-<div class="row dashboard">
-<div class="col-md-12">
-  <nav class="navbar p-2">
-    <!--<nav class="navbar navbar-expand-lg p-2">-->
-    <div class="dashboard_navbar_user" id="navbar_user_details" role="button" data-toggle="dropdown" aria-haspopup="true"
-         aria-expanded="false">
-      <div class="d-flex align-items-center p-2">
-        <div class="navbar_user_image">
+<div class="row dashboard pb-5 bt-5">
+  <div class="col-md-12">
+    <nav class="navbar p-2">
+      <!--<nav class="navbar navbar-expand-lg p-2">-->
+      <div class="dashboard_navbar_user" id="navbar_user_details" role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+        <div class="d-flex align-items-center p-2">
+          <div class="navbar_user_image">
 
-          <img
-            class="img-fluid"
-            src= 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'>
-          <!--               [src]="avatarUrl" class="img-fluid">-->
+            <img
+              class="img-fluid"
+              src= 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'>
+            <!--               [src]="avatarUrl" class="img-fluid">-->
 
+          </div>
+          <div class="navbar_user_info">
+            <span>{{userService?.user?.owner_call_number}}</span>
+          </div>
         </div>
-        <div class="navbar_user_info">
-          <span>{{userService?.user?.owner_call_number}}</span>
+        <div class="dropdown-menu rtl text-right" aria-labelledby="navbar_user_details">
+          <a (click)="logout()" class="dropdown-item" style="color: #de1503" href="#"><i class="fa fa-power-off"></i> خروج
+            از حساب</a>
         </div>
       </div>
-      <div class="dropdown-menu rtl text-right" aria-labelledby="navbar_user_details">
-        <a (click)="logout()" class="dropdown-item" style="color: #de1503" href="#"><i class="fa fa-power-off"></i> خروج
-          از حساب</a>
-      </div>
-    </div>
-    <button routerLink="/" class="navbar-toggler m-2" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <!--      <img height="60" [src]="conf.in_app_icon">-->
-    </button>
-  </nav>
+      <button routerLink="/" class="navbar-toggler m-2" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!--      <img height="60" [src]="conf.in_app_icon">-->
+      </button>
+    </nav>
 
-  <hr style="margin-top: 0">
-  <router-outlet></router-outlet>
-</div>
+    <hr style="margin-top: 0">
+    <router-outlet></router-outlet>
+  </div>
 </div>

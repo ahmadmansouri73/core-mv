@@ -2,62 +2,79 @@
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-12">
-        <h4 class="header-title">محصولات</h4>
+        <h5 class="header-title">محصولات</h5>
       </div>
     </div>
-
+    <div class="row flex-row-reverse">
+      <div class="col-md-4 col-sm-6 col-6">
+        <input type="button" (click)="create()" class="btn btn-outline-info btn-block" value="ایجاد">
+      </div>
+    </div>
   </div>
+
+  <div class="col-md-12 mt-3 mb-3">
+    <input type="text" class="form-control rtl" placeholder="جستوجو (نام محصول)">
+  </div>
+
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-5 d-none d-md-block ">
-        <input type="button" (click)="create()" class="btn w-50 btn-info" value="ایجاد">
-
-      </div>
-      <div class="col-md-7 col-12 col-sm-12 invoice_box_list">
+      <div class="col-md-12 col-12 col-sm-12  invoice_box_list">
         <p *ngIf="product.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
         <div  *ngFor="let item of product;let index = index">
-          <div class="col-md-12 p-0">
-            <div class="prescription_box">
-              <div class="prescription_box_title d-flex">
-                <div class="prescription_title w-100 rtl">
-                  <p class="text-white">{{item?.product_name}}</p>
-                </div>
+
+          <div class="col-md-12 mt-3 mb-3 shadow border border-info " style="border-radius: 12px;">
+            <div class="row flex-row-reverse">
+              <div class="col-md-6 col-sm-6 col-6 text-center pt-2">
+                {{item.category.category_name}} - {{item.fruit.fruit_name}}
               </div>
-              <div  class="prescription_box_details">
-                <div class="prescription_box_contact">
-                  <ul class="list-group p-0">
-                    <li class="list-group-item">وضعیت :
-                      <span class="prescription_box_contact_set">{{item?.status}}</span>
-                    </li>
-                    <li class="list-group-item"> آیدی : <span
-                      class="prescription_box_contact_set">{{item?.id_product}}</span></li>
-                    <li class="list-group-item">تاریخ بروز رسانی : <span class="prescription_box_contact_set">{{item?.updated_at}}</span>
-                    </li>
-                    <li class="list-group-item">تغییر وضعیت :
-
-                      <a
-                        (click)="active(item.id_product)" *ngIf="item?.status != 1  && ( item_submit != item?.id)"
-                      class="text-primary ">
-                        فعال
-                      </a>
-
-
-                      <a
-                        (click)="notactive(item.id_product)" *ngIf="item?.status == 1  && ( item_submit != item?.id)"
-                        class="text-danger ">
-                        غیر فعال
-                      </a>
-
-                    </li>
-                    <li>
-                      <p (click)="update(item.id_product)">update</p>
-                    </li>
-                  </ul>
-                </div>
-    <!--            <img [src]="''" class="prescription_box_status">-->
+              <div class="col-md-6 col-sm-6 col-6 text-center pr-3 pt-2">
+                {{item.product_name}}
+              </div>
+              <div class="col-12">
+                <hr class="text-info">
               </div>
             </div>
+            <div class="row flex-row-reverse">
+              <div class="col-md-4 col-sm-4 col-4">
+                <p class="text-right">قیمت: {{item.product_price && item.product_price != '0' ? (item.product_price|number) + ' تومن ' : ' تنظیم نشده '}}   </p>
+              </div>
+              <div class="col-md-4 col-sm-4 col-4">
+                <p class="text-right">مقدار: {{item.value|| 'تنظیم نشده'}} -  {{item.valueType.type_name|| 'تنظیم نشده'}}</p>
+              </div>
+              <div class="col-md-4 col-sm-4 col-4">
+                <p class="text-right">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} ( {{item.status|| 'تنظیم نشده'}} )</p>
+              </div>
+              <div class="mt-2 col-12 col-sm-12 col-md-12">
+                <p class="text-right">توضیحات: {{item.description|| 'تنظیم نشده'}}</p>
+              </div>
+            </div>
+
+            <div class="row mt-2 flex-row-reverse">
+              <div class="col-md-4 col-sm-4 col-4">
+                <p class="text-right">تخفیفات: {{item.discount|| 'تنظیم نشده'}} درصد  </p>
+              </div>
+              <div class="col-md-8 col-sm-8 col-8">
+                <p class="text-right"> توضیح تخفیفات :  {{item.description_descount|| 'تنظیم نشده'}}</p>
+              </div>
+              <div class="mt-2 col-md-12 col-12 col-sm-12">
+                <p class="text-right">قیمت فروش: {{item.final_price|number}} تومن  </p>
+
+              </div>
+              <div class="col-12">
+                <hr class="text-info">
+              </div>
+            </div>
+            <div class="row flex-row-reverse">
+              <div class="col-md-6 col-sm-6 col-6">
+                <input type="button" (click)="update(item.id_product)" class="btn btn-link btn-sm btn-block" value="بروز رسانی">
+              </div>
+              <div class="col-md-6 col-sm-6 col-6">
+                <input type="button" (click)="item.status == 1 ? notactive(item.id_product) : active(item.id_product) " class="btn btn-link text-info  btn-sm btn-block" value="تغییر وضعیت">
+              </div>
+            </div>
+
           </div>
+
 
         </div>
       </div>
