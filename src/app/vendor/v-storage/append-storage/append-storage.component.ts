@@ -53,6 +53,7 @@ export class AppendStorageComponent implements OnInit {
 
 
   submit(){
+   if (this.is_submit == false) {
     let item_submit: any  = {
       category_id : this.form.value['category_id'].id_category,
       fruit_category_id : this.form.value['fruit_category_id'].id_fruit_category,
@@ -72,6 +73,7 @@ export class AppendStorageComponent implements OnInit {
     )
     .subscribe(_ => this.router.navigate(['vendor/dashboard/storage/storages']))
 
+   }
   }
 
   ngOnInit(): void {

@@ -20,22 +20,26 @@
 
       <div class="col-md-12 mt-3 mb-3 shadow border border-info " style="border-radius: 12px;">
         <div class="row flex-row-reverse">
-          <div class="col-md-3 col-sm-3 col-3 text-center pt-2">
+          <div class="col-md-6 col-sm-6 col-6 text-center pt-2">
             {{item.category.category_name}}
           </div>
-          <div class="col-md-3 col-sm-3 col-3 text-center pr-3 pt-2">
+          <div class="col-md-6 col-sm-6 col-6 text-center pr-3 pt-2">
             آیدی :  {{item.id}}
           </div>
-          <div class="col-md-6 col-sm-6 col-6 text-center pr-3 pt-2">
+          <div class="col-12">
+            <hr>
+          </div>
+          <div class="col-md-12 col-sm-12 col-12 text-center pr-3 pt-2">
             <p class="text-center">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} ( {{item.status|| 'تنظیم نشده'}} )</p>
           </div>
+
           <div class="col-12">
             <hr class="text-info">
           </div>
         </div>
         <div class="row flex-row-reverse">
 
-          <div class="col-md-12 col-sm-12 col-12">
+          <div class="col-md-12 col-sm-12 col-12 pb-2 pt-2">
             <input type="button" (click)="item.status == 1 ? not_active(item.id) : active(item.id) " class="btn btn-link text-info  btn-sm btn-block" value="تغییر وضعیت">
           </div>
         </div>

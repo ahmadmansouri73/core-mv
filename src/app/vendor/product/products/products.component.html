@@ -35,13 +35,13 @@
               </div>
             </div>
             <div class="row flex-row-reverse">
-              <div class="col-md-4 col-sm-4 col-4">
+              <div class="col-md-6 col-sm-6 col-6">
                 <p class="text-right">قیمت: {{item.product_price && item.product_price != '0' ? (item.product_price|number) + ' تومن ' : ' تنظیم نشده '}}   </p>
               </div>
-              <div class="col-md-4 col-sm-4 col-4">
+              <div class="col-md-6 col-sm-6 col-6">
                 <p class="text-right">مقدار: {{item.value|| 'تنظیم نشده'}} -  {{item.valueType.type_name|| 'تنظیم نشده'}}</p>
               </div>
-              <div class="col-md-4 col-sm-4 col-4">
+              <div class="col-md-12 col-sm-12 col-12">
                 <p class="text-right">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} ( {{item.status|| 'تنظیم نشده'}} )</p>
               </div>
               <div class="mt-2 col-12 col-sm-12 col-md-12">
@@ -50,10 +50,10 @@
             </div>
 
             <div class="row mt-2 flex-row-reverse">
-              <div class="col-md-4 col-sm-4 col-4">
+              <div class="col-md-12 col-sm-12 col-12">
                 <p class="text-right">تخفیفات: {{item.discount|| 'تنظیم نشده'}} درصد  </p>
               </div>
-              <div class="col-md-8 col-sm-8 col-8">
+              <div class="col-md-12 col-sm-12 col-12">
                 <p class="text-right"> توضیح تخفیفات :  {{item.description_descount|| 'تنظیم نشده'}}</p>
               </div>
               <div class="mt-2 col-md-12 col-12 col-sm-12">

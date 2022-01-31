@@ -3,12 +3,15 @@
   <div class=" col-md-6 col-12 col-sm-12">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
           <h4 class="header-title">ورود به سیستم</h4>
+        </div>
+        <div class="col-2">
+          <img height="60" [src]="'assets/img/ahmadagha.png'">
         </div>
         <div class="col-md-12 col-sm-12 col-12">
           <label class="p-3 text-muted rtl float-right" for="username">نام کاربری</label>
-          <input type="text" placeholder="شماره مبایل " [ngClass]="{'border-danger': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].invalid) }" appOnlyNumbers class="form-control rtl" autocomplete="off"  formControlName="username" id="username">
+          <input type="number" placeholder="شماره مبایل " [ngClass]="{'border-danger': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].invalid) }" appOnlyNumbers class="form-control rtl" autocomplete="off"  formControlName="username" id="username">
         </div>
 
         <div class="col-md-12 col-sm-12 col-12">
