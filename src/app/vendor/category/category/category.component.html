@@ -30,7 +30,7 @@
             <hr>
           </div>
           <div class="col-md-12 col-sm-12 col-12 text-center pr-3 pt-2">
-            <p class="text-center">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} ( {{item.status|| 'تنظیم نشده'}} )</p>
+            <p class="text-center">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} - {{item.status|| 'تنظیم نشده'}} </p>
           </div>
 
           <div class="col-12">
@@ -46,44 +46,6 @@
       </div>
 
 
-      <!-- <div class="col-md-12 p-0">
-        <div class="prescription_box">
-          <div class="prescription_box_title d-flex">
-            <div class="prescription_title w-100 rtl">
-              <p class="text-white">{{item?.category?.category_name}}</p>
-            </div>
-          </div>
-          <div  class="prescription_box_details">
-            <div class="prescription_box_contact">
-              <ul class="list-group p-0">
-                <li class="list-group-item">وضعیت :
-                  <span class="prescription_box_contact_set">{{item?.status}}</span>
-                </li>
-                <li class="list-group-item"> آیدی : <span
-                  class="prescription_box_contact_set">{{item?.id}}</span></li>
-                <li class="list-group-item">تاریخ بروز رسانی : <span class="prescription_box_contact_set">{{item?.updated_at}}</span>
-                </li>
-                <li class="list-group-item">تغییر وضعیت :
-
-                  <a
-                    (click)="active(item.id)" *ngIf="item?.status != 1  && ( item_submit != item?.id)"
-                  class="text-primary ">
-                    فعال
-                  </a>
-
-
-                  <a
-                    (click)="not_active(item.id)" *ngIf="item?.status == 1  && ( item_submit != item?.id)"
-                    class="text-danger ">
-                    غیر فعال
-                  </a>
-
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> -->
 
     </div>
   </div>

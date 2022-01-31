@@ -1,5 +1,5 @@
 <div class="row flex-row-reverse">
-  <div class="col-6 mt-3">
+  <div class="col-12 mt-3">
     <ul class="list-group list-group-flush w-100" *ngIf="item != null">
       <li class="list-group-item text-right">نام محصول:‌ {{item.product_name||'تنظیم نشده'}}</li>
       <li class="list-group-item text-right">گروه : {{item.category.category_name||'تنظیم نشده'}}</li>
@@ -13,12 +13,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-12">
+  <div class="col-12"  *ngIf="item.image_address">
     <label class="rtl text-right  w-100 text-secondary p-2" for="logo_address_image">عکس پس زمینه</label>
     <app-image [item]="item.image_address"></app-image>
 
   </div>
-  <div class="col-12">
+  <div class="col-12" *ngIf="item.logo_address_image">
     <label class="rtl w-100 text-right text-secondary p-2" for="logo_address_image">لوگو</label>
     <app-image [item]="item.logo_address_image"></app-image>
   </div>

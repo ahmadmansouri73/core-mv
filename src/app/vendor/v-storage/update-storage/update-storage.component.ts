@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageVendorService } from '../../v-data/services/storage-vendor.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-update-storage',
@@ -33,13 +34,18 @@ export class UpdateStorageComponent implements OnInit {
 
 
   submit() {
-    if (this.form.valid) {
-      this.storageService.update(this.form.value).subscribe(data => {
-        if (data.status) {
-          this.notifyService.success(data.message)
-          this.router.navigate(['/vendor/dashboard/storage'])
-        }
-      })
+    if (this.is_submit == false) {
+      if (this.form.valid) {
+        this.is_submit = true
+        this.storageService.update(this.form.value)
+        .pipe(finalize(() => this.is_submit = false))
+        .subscribe(data => {
+          if (data.status) {
+            this.notifyService.success(data.message)
+            this.router.navigate(['/vendor/dashboard/storage'])
+          }
+        })
+      }
     }
   }
   ngOnInit(): void {

@@ -17,6 +17,7 @@
             <div class="col-md-6">
               <label for="value_type_id" class="text-muted rtl float-right p-2"> واحد اندازه گیری</label>
               <select id="value_type_id" formControlName="value_type_id" class="form-control" >
+                <option [ngValue]="null"></option>
                 <option *ngFor="let item of value_types" [ngValue]="item.id">{{item.type_name}}</option>
               </select>
             </div>

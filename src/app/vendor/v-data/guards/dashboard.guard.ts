@@ -16,7 +16,7 @@ export class DashboardGuard implements CanActivate, CanLoad{
 
       console.log('canLoad');
 
-      if (data == false && this.authSerivce.isLogin == false)
+      if (data == false || this.authSerivce.isLogin == false)
       {
         this.router.navigate(['/vendor/auth'])
       }
@@ -33,7 +33,7 @@ export class DashboardGuard implements CanActivate, CanLoad{
 
         console.log('canActivate');
 
-        if (data == false && this.authSerivce.isLogin == false)
+        if (data == false)
         {
           this.router.navigate(['/vendor/auth'])
         }

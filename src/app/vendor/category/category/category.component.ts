@@ -23,7 +23,7 @@ export class CategoryComponent implements OnInit {
 
   create() {
    let dialogRef = this.dialog.open(ActiveCategoryComponent , {
-    width: '30%'
+    width: '100%'
 
    })
 

@@ -15,6 +15,8 @@
         <div class="col-md-6">
           <label for="category_id" class="text-muted rtl float-right p-2"> دسته بندی</label>
           <select id="category_id" formControlName="category_id" class="form-control" >
+            <option [ngValue]="null"></option>
+
             <option *ngFor="let item of categories" [ngValue]="item">{{item.category_name}}</option>
           </select>
         </div>
@@ -22,6 +24,8 @@
         <div class="col-md-6">
           <label for="fruit_category_id" class="text-muted rtl float-right p-2">دسته بندی میوه</label>
           <select id="fruit_category_id" formControlName="fruit_category_id" class="form-control" >
+            <option [ngValue]="null"></option>
+
             <option *ngFor="let item of fruit_categories" [ngValue]="item">{{item.fruit_category_name}}</option>
           </select>
         </div>
@@ -30,6 +34,7 @@
         <div class="col-md-6">
           <label for="fruit_id" class="text-muted rtl float-right p-2">میوه</label>
           <select id="fruit_id" formControlName="fruit_id" class="form-control" >
+            <option [ngValue]="null"></option>
             <option *ngFor="let item of fruits" [ngValue]="item">{{item.fruit_name}}</option>
           </select>
         </div>
@@ -38,6 +43,7 @@
         <div class="col-md-6">
           <label for="value_type_id" class="text-muted rtl float-right p-2">واحد اندازه گیری</label>
           <select id="value_type_id" formControlName="value_type_id" class="form-control" >
+            <option [ngValue]="null"></option>
             <option *ngFor="let item of value_types" [ngValue]="item">{{item.type_name}}</option>
           </select>
         </div>

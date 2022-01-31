@@ -1,6 +1,6 @@
 
 <div class="row   flex-row-reverse p-4">
-  <div class=" col-md-6 col-12 col-sm-12">
+  <div class=" col-md-12 col-12 col-sm-12">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="row">
         <div class="col-md-10">
@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-12 col-sm-12 col-12">
           <label class="p-3 text-muted rtl float-right" for="username">نام کاربری</label>
-          <input type="number" placeholder="شماره مبایل " [ngClass]="{'border-danger': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].invalid) }" appOnlyNumbers class="form-control rtl" autocomplete="off"  formControlName="username" id="username">
+          <input type="text" placeholder="شماره مبایل " [ngClass]="{'border-danger': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].invalid) }" appOnlyNumbers class="form-control rtl" autocomplete="off"  formControlName="username" id="username">
         </div>
 
         <div class="col-md-12 col-sm-12 col-12">
@@ -32,7 +32,9 @@
       </div>
     </form>
   </div>
-  <div class="col-md-6  d-none d-md-block d-sm-none d-xl-block">
-  ahmad
+
+  <div class="col-12 mt-5 text-right">
+    <a class="text-center border-bottom border-info pb-2 w-50 border-secondary" routerLink="../register">ثبت نام</a>
   </div>
+
 </div>
