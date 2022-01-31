@@ -13,6 +13,9 @@ export class StorageVendorService {
 
 
 
+  one(id: any): Observable<Response<any>> {
+    return this.httpClient.get<Response<any>>(conf.baseUrl +  'vendor/storage?id=' + id)
+  }
 
   append(item: any): Observable<Response<any>> {
     return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/append-storage' , {
@@ -20,6 +23,9 @@ export class StorageVendorService {
     })
   }
 
+  update(item: any): Observable<Response<any>>{
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/update-storage?id=' + item.id_vendor_storage , item)
+  }
 
   storages(): Observable<Response<any>> {
     return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/storages');

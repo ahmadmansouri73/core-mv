@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-5">
+
+  </div>
+  <div class="col-md-7">
+    <div class="row p-2">
+      <div class="col-12">
+        <h4 class="header-title">بروز رسانی مخزن</h4>
+      </div>
+      <div class="col-md-12" >
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="row flex-row-reverse">
+            <div class="col-md-6">
+              <label for="storage_name" class="rtl text-secondary float-right text-muted p-2">نام مخزن</label>
+              <input type="text" autocomplete="off" class="form-control rtl" formControlName="storage_name" id="storage_name" >
+            </div>
+            <div class="col-md-6">
+              <label for="value_type_id" class="text-muted rtl float-right p-2"> واحد اندازه گیری</label>
+              <select id="value_type_id" formControlName="value_type_id" class="form-control" >
+                <option *ngFor="let item of value_types" [ngValue]="item.id">{{item.type_name}}</option>
+              </select>
+            </div>
+            <div class="col-ms-12 col-12 col-md-6">
+              <label class="rtl float-right text-secondary p-2" for="value">مقدار</label>
+              <input type="text" class="form-control rtl" autocomplete="off" appOnlyNumbers formControlName="value">
+            </div>
+            <div class="col-ms-12 col-12 col-md-6">
+              <label class="rtl float-right text-secondary p-2"  for="price">قیمت</label>
+              <input type="text" class="form-control rtl" autocomplete="off" id="price" appOnlyNumbers currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="price">
+            </div>
+
+
+
+
+          </div>
+
+
+          <div class="row mt-5 justify-content-center">
+            <div class="col-md-12">
+              <button type="submit" [disabled]="form.invalid || is_submit"  class="btn btn-primary btn-block">ثبت</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

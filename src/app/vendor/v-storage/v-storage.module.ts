@@ -6,13 +6,15 @@ import { StoragesComponent } from './storages/storages.component';
 import { AppendStorageComponent } from './append-storage/append-storage.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { StorageComponent } from './storage/storage.component';
+import { UpdateStorageComponent } from './update-storage/update-storage.component';
 
 
 @NgModule({
   declarations: [
     StoragesComponent,
     AppendStorageComponent,
-    StorageComponent
+    StorageComponent,
+    UpdateStorageComponent
   ],
   imports: [
     CommonModule,
