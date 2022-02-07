@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-12">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row flex-row-reverse">
+
+
+
+        <div class="col-6">
+          <label  class="rtl float-right text-secondary p-2" for="category">گروه</label>
+          <select formControlName="category" class="form-control rtl">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let item of categories" [ngValue]="item">{{item.category_name}}</option>
+          </select>
+        </div>
+
+        <div class="col-6">
+          <label  class="rtl float-right text-secondary p-2" for="category">میوه</label>
+          <select formControlName="fruit_category" class="form-control rtl">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let item of fruit_categories" [ngValue]="item">{{item.fruit_category_name}}</option>
+          </select>
+        </div>
+
+
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-6 mt-3 text-center">
+          <input type="button" mat-dialog-close class="btn btn-outline-danger btn-sm w-50" value="بستن">
+        </div>
+        <div class="col-6 mt-3 text-center">
+          <input type="submit"  class="btn btn-outline-primary btn-sm w-50" value="ثبت">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

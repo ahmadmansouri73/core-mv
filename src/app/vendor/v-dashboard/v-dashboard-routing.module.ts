@@ -8,11 +8,11 @@ const routes: Routes = [
   {path: '' , component: VDashboardComponent , children: [
       {path: 'features' , loadChildren: () => import('../v-routing-features/v-routing-features.module').then(m => m.VRoutingFeaturesModule)},
       {path: 'menu' , component: MenuComponent },
+      {path: 'profile' , loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)},
       {path: 'category' , loadChildren: ()=>import('../category/category.module').then(m => m.CategoryModule)},
       {path: 'storage' , loadChildren: () => import('../v-storage/v-storage.module').then(m => m.VStorageModule)},
-      {path: 'product' , loadChildren: () => import('../product/product.module').then(m => m.ProductModule)}
-
-
+      {path: 'product' , loadChildren: () => import('../product/product.module').then(m => m.ProductModule)},
+      {path: 'farmer' , loadChildren: () => import('../farmer/farmer.module').then(m => m.FarmerModule)}
   ]}
 ];
 

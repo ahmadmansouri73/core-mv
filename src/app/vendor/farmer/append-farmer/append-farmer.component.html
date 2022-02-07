@@ -1,0 +1,81 @@
+
+<div class="row overflow-auto">
+
+  <div class="col-12">
+    <h4 class="header-title">ثبت کشاورز</h4>
+  </div>
+  <div class="col-12">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row flex-row-reverse">
+        <div class="col-6">
+          <label for="full_name" class="rtl w-100 text-right text-secondary p-2">نام</label>
+          <input type="text" class="form-control rtl" formControlName="full_name" id="full_name">
+        </div>
+        <div class="col-6">
+          <label for="call_number" class="rtl w-100 text-right text-secondary p-2">شماره تماس</label>
+          <input appOnlyNumbers type="text" class="form-control rtl" formControlName="call_number" id="call_number">
+        </div>
+
+        <div class="col-6 ">
+          <label for="province_id" class="p-3 rtl float-right text-muted">استان</label>
+          <select id="province_id" formControlName="province_id" class="form-control  rtl">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let item of provinces" [ngValue]="item?.id">{{item?.name}}</option>
+          </select>
+        </div>
+
+        <div class="col-6 ">
+          <label for="city_id" class="p-3 rtl float-right text-muted">شهر</label>
+          <select id="city_id" formControlName="city_id" class="form-control  rtl">
+            <option *ngFor="let item of cities" [ngValue]="item?.id">{{item?.name}}</option>
+          </select>
+        </div>
+
+
+        <div class="col-12 ">
+          <label for="address" class="p-3 rtl float-right text-muted">آدرس</label>
+          <textarea
+             formControlName="address"
+             class="form-control rtl"
+             id="address"></textarea>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+
+
+  <div class="col-12 mt-3">
+    <input type="button" (click)="support_fruit_append()" class="btn btn-outline-success btn-sm float-right mt-3" value="اضافه کردن کشت کشاورز">
+  </div>
+
+
+  <div class="col-12 mt-4">
+    <div class="row flex-row-reverse">
+      <div *ngFor="let item of support_fruit;let index = index" class="col-4 m-1  pt-2 pb-2 shadow border border-info " style="border-radius: 12px;">
+        <div class="row flex-row-reverse">
+          <div class="col-md-12 col-sm-12 col-12 text-center pt-12">
+            {{item.category.category_name}} - {{item.fruit_category.fruit_category_name}}
+          </div>
+          <div class="col-12">
+            <hr>
+          </div>
+
+          <div class="col-12 text-center">
+            <input type="button" (click)="remove_fruit(item.fruit_category.id_fruit_category)" value="حذف" class="btn btn-link text-danger">
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-12 mt-5">
+    <input type="button" class="btn btn-primary btn-block mr-2  ml-2 mt-5" value="ثبت">
+  </div>
+</div>

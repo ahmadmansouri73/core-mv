@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,6 +24,7 @@ export class UpdateProductComponent implements OnInit {
     private categoriesService: CategoriesService,
     private fruitCategoryService: FruitCategoriesService,
     private fruitService: FruitsService,
+    private notifyService: NotifyService,
     private valueTypeSerivce: ValueTypeService,
     private router: Router,
     private productVendorService: ProductVendorService) { }
@@ -56,7 +58,7 @@ export class UpdateProductComponent implements OnInit {
     image_address: new FormControl(null)
   })
 
-  update(): void{
+  update(): void {
     if (this.form.valid) {
       this.is_submit = true
 
@@ -74,7 +76,7 @@ export class UpdateProductComponent implements OnInit {
       .pipe(finalize(() => this.is_submit = false))
       .subscribe(data => {
         if(data.status) {
-          alert(data.message)
+          this.notifyService.success(data.message)
           this.router.navigate(['/vendor/dashboard/product/index'])
         }
       })

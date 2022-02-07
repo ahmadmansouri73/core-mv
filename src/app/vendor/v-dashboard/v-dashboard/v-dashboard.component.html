@@ -9,7 +9,7 @@
 
             <img
               class="img-fluid"
-              src= 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'>
+              [src]="userService.user.logo_address_image|| 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'"  >
             <!--               [src]="avatarUrl" class="img-fluid">-->
 
           </div>

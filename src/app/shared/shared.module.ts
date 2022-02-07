@@ -4,6 +4,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { OnlyNumbersDirective } from './directive/only-numbers.directive';
 import { NgxCurrencyModule } from 'ngx-currency';
@@ -31,6 +32,7 @@ import { ImageComponent } from './image/image.component';
     OnlyNumbersDirective,
     MatDialogModule,
     NgxCurrencyModule,
+    NgSelectModule
 
 
   ]

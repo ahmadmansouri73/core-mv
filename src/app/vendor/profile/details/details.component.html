@@ -1,0 +1,79 @@
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="row justify-content-center">
+      <div class="col-md-10 shadow-lg border border-info p-5" style="border-radius: 8px; border-style: solid 3px;">
+        <div class="row flex-row-reverse">
+          <div class="col-6">
+            <h1 class="text-center p-4 w-100 ">{{user.brand_name}}</h1>
+          </div>
+          <div class="col-6" >
+            <div class="image text-center" (click)="file_logo.click()" >
+              <img [src]="user.logo_address_image|| 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'" class="img-fluid rounded-circle">
+              <input type="file" (change)="uploadLogo($event)" #file_logo [hidden]="true">
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row" *ngIf="user.bio">
+          <div class="col-12 ">
+            <p class="text-right w-auto rtl mt-2 mb-2"> {{user.bio}}</p>
+          </div>
+        </div >
+        <hr *ngIf="user.bio">
+        <div class="row" *ngIf="user.description">
+          <div class="col-12 ">
+            <p class="text-right w-auto rtl mt-2 mb-2"> {{user.description}}</p>
+          </div>
+        </div >
+        <hr *ngIf="user.description">
+        <div class="row">
+          <div class="col-12">
+            <h4 class="text-right float-right  rtl border-bottom border-info w-25" >آدرس</h4>
+          </div>
+          <div class="col-12 mt-2">
+            <p class="text-right rtl">{{user.address}}</p>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-6">
+            <h4 class="text-right float-right  rtl border-bottom border-info w-100" >شهر</h4>
+          </div>
+          <div class="col-6">
+            <h4 class="text-right float-right  rtl border-bottom border-info w-100" >استان</h4>
+          </div>
+
+          <div class="col-6 mt-2">
+            <p class="text-right rtl">{{user.city.name||'تنظیم نشده'}}</p>
+          </div>
+          <div class="col-6 mt-2">
+            <p class="text-right rtl">{{user.province.name||'تنظیم نشده'}}</p>
+          </div>
+
+          <div class="col-12">
+            <br>
+          </div>
+          <div class="col-12">
+            <h4 class="text-right float-right  rtl border-bottom border-info w-25" >کد پستی</h4>
+          </div>
+
+          <div class="col-12 mt-2">
+            <p class="text-right rtl">{{user.code_postal||'تنظیم نشده'}}</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<pre>
+  {{user|json}}
+</pre>
