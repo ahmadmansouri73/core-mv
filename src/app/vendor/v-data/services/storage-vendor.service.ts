@@ -14,30 +14,30 @@ export class StorageVendorService {
 
 
   one(id: any): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl +  'vendor/storage?id=' + id)
+    return this.httpClient.get<Response<any>>(conf.baseUrl +  'vendor/api/storage?id=' + id)
   }
 
   append(item: any): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/append-storage' , {
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/api/append-storage' , {
       VendorStorage: item
     })
   }
 
   update(item: any): Observable<Response<any>>{
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/update-storage?id=' + item.id_vendor_storage , item)
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/api/update-storage?id=' + item.id_vendor_storage , item)
   }
 
   storages(): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/storages');
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/storages');
   }
 
   active(id: number): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/active-storage?id=' + id);
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/active-storage?id=' + id);
   }
 
 
   not_active(id: number): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/notactive-storage?id=' + id);
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/notactive-storage?id=' + id);
   }
 
 }

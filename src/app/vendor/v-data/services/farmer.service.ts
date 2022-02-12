@@ -51,5 +51,16 @@ export class FarmerService {
   }
 
 
+  crate_support_category(item: {farmer_id: number , fruit_category_id: number , category_id: number}): Observable<Response<any>>{
+    return this.httpClient.post<Response<any>>(this.url + 'this/created-support-fruit' , {
+      SupportFruitFarmer: item
+    })
+  }
+
+
+  delete_support_category(){
+
+  }
+
 
 }

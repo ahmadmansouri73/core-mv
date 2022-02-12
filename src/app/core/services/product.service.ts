@@ -8,7 +8,7 @@ import { conf } from 'src/conf';
 export class ProductService {
 
   constructor(private httpClient: HttpClient) {
-    this.products$ = this.httpClient.get(conf.baseUrl + 'public/products').pipe(shareReplay(1))
+    this.products$ = this.httpClient.get(conf.baseUrl + 'app/public/products').pipe(shareReplay(1))
   }
 
 
@@ -25,7 +25,7 @@ export class ProductService {
 
     query =  query.replace(/[&,?]$/,"")
 
-    return this.httpClient.get(conf.baseUrl + 'public/products' + query)
+    return this.httpClient.get(conf.baseUrl + 'app/public/products' + query)
   }
 
 

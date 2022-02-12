@@ -43,7 +43,7 @@ export class AuthService {
     }
 
 
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'user').pipe(
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'app').pipe(
       tap(response => {
         if (response.status && response.data.user)
         {

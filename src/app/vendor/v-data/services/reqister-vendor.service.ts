@@ -13,19 +13,19 @@ export class ReqisterVendorService {
 
 
   register(vendor: any): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/register' , {VendorRegister: vendor})
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/api/register' , {VendorRegister: vendor})
   }
 
 
   callNumberConfirm(call_number: string): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/confirm?phone=' + call_number)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/confirm?phone=' + call_number)
   }
 
 
   checkingExistBrandName(name: string): Observable<any> {
-    
-    return this.httpClient.post<any>(conf.baseUrl + 'vendor/exist-brand-name?name=' + name , {}).pipe(map(data => data.data))
-    
+
+    return this.httpClient.get<any>(conf.baseUrl + 'vendor/api/exist-brand-name?name=' + name ).pipe(map(data => data.data))
+
   }
 
 }

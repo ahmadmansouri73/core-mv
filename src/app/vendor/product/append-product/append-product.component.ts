@@ -83,7 +83,7 @@ export class AppendProductComponent implements OnInit {
   submit(): void {
     if (this.form.valid) {
       console.log(this.items_submit);
-      this.productVendorService.apend(this.items_submit).subscribe(data => {
+      this.productVendorService.append(this.items_submit).subscribe(data => {
         if (data.status) {
           this.notifyService.success(data.message)
           this.router.navigate(['/vendor/dashboard/product'])

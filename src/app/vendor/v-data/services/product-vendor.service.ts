@@ -14,19 +14,19 @@ export class ProductVendorService {
 
 
   public one(id: number): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/product?id_product=' + id)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/product?id_product=' + id)
   }
 
 
   public update(item: any): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/update-product?id_product=' + item.id_product , {
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/api/update-product?id_product=' + item.id_product , {
       VendorUpdateProduct: item
     })
   }
 
 
-  public apend(item: any): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/create-product' , {
+  public append(item: any): Observable<Response<any>> {
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/api/create-product' , {
       VendorCreatedProduct: item
     })
   }
@@ -42,16 +42,16 @@ export class ProductVendorService {
 
     query =  query.replace(/[&,?]$/,"")
 
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/products' + query)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/products' + query)
   }
 
   public active(id: number): Observable<Response<any>>  {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/active-product?id_product=' + id)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/active-product?id_product=' + id)
   }
 
 
   public not_active(id: number): Observable<Response<any>>   {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/notactive-product?id_product=' + id)
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/notactive-product?id_product=' + id)
   }
 
 }

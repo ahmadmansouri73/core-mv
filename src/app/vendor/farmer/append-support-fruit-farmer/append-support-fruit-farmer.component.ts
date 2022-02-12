@@ -34,10 +34,7 @@ export class AppendSupportFruitFarmerComponent implements OnInit {
     }
   }
 
-  close() {
-
-  }
-
+  
   ngOnInit(): void {
 
 

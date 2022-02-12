@@ -8,14 +8,14 @@ import { conf } from 'src/conf';
 })
 export class ValueTypeService {
 
-  constructor(private httpClient: HttpClient) { 
-    this.value_type$ = this.httpClient.get(conf.baseUrl + 'public/value-types').pipe(shareReplay(1))
+  constructor(private httpClient: HttpClient) {
+    this.value_type$ = this.httpClient.get(conf.baseUrl + 'app/public/value-types').pipe(shareReplay(1))
   }
 
   private readonly value_type$: Observable<any>
 
   public get valueTypes(): Observable<any> {
-    return this.value_type$ 
+    return this.value_type$
   }
 
 }

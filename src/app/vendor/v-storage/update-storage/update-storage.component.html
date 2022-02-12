@@ -14,16 +14,16 @@
               <label for="storage_name" class="rtl text-secondary float-right text-muted p-2">نام مخزن</label>
               <input type="text" autocomplete="off" class="form-control rtl" formControlName="storage_name" id="storage_name" >
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <label for="value_type_id" class="text-muted rtl float-right p-2"> واحد اندازه گیری</label>
               <select id="value_type_id" formControlName="value_type_id" class="form-control" >
                 <option [ngValue]="null"></option>
                 <option *ngFor="let item of value_types" [ngValue]="item.id">{{item.type_name}}</option>
               </select>
-            </div>
+            </div> -->
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2" for="value">مقدار</label>
-              <input type="text" class="form-control rtl" autocomplete="off" appOnlyNumbers formControlName="value">
+              <input type="text" class="form-control rtl" autocomplete="off" currencyMask [options]="{suffix: 'كيلوگرم',prefix: '', thousands: ',' , decimal: '' , precision: 0 }"  formControlName="value">
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="price">قیمت</label>

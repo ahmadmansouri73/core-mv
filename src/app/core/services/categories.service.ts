@@ -8,8 +8,8 @@ import { conf } from 'src/conf';
 })
 export class CategoriesService {
 
-  constructor(private httpClient: HttpClient) { 
-    this.categories$ = httpClient.get(conf.baseUrl + 'public/categories').pipe(shareReplay(1))
+  constructor(private httpClient: HttpClient) {
+    this.categories$ = httpClient.get(conf.baseUrl + 'app/public/categories').pipe(shareReplay(1))
   }
 
 
@@ -26,7 +26,7 @@ export class CategoriesService {
     }
 
     query =  query.replace(/[&,?]$/,"")
-    return this.httpClient.get(conf.baseUrl + 'public/categories' + query)
+    return this.httpClient.get(conf.baseUrl + 'app/public/categories' + query)
   }
 
   public get categories(): Observable<any> {

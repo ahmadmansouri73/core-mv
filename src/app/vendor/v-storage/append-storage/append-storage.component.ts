@@ -39,13 +39,13 @@ export class AppendStorageComponent implements OnInit {
   is_submit : boolean = false
 
   form = new FormGroup({
-    storage_name: new FormControl(null , Validators.required),
+    storage_name: new FormControl(null ),
     category_id: new FormControl(null , Validators.required),
     fruit_category_id: new FormControl(null , Validators.required),
     fruit_id: new FormControl(null , Validators.required),
     value: new FormControl(null , Validators.required),
-    value_type_id: new FormControl(null, Validators.required),
-    price: new FormControl(null , Validators.required),
+    // value_type_id: new FormControl(null, Validators.required),
+    price: new FormControl(null ),
   })
 
 

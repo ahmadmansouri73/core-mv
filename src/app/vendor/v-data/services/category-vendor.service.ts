@@ -14,25 +14,25 @@ export class CategoryVendorService {
 
 
   public activeCategories(filter: any = {}): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/active-categories')
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/active-categories')
   }
 
 
   public categories(filter: any = {}): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/categories')
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/categories')
   }
 
   public appendCategory(id: number): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/append-category?category_id=' + id )
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/append-category?category_id=' + id )
 
   }
 
   public activeCategory(id: number): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/active-category?category_id=' + id )
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/active-category?category_id=' + id )
   }
 
   public notActiveCategory(id: number): Observable<Response<any>> {
-    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/notactive-category?category_id=' + id )
+    return this.httpClient.get<Response<any>>(conf.baseUrl + 'vendor/api/notactive-category?category_id=' + id )
   }
 
 

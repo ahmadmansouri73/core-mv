@@ -40,18 +40,18 @@
         </div>
 
 
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <label for="value_type_id" class="text-muted rtl float-right p-2">واحد اندازه گیری</label>
           <select id="value_type_id" formControlName="value_type_id" class="form-control" >
             <option [ngValue]="null"></option>
             <option *ngFor="let item of value_types" [ngValue]="item">{{item.type_name}}</option>
           </select>
-        </div>
+        </div> -->
 
 
         <div class="col-md-6">
           <label class="rtl text-muted float-right p-2"  for="value">مقدار</label>
-          <input type="text" formControlName="value" id="value" currencyMask [options]="{suffix: form.value['value_type_id'] != null ? ' ' + form.value['value_type_id'].type_name + ' ' : '',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" appOnlyNumbers class="form-control rtl" >
+          <input type="text" formControlName="value" id="value" currencyMask [options]="{suffix: 'كيلوگرم',prefix: '', thousands: ',' , decimal: '' , precision: 0 }"  class="form-control rtl" >
         </div>
 
 

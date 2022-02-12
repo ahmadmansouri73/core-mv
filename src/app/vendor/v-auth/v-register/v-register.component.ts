@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,6 +30,7 @@ export class VRegisterComponent implements OnInit {
     private provinceService: ProvinceService,
     private cityService: CityService,
     private router:Router,
+    private notifyService: NotifyService
   ) { }
 
 
@@ -80,7 +82,7 @@ export class VRegisterComponent implements OnInit {
       this.submitStepTwo = true
       this.registerService.register(this.form.value).subscribe(data => {
         if (data.status) {
-          alert(data.message)
+          this.notifyService.success(data.message)
           this.router.navigate(['/vendor'])
         }
       } , error => {
@@ -101,7 +103,7 @@ export class VRegisterComponent implements OnInit {
     this.form.controls['brand_name'].valueChanges.pipe(
       tap(_ => this.checking.setValue(null)),
       debounceTime(300),
-      filter((data: string) => data.trim() != '' && data.length > 4),
+      filter((data: string) => data.trim() != '' && data.length > 5),
       switchMap((next: string) => this.registerService.checkingExistBrandName(next))
     ).subscribe((data: boolean) => this.checking.setValue(data))
 

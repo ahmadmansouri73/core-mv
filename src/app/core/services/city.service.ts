@@ -10,7 +10,7 @@ export class CityService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.$cities$ = this.httpClient.get(conf.baseUrl + 'public/cities').pipe(shareReplay(1))
+    this.$cities$ = this.httpClient.get(conf.baseUrl + 'app/public/cities').pipe(shareReplay(1))
   }
 
   private $cities$: Observable<any>
@@ -24,12 +24,12 @@ export class CityService {
 
     query =  query.replace(/[&,?]$/,"")
 
-    return this.httpClient.get(conf.baseUrl + 'public/cities' + query )
+    return this.httpClient.get(conf.baseUrl + 'app/public/cities' + query )
   }
 
   public cityOne(id: number): Observable<any>
   {
-    return this.httpClient.get(conf.baseUrl + 'public/citie?id=' + id)
+    return this.httpClient.get(conf.baseUrl + 'app/public/citie?id=' + id)
   }
 
   public get cities(): Observable<any> {

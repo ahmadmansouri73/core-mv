@@ -9,7 +9,7 @@ import { conf } from 'src/conf';
 export class FruitCategoriesService {
 
   constructor(private httpClient: HttpClient) {
-    this.fruitCategories$ = this.httpClient.get(conf.baseUrl + 'public/fruit-categories').pipe(shareReplay(1))
+    this.fruitCategories$ = this.httpClient.get(conf.baseUrl + 'app/public/fruit-categories').pipe(shareReplay(1))
   }
 
 
@@ -26,7 +26,7 @@ export class FruitCategoriesService {
 
     query =  query.replace(/[&,?]$/,"")
 
-    return this.httpClient.get(conf.baseUrl + 'public/fruit-categories' + query)
+    return this.httpClient.get(conf.baseUrl + 'app/public/fruit-categories' + query)
   }
 
 

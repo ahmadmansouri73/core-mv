@@ -13,7 +13,7 @@ export class LoginVendorService {
   constructor(private httpClient: HttpClient,private authService: AuthService) { }
 
   login(data: {username: string , password: string}): Observable<Response<any>> {
-    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/login' , data)
+    return this.httpClient.post<Response<any>>(conf.baseUrl + 'vendor/api/login' , data)
       .pipe(tap(response => {
         if (response.status == true) {
           this.authService.setToken(response.data.token)
