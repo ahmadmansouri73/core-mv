@@ -1,10 +1,11 @@
-import { Observable, switchMap, filter, map } from 'rxjs';
 import { AppendSupportFruitFarmerComponent } from './../append-support-fruit-farmer/append-support-fruit-farmer.component';
+import { filter, map, switchMap, Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Router } from '@angular/router';
 import { FarmerService } from './../../v-data/services/farmer.service';
 import { Component, OnInit } from '@angular/core';
+import { Response } from 'src/app/core/interfaces/response';
 
 @Component({
   selector: 'app-list-farmer',
@@ -47,8 +48,8 @@ export class ListFarmerComponent implements OnInit {
     })
   }
 
-  appendFruit(item: any): Observable<any> {
-    return this.farmerService.crate_support_category(item)
+  appendFruit(item: any): Observable<Response<any>> {
+    return this.farmerService.append_tag(item)
   }
 
   create() {
@@ -56,7 +57,7 @@ export class ListFarmerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.farmerService.farmers().subscribe(data => this.farmers = data.data)
+    this.farmerService.connections().subscribe(data => this.farmers = data.data)
   }
 
 }

@@ -10,6 +10,7 @@ import { OnlyNumbersDirective } from './directive/only-numbers.directive';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ImagePickerComponent } from './image-picker/image-picker.component';
 import { ImageComponent } from './image/image.component';
+import { DigitOrFloatDirective } from './directive/digit-or-float.directive';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ImageComponent } from './image/image.component';
     ProgressBarComponent,
     OnlyNumbersDirective,
     ImagePickerComponent,
-    ImageComponent
+    ImageComponent,
+    DigitOrFloatDirective
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { ImageComponent } from './image/image.component';
     ImageComponent,
     ReactiveFormsModule,
     OnlyNumbersDirective,
+    DigitOrFloatDirective,
     MatDialogModule,
     NgxCurrencyModule,
     NgSelectModule

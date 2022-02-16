@@ -1,3 +1,4 @@
+import { regex } from './../../../shared/regex';
 import { ValueTypeService } from './../../../core/services/value-type.service';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -28,8 +29,8 @@ export class UpdateStorageComponent implements OnInit {
     // value_type_id: new FormControl(null , Validators.required),
     id_vendor_storage: new FormControl(null , Validators.required),
     storage_name: new FormControl(null ),
-    price: new FormControl(null ),
-    value: new FormControl(null , Validators.required),
+    price: new FormControl(null , Validators.pattern(regex.digit)),
+    value: new FormControl(null , [Validators.required , Validators.pattern(regex.digit_or_float)]),
   })
 
 

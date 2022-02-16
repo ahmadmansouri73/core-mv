@@ -19,8 +19,7 @@ export class AppendFarmerComponent implements OnInit {
   constructor(
     private farmerService: FarmerService,
     private notifyService: NotifyService,
-    private ProvinceService: ProvinceService,
-    private cityService: CityService,
+
     public dialog: MatDialog,
     private router: Router
 
@@ -30,6 +29,7 @@ export class AppendFarmerComponent implements OnInit {
 
   provinces: any []= []
   cities: any[]= []
+  farmer: any
 
   submit(): void {
 
@@ -50,9 +50,13 @@ export class AppendFarmerComponent implements OnInit {
       }
 
 
-      this.farmerService.created(data).subscribe(data => {
-        this.notifyService.success(data.message)
-        this.router.navigate(['/vendor/dashboard/farmer'])
+      this.farmerService.connection_farmer(data).subscribe(data => {
+        if (data.status)
+        {
+          this.notifyService.success(data.message)
+          this.router.navigate(['/vendor/dashboard/farmer'])
+        }
+
       })
     }
   }
@@ -90,11 +94,14 @@ export class AppendFarmerComponent implements OnInit {
   }
 
   form = new FormGroup({
-    full_name: new FormControl(null , Validators.required),
-    call_number: new FormControl(null, Validators.pattern(/^0\d{2}\d{8}$/)),
-    address: new FormControl(null),
-    city_id: new FormControl(null),
-    province_id: new FormControl(null),
+    full_name: new FormControl(null ),
+    call_number: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}/),
+      Validators.pattern(/^\d+$/)
+    ]),
+    farmer_id: new FormControl(null),
+    status_connaction: new FormControl(0)
   })
 
 
@@ -104,20 +111,25 @@ export class AppendFarmerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.form.get('province_id')?.valueChanges
+
+    this.form.controls['call_number'].valueChanges
     .pipe(
       tap(_ => {
-        this.cities = []
-        this.form.controls['city_id'].setValue(null)
+        this.farmer = undefined
+        this.form.controls['status_connaction'].setValue(0)
+        this.form.controls['farmer_id'].setValue(null)
       }),
-      filter(next => next != null),
-      switchMap(next => this.cityService.search({province_id: next}))
+      filter(_ => this.form.controls['call_number'].valid),
+      delay(400),
+      switchMap(next => this.farmerService.checking_exist_farmer(next)),
+      filter(data => data.status == true),
+
     )
     .subscribe(data => {
-      this.cities = data.data
+      this.farmer = data.data
+      this.form.controls['status_connaction'].setValue(1)
+      this.form.controls['farmer_id'].setValue(this.farmer.id_farmer)
     })
-
-    this.ProvinceService.provinces.subscribe(data => this.provinces = data.data)
   }
 
 }

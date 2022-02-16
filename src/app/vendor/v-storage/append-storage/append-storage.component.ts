@@ -1,3 +1,4 @@
+import { regex } from './../../../shared/regex';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -43,9 +44,9 @@ export class AppendStorageComponent implements OnInit {
     category_id: new FormControl(null , Validators.required),
     fruit_category_id: new FormControl(null , Validators.required),
     fruit_id: new FormControl(null , Validators.required),
-    value: new FormControl(null , Validators.required),
+    value: new FormControl(null , [Validators.required , Validators.pattern(regex.digit_or_float)]),
     // value_type_id: new FormControl(null, Validators.required),
-    price: new FormControl(null ),
+    price: new FormControl(null , Validators.pattern(regex.digit)),
   })
 
 
@@ -60,9 +61,11 @@ export class AppendStorageComponent implements OnInit {
       fruit_id : this.form.value['fruit_id'].id_fruit,
       storage_name : this.form.value['storage_name'],
       value : this.form.value['value'],
-      value_type_id : this.form.value['value_type_id'].id,
+      // value_type_id : this.form.value['value_type_id'].id,
       price : this.form.value['price'],
     }
+
+    console.log(item_submit);
 
     this.is_submit = true
     this.storageService.append(item_submit)

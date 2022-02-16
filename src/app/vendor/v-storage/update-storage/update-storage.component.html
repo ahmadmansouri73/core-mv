@@ -23,11 +23,11 @@
             </div> -->
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2" for="value">مقدار</label>
-              <input type="text" class="form-control rtl" autocomplete="off" currencyMask [options]="{suffix: 'كيلوگرم',prefix: '', thousands: ',' , decimal: '' , precision: 0 }"  formControlName="value">
+              <input type="text" class="form-control rtl" autocomplete="off" currencyMask [options]="{suffix: '  كيلوگرم  ',prefix: '', thousands: '' , decimal: '.' , precision: 3 }"  formControlName="value">
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="price">قیمت</label>
-              <input type="text" class="form-control rtl" autocomplete="off" id="price" appOnlyNumbers currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="price">
+              <input type="text" class="form-control rtl" autocomplete="off" id="price"  currencyMask [options]="{suffix: '  تومن  ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="price">
             </div>
 
 

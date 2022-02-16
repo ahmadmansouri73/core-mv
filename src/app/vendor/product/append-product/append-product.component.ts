@@ -11,6 +11,7 @@ import { ImageUploadingService } from 'src/app/core/services/image-uploading.ser
 import { ValueTypeService } from 'src/app/core/services/value-type.service';
 import { ConvertNumber } from 'src/app/shared/class/ConverNumber';
 import { ProductVendorService } from '../../v-data/services/product-vendor.service';
+import { regex } from 'src/app/shared/regex';
 
 @Component({
   selector: 'app-append-product',
@@ -44,13 +45,14 @@ export class AppendProductComponent implements OnInit {
 
   form = new FormGroup({
     product_name: new FormControl(null, Validators.required),
+    description: new FormControl(null),
     category: new FormControl(null , Validators.required),
     fruit_category: new FormControl(null , Validators.required),
     fruit: new FormControl(null , Validators.required),
     value_type: new FormControl(null , Validators.required),
-    product_price: new FormControl(null , Validators.required),
-    value: new FormControl(null , Validators.required),
-    discount: new FormControl(null),
+    product_price: new FormControl(null ,Validators.pattern(regex.digit)),
+    value: new FormControl(null , Validators.pattern(regex.digit_or_float) ),
+    discount: new FormControl(null ,Validators.pattern(regex.digit_or_float)),
     logo_address_image: new FormControl(null),
     image_address: new FormControl(null)
   })
@@ -64,13 +66,14 @@ export class AppendProductComponent implements OnInit {
     if (this.form.valid) {
       this.items_submit = {
         product_name: this.form.value['product_name'],
+        description: this.form.value['description'],
         category_id: this.form.value['category'].id_category,
         fruit_category_id: this.form.value['fruit_category'].id_fruit_category,
         fruit_id: this.form.value['fruit'].id_fruit,
         value_type_id: this.form.value['value_type'].id,
-        product_price: ConvertNumber.arabicToEnglish(this.form.value['product_price'].toString()),
-        value: ConvertNumber.arabicToEnglish(this.form.value['value'].toString()),
-        discount: ConvertNumber.arabicToEnglish( this.form.value['discount']|| ''),
+        product_price: this.form.value['product_price'],
+        value: this.form.value['value'],
+        discount: this.form.value['discount'],
         logo_address_image: this.imageUpdateService.base64ImageEncoder( this.form.value['logo_address_image']?.image || ''),
         image_address: this.imageUpdateService.base64ImageEncoder(this.form.value['image_address']?.image || '')
       }

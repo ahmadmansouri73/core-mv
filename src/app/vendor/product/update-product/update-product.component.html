@@ -14,6 +14,10 @@
               <label for="product_name" class="rtl text-secondary float-right text-muted p-2">نام محصول</label>
               <input type="text" autocomplete="off" class="form-control rtl" formControlName="product_name" id="product_name" >
             </div>
+            <div class="col-md-12">
+              <label for="description" class="rtl text-secondary float-right text-muted p-2"> توضیحات</label>
+              <textarea id="description"  class="form-control rtl" formControlName="description" ></textarea>
+            </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label  class="rtl float-right text-secondary p-2" for="category">گروه</label>
               <select formControlName="category_id" class="form-control rtl">
@@ -43,16 +47,26 @@
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
-              <label class="rtl float-right text-secondary p-2" for="value">مقدار</label>
-              <input type="text" class="form-control rtl" autocomplete="off" appOnlyNumbers formControlName="value">
+              <label class="rtl float-right text-secondary p-2" for="value">مقدار </label>
+              <input type="text"
+                class="form-control rtl"
+                autocomplete="off"
+                formControlName="value"
+                currencyMask [options]="{suffix:'',prefix: '', thousands: '', decimal: '.' , precision: 3 }"
+              >
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="product_price">قیمت</label>
-              <input type="text" class="form-control rtl" autocomplete="off" id="product_price" appOnlyNumbers currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="product_price">
+              <input type="text" class="form-control rtl" autocomplete="off" id="product_price"  currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="product_price">
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="discount">تخفیف</label>
-              <input type="text" class="form-control rtl" autocomplete="off" id="product_price" appOnlyNumbers formControlName="discount">
+              <input
+                type="text" class="form-control rtl"
+                autocomplete="off" id="product_price"
+                formControlName="discount"
+                currencyMask [options]="{suffix:'  درصد  ',prefix: '', thousands: '' , decimal: '.' , precision: 1 }"
+              >
             </div>
 
 
@@ -62,13 +76,13 @@
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl w-100 text-right text-secondary p-2" for="logo_address_image">لوگو</label>
-              <app-image-picker [default_image]="logo_address_image" (image)="setFileLogo($event)"></app-image-picker>
+              <app-image-picker [default_image]="image.baseAddress + logo_address_image" (image)="setFileLogo($event)"></app-image-picker>
             </div>
 
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl text-right  w-100 text-secondary p-2" for="image_address">عکس پس زمینه</label>
-              <app-image-picker [default_image]="image_address" (image)="setFileImage($event)"></app-image-picker>
+              <app-image-picker [default_image]="image.baseAddress + image_address" (image)="setFileImage($event)"></app-image-picker>
             </div>
 
 
@@ -77,7 +91,7 @@
           <div class="row mt-5 justify-content-center">
             <div class="col-md-12">
               <button type="submit" [disabled]="form.invalid || is_submit"  class="btn btn-primary btn-block">ثبت</button>
-            </div>
+            </div>  
           </div>
         </form>
       </div>

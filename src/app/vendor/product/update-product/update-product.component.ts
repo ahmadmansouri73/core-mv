@@ -1,3 +1,5 @@
+import { ImageLoad } from './../../v-data/image/ImageLoad';
+import { regex } from './../../../shared/regex';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,9 +10,7 @@ import { FruitCategoriesService } from 'src/app/core/services/fruit-categories.s
 import { FruitsService } from 'src/app/core/services/fruits.service';
 import { ImageUploadingService } from 'src/app/core/services/image-uploading.service';
 import { ValueTypeService } from 'src/app/core/services/value-type.service';
-import { ConvertNumber } from 'src/app/shared/class/ConverNumber';
 import { ProductVendorService } from '../../v-data/services/product-vendor.service';
-
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
@@ -27,8 +27,11 @@ export class UpdateProductComponent implements OnInit {
     private notifyService: NotifyService,
     private valueTypeSerivce: ValueTypeService,
     private router: Router,
+
+
     private productVendorService: ProductVendorService) { }
 
+    image: ImageLoad = new ImageLoad()
     items_submit: any = null
     categories: any[] = []
     fruits: any[] = []
@@ -47,13 +50,14 @@ export class UpdateProductComponent implements OnInit {
   form = new FormGroup({
     id_product: new FormControl(null , Validators.required),
     product_name: new FormControl(null, Validators.required),
+    description: new FormControl(null),
     category_id: new FormControl(null , Validators.required),
     fruit_category_id: new FormControl(null , Validators.required),
     fruit_id: new FormControl(null , Validators.required),
     value_type_id: new FormControl(null , Validators.required),
-    product_price: new FormControl(null , Validators.required),
-    value: new FormControl(null , Validators.required),
-    discount: new FormControl(null),
+    product_price: new FormControl(null, Validators.pattern(regex.digit) ),
+    value: new FormControl(null , Validators.pattern(regex.digit_or_float)),
+    discount: new FormControl(null,Validators.pattern(regex.digit_or_float)),
     logo_address_image: new FormControl(null),
     image_address: new FormControl(null)
   })
@@ -64,9 +68,9 @@ export class UpdateProductComponent implements OnInit {
 
 
       this.items_submit = this.form.value
-      this.items_submit.product_price = ConvertNumber.arabicToEnglish(this.form.value['product_price'].toString())
-      this.items_submit.value = ConvertNumber.arabicToEnglish(this.form.value['value'].toString())
-      this.items_submit.discount = ConvertNumber.arabicToEnglish( this.form.value['discount'] ? this.form.value['discount'].toString() : '')
+      this.items_submit.product_price = this.form.value['product_price']
+      this.items_submit.value = this.form.value['value']
+      this.items_submit.discount =  this.form.value['discount']
       if (this.items_submit.logo_address_image)
         this.items_submit.logo_address_image =  this.imageUpdateService.base64ImageEncoder( this.form.value['logo_address_image'])
       if (this.items_submit.image_address)

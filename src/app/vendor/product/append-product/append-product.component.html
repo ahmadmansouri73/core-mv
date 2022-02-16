@@ -14,6 +14,10 @@
               <label for="product_name" class="rtl text-secondary float-right text-muted p-2">نام محصول</label>
               <input type="text" autocomplete="off" class="form-control rtl" formControlName="product_name" id="product_name" >
             </div>
+            <div class="col-md-12">
+              <label for="description" class="rtl text-secondary float-right text-muted p-2"> توضیحات</label>
+              <textarea id="description"  class="form-control rtl" formControlName="description" ></textarea>
+            </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label  class="rtl float-right text-secondary p-2" for="category">گروه</label>
               <select formControlName="category" class="form-control rtl">
@@ -43,16 +47,27 @@
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
-              <label class="rtl float-right text-secondary p-2" for="value">مقدار</label>
-              <input type="text" class="form-control rtl" autocomplete="off" appOnlyNumbers formControlName="value">
+              <label class="rtl float-right text-secondary p-2" for="value">   مقدار  -  {{form.controls['value_type'].value?.type_name}} </label>
+              <input type="text" class="form-control rtl"
+                autocomplete="off"
+                formControlName="value"
+                currencyMask [options]="{suffix: form.controls['value_type'].value?.type_name ? '  ' + form.controls['value_type'].value?.type_name + '  ': '',prefix: '', thousands: '' , decimal: '.' , precision: 3 }"
+              >
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="product_price">قیمت</label>
-              <input type="text" class="form-control rtl" autocomplete="off" id="product_price" appOnlyNumbers currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="product_price">
+              <input type="text" class="form-control rtl" autocomplete="off" id="product_price"  currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="product_price">
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="discount">تخفیف</label>
-              <input type="text" class="form-control rtl" autocomplete="off" id="product_price" appOnlyNumbers formControlName="discount">
+              <input
+                type="text"
+                class="form-control rtl"
+                autocomplete="off" id="product_price"
+                formControlName="discount"
+                currencyMask [options]="{suffix: ' درصد ',prefix: '', thousands: '' , decimal: '.' , precision: 1 }"
+
+              >
             </div>
 
 

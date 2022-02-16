@@ -23,7 +23,7 @@
 
           <div class=" col-12 text-center pr-3 pt-2">
             <p class="rtl">
-              نام - {{item.full_name|| 'تنظیم نشده' }}
+              نام - {{item.farmer_name_set_vendor ? item.farmer_name_set_vendor : item.farmer.full_name }}
             </p>
           </div>
           <div class="col-12">
@@ -32,16 +32,16 @@
         </div>
         <div class="row flex-row-reverse">
           <div class="col-md-6 col-sm-6 col-6">
-            <p class="text-right rtl"> استان: {{item.province?.name|| 'تنظیم نشده'}} </p>
+            <p class="text-right rtl"> استان: {{item.farmer?.province?.name|| 'تنظیم نشده'}} </p>
           </div>
           <div class="col-md-6 col-sm-6 col-6">
-            <p class="text-right rtl">شهر: {{item.city?.name|| 'تنظیم نشده'}} </p>
+            <p class="text-right rtl">شهر: {{item.farmer?.city?.name|| 'تنظیم نشده'}} </p>
           </div>
           <div class="col-md-12 col-sm-12 col-12">
-            <p class="text-right rtl">آدرس: {{item.address || 'تنظیم نشده'}} </p>
+            <p class="text-right rtl">آدرس: {{item.farmer?.address || 'تنظیم نشده'}} </p>
           </div>
           <div class="col-md-12 col-sm-12 col-12">
-            <p class="text-right rtl">تلفن تماس: {{item.call_number || 'تنظیم نشده'}} </p>
+            <p class="text-right rtl">تلفن تماس: {{item.farmer?.call_number || 'تنظیم نشده'}} </p>
           </div>
         </div>
 
@@ -49,13 +49,13 @@
           <div class="col-12 ">
             <h4 class="rtl float-right text-right w-auto border-bottom border-info pr-2 pl-2">
               کشت
-              <i (click)="open_dialog_append_fruit(item.id_farmer)" class="text-primary small p-3 m-3">اضافه کردن</i>
+              <i (click)="open_dialog_append_fruit(item.farmer_id)"  class="text-primary small p-3 m-3">اضافه کردن</i>
             </h4>
           </div>
           <div class="col-12 p-3 text-right" >
-            <p *ngIf="item.supportFruitFarmers.length == 0">هیج کشت انتخاب نشده</p>
+            <p *ngIf="item.farmer?.supportFruitFarmers.length == 0">هیج کشت انتخاب نشده</p>
             <i
-              *ngFor="let sup of item.supportFruitFarmers"
+              *ngFor="let sup of item.farmer?.supportFruitFarmers"
               class="w-auto m-2 rtl p-2 position-relative border-info bg-light text-secondary " style="border-style: dotted; border-radius: 12px;"> {{sup.fruitCategory?.fruit_category_name}}</i>
           </div>
         </div>

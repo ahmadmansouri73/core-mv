@@ -51,13 +51,13 @@
 
         <div class="col-md-6">
           <label class="rtl text-muted float-right p-2"  for="value">مقدار</label>
-          <input type="text" formControlName="value" id="value" currencyMask [options]="{suffix: 'كيلوگرم',prefix: '', thousands: ',' , decimal: '' , precision: 0 }"  class="form-control rtl" >
+          <input type="text" formControlName="value" id="value" currencyMask [options]="{suffix:  '  كيلوگرم  ',prefix: '', thousands: '' , decimal: '.' , precision: 3 }"  class="form-control rtl" >
         </div>
 
 
         <div class="col-md-6">
           <label class="rtl text-muted float-right p-2"  for="price">قیمت</label>
-          <input type="text" formControlName="price" id="price" currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" appOnlyNumbers class="form-control rtl" >
+          <input type="text" formControlName="price" id="price" currencyMask [options]="{suffix: '  تومن  ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }"  class="form-control rtl" >
         </div>
 
 
@@ -100,16 +100,13 @@
                     <tbody>
                         <tr>
                             <td class="text-muted text-right">مقدار : </td>
-                            <td  class="text-center">{{form.value['value']}}</td>
+                            <td  class="text-center">{{form.value['value']}} - كيلوگرم</td>
                         </tr>
                         <tr>
                             <td class="text-muted text-right">  قیمت  : </td>
-                            <td  class="text-center">{{form.value['price']|number}} &nbsp; (تومن)</td>
+                            <td *ngIf="form.value['price'] != null" class="text-center">{{form.value['price']|number}} &nbsp; (تومن)</td>
                         </tr>
-                        <tr>
-                            <td class="text-muted text-right"> واحد اندازه گیری : </td>
-                            <td  class="text-center">{{form.value['value_type_id']?.type_name}}</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>

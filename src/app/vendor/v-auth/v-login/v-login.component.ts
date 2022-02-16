@@ -1,3 +1,4 @@
+import { regex } from './../../../shared/regex';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,13 +23,15 @@ export class VLoginComponent implements OnInit {
 
 
   public form: FormGroup = new FormGroup({
-    username: new FormControl(null , [Validators.required , Validators.pattern(/09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}/) , Validators.pattern(/^\d+$/)]),
+    username: new FormControl(null , [Validators.required , Validators.pattern(regex.phone) , Validators.pattern(regex.digit)]),
     password: new FormControl(null , [Validators.required , Validators.minLength(6)]),
   })
-
+  user: string = ''
 
   is_submit = false
   public submit(): void {
+
+
     if (this.form.valid && this.is_submit == false)
     {
       this.is_submit = true
@@ -50,6 +53,7 @@ export class VLoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
 }

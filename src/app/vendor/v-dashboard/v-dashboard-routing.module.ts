@@ -12,7 +12,8 @@ const routes: Routes = [
       {path: 'category' , loadChildren: ()=>import('../category/category.module').then(m => m.CategoryModule)},
       {path: 'storage' , loadChildren: () => import('../v-storage/v-storage.module').then(m => m.VStorageModule)},
       {path: 'product' , loadChildren: () => import('../product/product.module').then(m => m.ProductModule)},
-      {path: 'farmer' , loadChildren: () => import('../farmer/farmer.module').then(m => m.FarmerModule)}
+      {path: 'farmer' , loadChildren: () => import('../farmer/farmer.module').then(m => m.FarmerModule)},
+      {path: 'invoice' , loadChildren:() => import('../invoice/invoice.module').then(m => m.InvoiceModule)}
   ]}
 ];
 

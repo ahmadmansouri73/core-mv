@@ -6,7 +6,7 @@ import { debounce, debounceTime, filter, map, switchMap, tap } from 'rxjs';
 import { CityService } from 'src/app/core/services/city.service';
 import { ProvinceService } from 'src/app/core/services/province.service';
 import { ReqisterVendorService } from '../../v-data/services/reqister-vendor.service';
-
+import { regex } from 'src/app/shared/regex';
 @Component({
   selector: 'app-v-register',
   templateUrl: './v-register.component.html',
@@ -37,12 +37,12 @@ export class VRegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({
     address: new FormControl(null , Validators.required),
     brand_name: new FormControl(null ,[ Validators.required , Validators.minLength(6)] ),
-    office_phone: new FormControl(null , [Validators.required , Validators.pattern(/^0\d{2}\d{8}$/) ]),
+    office_phone: new FormControl(null , [Validators.required , Validators.pattern(regex.call_number) ]),
     city_id: new FormControl(null , Validators.required),
     province_id: new FormControl(null , Validators.required),
     owner_first_name: new FormControl(null , Validators.required),
     owner_last_name: new FormControl(null , Validators.required),
-    owner_call_number: new FormControl(null , [Validators.required , Validators.pattern(/09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}/) , Validators.pattern(/^\d+$/)]),
+    owner_call_number: new FormControl(null , [Validators.required , Validators.pattern(regex.phone) , Validators.pattern(regex.digit)]),
     code: new FormControl(null),
   })
 

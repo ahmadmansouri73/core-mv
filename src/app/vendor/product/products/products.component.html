@@ -54,10 +54,10 @@
                 <p class="text-right">تخفیفات: {{item.discount|| 'تنظیم نشده'}} درصد  </p>
               </div>
               <div class="col-md-12 col-sm-12 col-12">
-                <p class="text-right"> توضیح تخفیفات :  {{item.description_descount|| 'تنظیم نشده'}}</p>
+                <p class="text-right rtl"> توضیح تخفیفات :  {{item.description_descount|| 'تنظیم نشده'}}</p>
               </div>
               <div class="mt-2 col-md-12 col-12 col-sm-12">
-                <p class="text-right">قیمت فروش: {{item.final_price|number}} تومن  </p>
+                <p class="text-right">قیمت فروش: {{item.final_price?(item.final_price|number) + ' - ' + ' تومن ' : 'تنظیم نشده'}}   </p>
 
               </div>
               <div class="col-12">
