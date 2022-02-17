@@ -1,0 +1,5 @@
+table , th , tr , td  {
+  text-align: center;
+  direction: rtl;
+  overflow: hidden;
+}

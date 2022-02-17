@@ -1,3 +1,5 @@
+import { MatDialogRef } from '@angular/material/dialog';
+import { regex } from 'src/app/shared/regex';
 import { combineLatest, filter, tap, switchMap } from 'rxjs';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { FruitsService } from 'src/app/core/services/fruits.service';
@@ -21,6 +23,7 @@ export class AppendProductFarmerInvoiceComponent implements OnInit {
     private fruitCategoriesService: FruitCategoriesService,
     private fruitsService: FruitsService,
     private notifyService: NotifyService,
+    private matDialogRef: MatDialogRef<any>
   ) { }
 
 
@@ -35,18 +38,19 @@ export class AppendProductFarmerInvoiceComponent implements OnInit {
     category: new FormControl(null , Validators.required),
     fruit_category: new FormControl(null , Validators.required),
     fruit: new FormControl(null , Validators.required),
-    value_type: new FormControl(null , Validators.required),
-    value: new FormControl(null , Validators.required),
-    count_box: new FormControl()
+    value_type: new FormControl(null , Validators.required ),
+    value: new FormControl(null , [Validators.required , Validators.pattern(regex.digit_or_float)]),
+    count_box: new FormControl(null)
   })
 
 
 
 
   submit() {
+
     if (this.form.valid) {
-      this.notifyService.success('محصول شما با موفقیت اضافه شد')
       this.item.emit(this.form.value)
+      this.matDialogRef.close(this.form.value)
     }
   }
   ngOnInit(): void {

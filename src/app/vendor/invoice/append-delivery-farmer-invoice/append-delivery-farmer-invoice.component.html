@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div class="row flex-row-reverse">
+    <div class="col-12">
+      <label  class="rtl float-right text-secondary p-2" for="full_name_driver">نام راننده</label>
+      <input type="text" id="full_name_driver" class="form-control rtl" formControlName="full_name_driver" >
+    </div>
+    <div class="col-12">
+      <label  class="rtl float-right text-secondary p-2" for="description">توضیحات</label>
+      <textarea id="description" formControlName="description" class="form-control" ></textarea>
+    </div>
+
+    <div class="col-12">
+      <label  class="rtl float-right text-secondary p-2" for="description">کرایه راننده</label>
+      <input type="number" appOnlyNumbers id="amount_rent_delivery" formControlName="amount_rent_delivery" class="form-control rtl" >
+    </div>
+  </div>
+
+
+  <!-- <div class="row">
+    <div class="col-12">
+      <h4 class="header-title">باسکول</h4>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+
+        </div>
+        <div class="col-12">
+
+          <label  class="rtl float-right text-secondary p-2" for="description">هزینه باسکول</label>
+          <input type="number" appOnlyNumbers id="amount_rent_delivery" formControlName="amount_rent_delivery" class="form-control rtl" >
+
+        </div>
+        <div class="col-12">
+          <app-image-picker></app-image-picker>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <input type="submit" class="btn btn-primary btn-block" value="ثبت" >
+    </div>
+  </div>
+
+</form>

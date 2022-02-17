@@ -30,13 +30,18 @@
     </div>
     <div class="col-6">
       <label  class="rtl float-right text-secondary p-2" for="value">مقدار</label>
-      <input type="number" id="value" class="form-control" appOnlyNumbers>
+      <input type="number" formControlName="value" id="value" class="form-control rtl" >
+    </div>
+
+    <div class="col-6">
+      <label  class="rtl float-right text-secondary p-2" for="value">جعبه</label>
+      <input type="number" formControlName="count_box" id="value" class="form-control rtl" >
     </div>
 
   </div>
 
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-12">
       <input type="submit" class="btn btn-primary btn-block" value="ثبت">
     </div>
