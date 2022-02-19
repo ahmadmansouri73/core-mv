@@ -34,17 +34,23 @@ export class AppendFarmerComponent implements OnInit {
   submit(): void {
 
     let item_support: any[] = [];
-    let data = this.form.value
+
+    let data: any = undefined
+    data = this.form.value
+    data['SupportFruitFarmer'] = []
     if (this.form.valid)
     {
 
+
       if (this.support_fruit.length != 0) {
+
         this.support_fruit.map(data => {
           item_support.push({
             category_id: data.category.id_category,
             fruit_category_id:  data.fruit_category.id_fruit_category
           })
         })
+
         data['SupportFruitFarmer'] = item_support ;
 
       }
@@ -127,8 +133,10 @@ export class AppendFarmerComponent implements OnInit {
     )
     .subscribe(data => {
       this.farmer = data.data
-      this.form.controls['status_connaction'].setValue(1)
-      this.form.controls['farmer_id'].setValue(this.farmer.id_farmer)
+      if (data.data != null) {
+        this.form.controls['status_connaction'].setValue(1)
+        this.form.controls['farmer_id'].setValue(this.farmer.id_farmer)
+      }
     })
   }
 

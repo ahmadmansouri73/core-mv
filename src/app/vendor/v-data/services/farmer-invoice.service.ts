@@ -1,3 +1,4 @@
+import { patch } from '@nebular/theme';
 import { conf } from './../../../../conf';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,8 +18,20 @@ export class FarmerInvoiceService {
 
 
 
-  public allInvoiceProduct(): Observable<Response<any>> {
-    return this.HttpClient.get<Response<any>>( this.url + 'all-invoice-product');
+  public allInvoiceProduct(filter: any = {}): Observable<Response<any>> {
+
+
+    let query = '?'
+    for (let data in filter) {
+      if (filter[data] != null && filter[data].toString().trim() != '') {
+        query += `${data}=${filter[data]}&`
+      }
+    }
+
+    query =  query.replace(/[&,?]$/,"")
+
+
+    return this.HttpClient.get<Response<any>>(this.url + 'all-invoice-product' + query);
   }
 
   public oneInvoiceProduct(id: number): Observable<Response<any>> {
@@ -34,6 +47,7 @@ export class FarmerInvoiceService {
       }
     })
   }
+
 
 
 }

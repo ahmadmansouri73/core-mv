@@ -7,7 +7,7 @@ import { filter, tap } from 'rxjs';
 import { AppendProductFarmerInvoiceComponent } from './../append-product-farmer-invoice/append-product-farmer-invoice.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FarmerService } from './../../v-data/services/farmer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-create-farmer-invoice-product',
@@ -29,6 +29,7 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
 
 
 
+
   connections: any[] = [];
   products: any[] = []
   deliveries: any[] = []
@@ -36,9 +37,12 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
 
   form = new FormGroup({
     farmer_id: new FormControl(null , Validators.required),
-    date: new FormControl(null , Validators.required)
+    date: new FormControl(null )
   })
 
+  setDte(date: string) {
+   this.form.controls['date'].setValue(date)
+  }
   exist_fruit(item: any): boolean {
 
     let find  = this.products.find(data => data.fruit.id_fruit == item.fruit.id_fruit)
@@ -97,7 +101,6 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
       filter(data => data != undefined && data != null)
     )
     .subscribe(data => {
-      console.log(data , 'ahmad');
 
       data['index'] = this.deliveries.length
       this.deliveries.push(data)
@@ -106,6 +109,9 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
 
 
   submit() {
+
+
+
     if (this.form.invalid) {
       this.notifyService.warning('invlid form ')
       return
@@ -116,11 +122,38 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
       return
     }
 
+    let map_product: any[] = []
+    let map_delivery: any[] = []
+
+    this.products.map(data => {
+      map_product.push({
+        category_id: data.category.id_category,
+        fruit_category_id: data.fruit_category.id_fruit_category,
+        fruit_id:data.fruit.id_fruit,
+        value: data.value,
+        value_type_id: data.value_type.id,
+        count_box: data.count_box
+      })
+    })
+
+
+    // this.deliveries.map(data => {
+    //   map_delivery.push({
+    //     category_id: data.category.id_category,
+    //     fruit_category_id: data.fruit_category.id_fruit_category,
+    //     fruit_id:data.fruit.id_fruit,
+    //     value: data.value,
+    //     value_type_id: data.value_type.id,
+    //     count_box: data.count_box
+    //   })
+    // })
+
+    map_delivery = this.deliveries
 
     let item = {
       invoice: this.form.value ,
-      deliveries: this.deliveries,
-      products: this.products
+      deliveries: map_delivery,
+      products: map_product
     }
 
     this.farmerInvoiceService.createInvoiceProduct(item).subscribe(data => {
@@ -134,6 +167,8 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+
     this.farmerService.connections().subscribe(data => {
       this.connections = data.data
     })

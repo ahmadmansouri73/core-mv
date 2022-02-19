@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { FarmerInvoiceService } from './../../v-data/services/farmer-invoice.service';
 import { Component, OnInit } from '@angular/core';
 import { FarmerInvoiceProduct } from '../../v-data/interface/FarmerInvoiceProduct';
@@ -9,11 +10,15 @@ import { FarmerInvoiceProduct } from '../../v-data/interface/FarmerInvoiceProduc
 })
 export class ListFarmerInvoiceComponent implements OnInit {
 
-  constructor(private farmerInvoiceService: FarmerInvoiceService) { }
+  constructor(private farmerInvoiceService: FarmerInvoiceService,private activatedRoute: ActivatedRoute) { }
 
   public invoices!: FarmerInvoiceProduct[]
   ngOnInit(): void {
-    this.farmerInvoiceService.allInvoiceProduct().subscribe(data => {
+    let query: any =  this.activatedRoute.snapshot.params;
+
+    this.farmerInvoiceService.allInvoiceProduct({
+      farmer_id: query.farmer_id
+    }).subscribe(data => {
       this.invoices = data.data
     })
   }

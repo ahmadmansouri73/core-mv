@@ -30,4 +30,8 @@ export class FarmerService {
     return this.httpClient.post<Response<any>>(this.url + 'api/append-tag' , item)
   }
 
+  public remove_connection(id: number): Observable<Response<any>> {
+    return this.httpClient.get<Response<any>>(this.url + 'api/remove-connection?id=' + id)
+  }
+
 }

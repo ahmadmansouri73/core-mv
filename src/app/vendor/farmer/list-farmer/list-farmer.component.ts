@@ -56,6 +56,20 @@ export class ListFarmerComponent implements OnInit {
     this.Router.navigate(['/vendor/dashboard/farmer/create-farmer'])
   }
 
+  remove(id: number) {
+    this.farmerService.remove_connection(id).pipe(map( data => {
+      if (data.status) {
+        this.notifyService.info(data.message)
+      }
+      return data.status
+    }) , filter(data => data == true), switchMap(_ => this.farmerService.connections())).subscribe(data => this.farmers = data.data)
+  }
+
+
+  invoice(farmer_id: number): void {
+    this.Router.navigate(['/vendor/dashboard/invoice/index' , farmer_id])
+  }
+
   ngOnInit(): void {
     this.farmerService.connections().subscribe(data => this.farmers = data.data)
   }
