@@ -10,9 +10,10 @@ export interface FarmerInvoiceProduct {
   created_at: number
   updated_at: number
   delete: number
-  Farmer: any,
-  FarmerInvoiceProductDelivery: any[],
-  FarmerInvoiceProductDetail: any[],
-  PaymentFarmerInvoiceProduct: any[],
-  Vendor: any
+  farmer: any,
+  farmerInvoiceProductDelivery: any[],
+  farmerInvoiceProductDetail: any[],
+  paymentFarmerInvoiceProduct: any[],
+  connection: any
+  vendor: any
 }

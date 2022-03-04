@@ -34,4 +34,17 @@ export class FarmerService {
     return this.httpClient.get<Response<any>>(this.url + 'api/remove-connection?id=' + id)
   }
 
+  public search(filter: any = {}): Observable<Response<any>> {
+
+    let query = '?'
+    for (let data in filter) {
+      if (filter[data] != null && filter[data].toString().trim() != '') {
+        query += `${data}=${filter[data]}&`
+      }
+    }
+
+    query =  query.replace(/[&,?]$/,"")
+    return this.httpClient.get<Response<any>>(this.url + 'api/search' + query);
+  }
+
 }

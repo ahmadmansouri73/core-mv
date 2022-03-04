@@ -1,14 +1,36 @@
 <div class="row">
   <div class="col-12">
-    <h3 class="header-title">invoice</h3>
+    <h3 class="header-title">پرونده ها</h3>
   </div>
 </div>
 
 
+<div class="row mt-3 flex-row-reverse">
+  <div class="col-4 text-center">
+    <input type="button" class="btn btn-outline-success" (click)="create_invoice()" value="ایجاد پرونده">
+  </div>
+</div>
+
 <div class="row">
   <div class="col-12">
-    <pre>
-      {{invoices|json}}
-    </pre>
+    <hr>
+  </div>
+</div>
+
+
+<div class="row flex-row-reverse">
+  <div class="col-6">
+
+    <p class="text-muted rtl text-center"> نام :‌ <span class="rtl text-dark"> {{invoices[0]?.farmer?.full_name||invoices[0]?.connection.farmer_name_set_vendor}} </span></p>
+  </div>
+  <div class="col-6">
+
+    <p class="text-muted rtl text-center">شماره مبایل:‌ <span class="rtl text-dark"> {{invoices[0]?.farmer?.call_number}} </span></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
   </div>
 </div>
