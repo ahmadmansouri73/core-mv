@@ -1,3 +1,4 @@
+import { UserTypeService } from './../../../core/services/user-type.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
@@ -8,15 +9,17 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class DashboardGuard implements CanActivate, CanLoad{
 
-  constructor(private authSerivce: AuthService, private router: Router){}
+  constructor(
+    private userTypeService: UserTypeService,
+    private authSerivce: AuthService,
+    private router: Router){}
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
     return this.authSerivce.observableAttempAuth.pipe(map(data => {
 
-      console.log('canLoad');
 
-      if (data == false || this.authSerivce.isLogin == false)
+      if (data == false || this.userTypeService.getType()?.id_type != UserTypeService.VENDOR  || this.authSerivce.isLogin == false)
       {
         this.router.navigate(['/vendor/auth'])
       }
@@ -31,9 +34,9 @@ export class DashboardGuard implements CanActivate, CanLoad{
 
       return this.authSerivce.observableAttempAuth.pipe(map(data => {
 
-        console.log('canActivate');
 
-        if (data == false)
+
+        if (data == false || this.userTypeService.getType()?.id_type != UserTypeService.VENDOR )
         {
           this.router.navigate(['/vendor/auth'])
         }

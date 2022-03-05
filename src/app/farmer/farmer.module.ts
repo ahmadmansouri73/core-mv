@@ -7,7 +7,7 @@ import { FarmerDashboardComponent } from './farmer-dashboard/farmer-dashboard.co
 
 @NgModule({
   declarations: [
-    FarmerDashboardComponent
+    FarmerDashboardComponent,
   ],
   imports: [
     CommonModule,

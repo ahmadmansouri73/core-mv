@@ -1,3 +1,4 @@
+import { UserTypeService } from './user-type.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -16,7 +17,8 @@ export class AuthService {
     private httpClient:  HttpClient,
     private jwtSerivce:  JwtService,
     private userService: UserService,
-    private Router: Router
+    private Router: Router,
+    private userTypeService: UserTypeService
   ) { }
 
 
@@ -48,6 +50,7 @@ export class AuthService {
         if (response.status && response.data.user)
         {
           this.userService.setUser(response.data.user)
+          this.userTypeService.setType(response.data.type)
           this.is_guest = false
           this.subjectAttempAuth.next(true)
         }
@@ -66,6 +69,7 @@ export class AuthService {
 
 
   public logOut(): void {
+    this.userTypeService.clearType()
     this.jwtSerivce.cookieDelete(this.auth_kay_name)
     this.userService.cleanUser()
     this.is_guest = true
@@ -75,7 +79,6 @@ export class AuthService {
 
 
   public setToken(token: string){
-    console.log(token);
 
     this.jwtSerivce.cookieSet(this.auth_kay_name , token)
 

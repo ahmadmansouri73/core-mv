@@ -53,7 +53,6 @@ export class VLoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-
   }
 
 }

@@ -1,8 +1,83 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>root farmer web app</h1>
+
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg fixed-top bg-white">
+    <div class="row w-100">
+      <div class="col-4 text-center">
+        <img style="border-radius: 100%;" class="img " src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' alt="alt" >
+      </div>
+      <div class="col-4 text-center">
+        <p class="">{{userService.user.call_number}}</p>
+      </div>
+      <div class="col-4 text-center">
+        <img style="border-radius: 100%" class="img " [src]="'assets/img/ahmadagha.png'">
+      </div>
+    </div>
+  </nav>
+
+  <div class="row mt-5  mb-5">
+    <div class="col-12 " style="height: auto">
       <router-outlet></router-outlet>
+
     </div>
   </div>
+
+  <nav class="navbar navbar-expand-lg fixed-bottom bg-white ">
+    <div class="row  w-100 position-relative  ">
+      <div class="col-4   text-center">
+        <a routerLink="."  class="w-100 text-center h-100" style="height: 100%">
+          <img class="img" src="assets/img/home-svgrepo-com (1).svg" alt="alt">
+        </a>
+
+      </div>
+      <div class="col-4 text-center">
+        <a routerLink="./connection" class="w-100 text-center">
+          <img class="img" src="assets/img/line-chart-connection-svgrepo-com.svg" alt="alt">
+
+        </a>
+      </div>
+      <div class="col-4 text-center">
+        <a  routerLink="./invoice" class="w-100 text-center">
+          <img class="img" src="assets/img/price-tag-svgrepo-com.svg" alt="alt">
+        </a>
+      </div>
+    </div>
+  </nav>
 </div>
+
+
+<!-- <div class="row dashboard pb-5 bt-5">
+  <div class="col-md-12">
+
+
+    <hr style="margin-top: 0">
+    <div class="row">
+      <div class="col-12 scrollable">
+
+      </div>
+    </div>
+    <nav class="fixed-bottom position-absolute w-100  ">
+      <div class="row  w-100 position-relative bg-white ">
+        <div class="col-4   text-center">
+          <a routerLink="."  class="w-100 text-center h-100" style="height: 100%">
+            <img class="img" src="assets/img/home-svgrepo-com (1).svg" alt="alt">
+
+          </a>
+
+        </div>
+        <div class="col-4 text-center">
+          <a routerLink="./connection" class="w-100 text-center">
+            <img class="img" src="assets/img/line-chart-connection-svgrepo-com.svg" alt="alt">
+
+          </a>
+        </div>
+        <div class="col-4 text-center">
+          <a  routerLink="./invoice" class="w-100 text-center">
+            <img class="img" src="assets/img/price-tag-svgrepo-com.svg" alt="alt">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</div> -->
+

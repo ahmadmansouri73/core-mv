@@ -1,1 +1,47 @@
-<p>reqister works!</p>
+<div class="row">
+  <div class="col-12">
+    <h4 class="header-title">login</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row p-2" [hidden]="step_form == 2">
+        <div class="col-12">
+          <label for="call_number" class="text-muted float-right text-right rtl p-2">شماره مبایل</label>
+          <input type="text" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
+        </div>
+        <div class="col-12">
+          <div class="row justify-content-center">
+            <div class="col-6  mt-4">
+              <input type="button" value="click" class="btn btn-outline-primary btn-block" (click)="register_phone()" [disabled]="form.controls['call_number'].invalid">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="row" [hidden]="step_form != 2">
+        <div class="col-md-12">
+          <div class="col-md-12 text-center">
+            <p class="text-center mt-1">کد فعال سازی به شماره موبایل {{form.controls['call_number']?.value}} ارسال شد</p>
+            <ng-otp-input class="text-center" (onInputChange)="setCode($event)" [config]="{allowNumbersOnly: true, length: 6 ,  inputStyles:{'margin': '3px'}}"></ng-otp-input>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="row justify-content-center">
+            <div class="col-6  mt-4">
+              <input type="submit" value="click" class="btn btn-outline-primary btn-block"  [disabled]="form.invalid">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+
+  </div>
+</div>
