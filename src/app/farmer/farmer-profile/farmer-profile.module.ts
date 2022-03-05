@@ -1,3 +1,4 @@
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +14,8 @@ import { IndexProfileComponent } from './index-profile/index-profile.component';
   ],
   imports: [
     CommonModule,
-    FarmerProfileRoutingModule
+    FarmerProfileRoutingModule,
+    SharedModule
   ]
 })
 export class FarmerProfileModule { }

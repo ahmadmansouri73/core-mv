@@ -1,1 +1,15 @@
-<p>update-profile works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <h4 class="header-title">update profile</h4>
+  </div>
+</div>
+
+
+<h1>{{form.value|json}}</h1>
+<div class="row">
+  <div class="col-12">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+    </form>
+  </div>
+</div>
