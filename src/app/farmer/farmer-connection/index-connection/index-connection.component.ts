@@ -17,7 +17,7 @@ export class IndexConnectionComponent implements OnInit {
 
   connections: any[] = []
 
-  loading = false
+  loading = true
   invoice(id: number) {
     this.router.navigate(['/farmer/invoice'] , {queryParams: {vendor_id: id}})
   }

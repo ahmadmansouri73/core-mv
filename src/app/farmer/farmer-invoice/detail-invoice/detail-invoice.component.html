@@ -1,10 +1,253 @@
-<div class="row justify-content-center">
-  <div class="col-10 border-info border p-2 shadow "  style="border-radius: 12px;">
+<div class="row justify-content-center" *ngIf="status_show == false && invoice ">
+  <div class="col-10 border-info border bg-light p-2 shadow-lg "  style="border-radius: 12px;">
 
     <h3 class="text-center mt-2" *ngIf="loading">
       <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
       </div>
     </h3>
+
+
+    <div class="row flex-row-reverse">
+
+      <div class="col-12">
+        <h4 class="text-right p-1 pr-3 border-bottom w-75 float-right  text-muted rtl"> جزئیات پرونده</h4>
+
+      </div>
+
+      <div class="col-6 border-left border-info">
+        <p class="text-center border-info border-bottom rtl p-2 text-dark">
+          كد سفارش
+        </p>
+        <p class="text-muted text-center rtl">
+          {{invoice.id_farmer_invoice_product}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center border-bottom border-info p-2 rtl text-dark">
+          كد هرگیری
+        </p>
+        <p class="text-muted text-center rtl">
+          {{invoice.code_unique}}
+        </p>
+      </div>
+
+
+      <!-- <div class="col-12">
+        <hr>
+      </div> -->
+
+      <div class="col-6 border-left border-info">
+        <p class="text-center border-bottom border-info p-2 rtl text-dark">
+          تاریخ ثبت
+        </p>
+        <p class="text-center text-muted rtl">
+          {{invoice.created_at|date}}
+        </p>
+      </div>
+
+
+
+      <div class="col-6">
+        <p class="text-center border-bottom border-info p-2 rtl text-dark">
+          وضعیت پرونده
+        </p>
+        <p class="text-center rtl text-muted">
+          {{invoice.status}}
+        </p>
+      </div>
+
+      <div class="col-12">
+        <hr>
+      </div>
+
+      <div class="col-12">
+        <h4 class="text-right p-1 pr-3 border-bottom w-75 float-right  text-muted rtl"> اطلاعات فروشگاه</h4>
+      </div>
+
+
+      <div class="col-6 border-left border-info">
+        <p class="text-center border-bottom border-info p-2 rtl text-dark">
+          فروشگاه
+        </p>
+        <p class="text-center text-muted rtl">
+          {{invoice.vendor.brand_name}}
+        </p>
+      </div>
+
+
+      <div class="col-6">
+        <p class="text-center border-bottom border-info p-2 rtl text-dark">
+          مالک
+        </p>
+        <p class="text-center rtl text-muted">
+          {{invoice.vendor.owner_first_name + ' ' + invoice.vendor.owner_last_name}}
+        </p>
+      </div>
+
+
+
+      <div class="col-6 border-left border-info">
+        <p class="text-center border-bottom border-info  p-2 rtl text-dark">
+          استان
+        </p>
+        <p class="text-center rtl text-muted">
+          {{invoice.vendor.province.name}}
+        </p>
+      </div>
+
+      <div class="col-6">
+        <p class="text-center border-bottom border-info  p-2 rtl text-dark">
+          شهر
+        </p>
+        <p class="text-center rtl text-muted">
+          {{invoice.vendor.city.name}}
+        </p>
+      </div>
+
+      <div class="col-6 border-left border-info">
+        <p class="text-center border-bottom border-info rtl text-dark p-2">
+          شماره تماس
+        </p>
+        <p class="text-muted text-center rtl">
+          {{invoice.vendor.office_phone}}
+        </p>
+      </div>
+
+      <div class="col-12">
+        <hr>
+        <br>
+
+      </div>
+
+
+      <div class="col-12">
+        <h4 class="text-right p-1 pr-3 border-bottom w-75 float-right  text-muted rtl"> محصولات</h4>
+      </div>
+
+
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-11 border shadow-sm border-info bg-light  p-1 mt-b mb-2" style="border-radius: 16px;" *ngFor="let product of invoice.farmerInvoiceProductDetails">
+            <div class="row flex-row-reverse">
+              <div class="col-12">
+                <p class="text-center pt-2 text-dark rtl">
+                  <span class="text-primary">#</span>
+                  {{product.category.category_name}} - {{product.fruitCategory.fruit_category_name}}
+                </p>
+              </div>
+              <div class="col-12">
+                <hr>
+              </div>
+              <div class="col-6 border-info border-left">
+                <p class="text-center p-2 text-dark rtl border-bottom border-info">
+                  میوه
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{product.fruit.fruit_name}}
+                </p>
+              </div>
+              <div class="col-6">
+                <p class="text-center p-2 text-dark rtl border-bottom border-info">
+                  مقدار
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{product.value}} - {{product.valueType.type_name}}
+                </p>
+              </div>
+              <div class="col-6 border-info border-left">
+                <p class="text-center p-2 text-dark rtl border-bottom border-info">
+                  تعداد جعبه
+                </p>
+                <p class="text-center  text-muted rtl">
+                  {{product.count_box|| 'تنظیم نشده'}}
+                </p>
+              </div>
+              <div class="col-6" >
+                <p class="text-center p-2 text-dark rtl border-bottom border-info">
+                  فاکتور
+                </p>
+                <p class="text-center" *ngIf="map_payment(product.id_farmer_invoice_product_detail).length != 0">
+                  <input type="button" class="btn btn-block w-75 m-auto btn-info btn-sm " (click)="detail_payment_invoice(product , map_payment(product.id_farmer_invoice_product_detail))" value="جزئیات" >
+                </p>
+                <p class="text-center rtl text-muted" *ngIf="map_payment(product.id_farmer_invoice_product_detail).length == 0">
+                  فاکتور  ثبت نشده
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12">
+        <hr>
+        <br>
+
+      </div>
+
+      <div class="col-12">
+        <h4 class="text-right p-1 pr-3 border-bottom w-75 float-right  text-muted rtl"> حمل و نقل </h4>
+      </div>
+
+
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-11 shadow-sm border shadow-sm border-info bg-light  p-1 mb-2" style="border-radius: 16px;" *ngFor="let driver of invoice.farmerInvoiceProductDeliveries">
+            <div class="row flex-row-reverse">
+              <div class="col-12 text-center">
+                <p class="text-cetner rtl  pt-4 text-dark">
+                  <span class="text-primary pr-2 pl-2">#</span>
+                  راننده :
+                  <span class="text-muted rtl"> {{driver.full_name_driver|| 'تنظیم'}} </span>
+                </p>
+              </div>
+              <div class="col-12">
+                <hr>
+              </div>
+              <div class="col-6 border-left border-info">
+                <p class="text-center border-info border-bottom text-dark rtl p-2">
+                  کرایه حمل و نقل
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{driver.amount_rent_delivery|number}} - تومان
+                </p>
+              </div>
+
+              <div class="col-6">
+                <p class="text-center border-info border-bottom text-dark rtl p-2">
+                  هزینه باسکول
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{driver.amount_BS ? (driver.amount_BS|number) : '0'}} - تومان
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+
+  <app-payment-invoice-product
+    (ok)="clear_payment_invoice()"
+    *ngIf="get_payment_invoice().status"
+    [fruit]="get_payment_invoice().product"
+    [payment]="get_payment_invoice().payment"
+  ></app-payment-invoice-product>
 
   </div>
 </div>

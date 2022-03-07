@@ -17,6 +17,7 @@ export class ReqisterComponent implements OnInit {
     private FarmerRegisterService: FarmerRegisterService,
     private NotifyService: NotifyService) { }
 
+
   form = new FormGroup({
     call_number: new  FormControl(null , [Validators.required , Validators.pattern(regex.call_number)] ),
     code: new  FormControl(null , [Validators.required , Validators.pattern(regex.digit)]),
@@ -25,8 +26,47 @@ export class ReqisterComponent implements OnInit {
   step_form = 1
 
   register_phone(): void {
-    this.FarmerRegisterService.register_phone(this.form.value.call_number).subscribe(data => {
+
+
+    let phone: number = this.form.value.call_number||'';
+
+    phone
+    .toString()
+    .replace( "۱" , "1")
+    .replace( "۲" , '2')
+    .replace("۳" , '3')
+    .replace( "۴" , '4')
+    .replace( "۵" , '5')
+    .replace("۶" , '6')
+    .replace("۷", '7')
+    .replace( "۸", '8')
+    .replace("۹", '9')
+    .replace("۰" , '0')
+    .replace( "١" , "1")
+    .replace( "٢" , '2')
+    .replace("٣" , '3')
+    .replace( "٤" , '4')
+    .replace( "٥" , '5')
+    .replace("٦" , '6')
+    .replace("٧", '7')
+    .replace( "٨", '8')
+    .replace("٩", '9')
+    .replace("٠" , '0')
+
+
+    let call_number: string = `0${phone}`
+
+
+
+    if (regex.call_number.test(call_number) == false) {
+      this.NotifyService.warning('شماره مبايل نادرست هست')
+      return
+    }
+
+
+    this.FarmerRegisterService.register_phone(call_number).subscribe(data => {
       if (data.status) {
+        this.form.controls['call_number'].setValue(call_number)
         this.NotifyService.success(data.message)
         this.step_form = 2
       }

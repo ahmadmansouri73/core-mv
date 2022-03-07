@@ -1,4 +1,4 @@
-import { finalize } from 'rxjs';
+import { finalize, switchMap, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FarmerInvoiceService } from '../../services/farmer-invoice.service';
@@ -26,10 +26,12 @@ export class IndexInvoiceComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loading = true
-    this.farmerInvoiceService.invoices(this.activatedRoute.snapshot.queryParams)
-    .pipe(finalize(() => this.loading = false))
-    .subscribe((data: any) => this.invoices = data.data)
+    this.activatedRoute.queryParams
+    .pipe(tap(_ => this.loading = true), switchMap(next => this.farmerInvoiceService.invoices(next)))
+    .subscribe((data: any) => {
+      this.loading = false
+      this.invoices = data.data
+    })
   }
 
 }

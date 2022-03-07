@@ -6,24 +6,24 @@
 
 <div class="row flex-row-reverse">
   <div class="col-6">
-    <p class="text-right p-2 rtl">نام :  {{user.full_name|| 'none'}}</p>
+    <p class="text-right p-2 rtl">نام :  {{user?.full_name|| 'none'}}</p>
   </div>
 
   <div class="col-6">
-    <p class="text-right p-2 rtl">تایپ :  {{user_type.title}}</p>
+    <p class="text-right p-2 rtl">تایپ :  {{user_type?.title}}</p>
   </div>
   <div class="col-12">
-    <p class="text-right p-2 rtl">شماره مبایل :  {{user.call_number|| 'none'}}</p>
+    <p class="text-right p-2 rtl">شماره مبایل :  {{user?.call_number|| 'none'}}</p>
   </div>
   <div class="col-6">
-    <p class="text-right p-2 rtl">استان :  {{user.province.name|| 'none'}}</p>
+    <p class="text-right p-2 rtl">استان :  {{user?.province?.name|| 'none'}}</p>
   </div>
   <div class="col-6">
-    <p class="text-right p-2 rtl">شهر :  {{user.city.name|| 'none'}}</p>
+    <p class="text-right p-2 rtl">شهر :  {{user?.city?.name|| 'none'}}</p>
   </div>
   <div class="col-12">
     <p class="text-right pl-2 pr-2 pb-0 rtl ">آدرس:</p>
-    <p class="text-right pl-2 pr-2 rtl">{{user.address}}</p>
+    <p class="text-right pl-2 pr-2 rtl">{{user?.address|| 'none'}}</p>
   </div>
 
   <div class="col-12 mt-2 mb-2">

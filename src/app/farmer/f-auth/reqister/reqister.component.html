@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <h4 class="header-title">login</h4>
+    <h4 class="header-title">ورود</h4>
   </div>
 </div>
 <div class="row">
@@ -12,7 +12,7 @@
           <div class="row justify-content-center">
             <div class="col-9">
               <label for="call_number" class="text-muted float-right text-right rtl p-2">شماره مبایل</label>
-              <input type="text" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
+              <input type="number" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
 
             </div>
           </div>
@@ -22,7 +22,7 @@
         <div class="col-12">
           <div class="row justify-content-center">
             <div class="col-12 text-center  mt-4">
-              <input type="button" value="click" class="btn btn-info w-75" (click)="register_phone()" [disabled]="form.controls['call_number'].invalid">
+              <input type="button" value="ارسال" class="btn btn-info w-75" (click)="register_phone()">
             </div>
           </div>
         </div>
@@ -38,13 +38,16 @@
           </div>
         </div>
 
+
         <div class="col-12">
           <div class="row justify-content-center">
-            <div class="col-6  mt-4 text-center">
-              <input type="submit" value="click" class="btn btn-info w-75 btn-block"  [disabled]="form.invalid">
+            <div class="col-11 col-sm-9 text-center  mt-4">
+              <input type="submit" value="تایید" class="btn btn-info w-75 "  [disabled]="form.invalid">
+
             </div>
           </div>
         </div>
+
       </div>
 
     </form>

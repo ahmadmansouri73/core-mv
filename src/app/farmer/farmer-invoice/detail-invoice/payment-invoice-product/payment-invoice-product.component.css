@@ -1,0 +1,4 @@
+table , tr ,td,th {
+  direction: rtl;
+  text-align: center;
+}
