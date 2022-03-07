@@ -9,13 +9,20 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="row p-2" [hidden]="step_form == 2">
         <div class="col-12">
-          <label for="call_number" class="text-muted float-right text-right rtl p-2">شماره مبایل</label>
-          <input type="text" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
-        </div>
+          <div class="row justify-content-center">
+            <div class="col-9">
+              <label for="call_number" class="text-muted float-right text-right rtl p-2">شماره مبایل</label>
+              <input type="text" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
+
+            </div>
+          </div>
+       </div>
+
+
         <div class="col-12">
           <div class="row justify-content-center">
-            <div class="col-6  mt-4">
-              <input type="button" value="click" class="btn btn-outline-primary btn-block" (click)="register_phone()" [disabled]="form.controls['call_number'].invalid">
+            <div class="col-12 text-center  mt-4">
+              <input type="button" value="click" class="btn btn-info w-75" (click)="register_phone()" [disabled]="form.controls['call_number'].invalid">
             </div>
           </div>
         </div>
@@ -33,8 +40,8 @@
 
         <div class="col-12">
           <div class="row justify-content-center">
-            <div class="col-6  mt-4">
-              <input type="submit" value="click" class="btn btn-outline-primary btn-block"  [disabled]="form.invalid">
+            <div class="col-6  mt-4 text-center">
+              <input type="submit" value="click" class="btn btn-info w-75 btn-block"  [disabled]="form.invalid">
             </div>
           </div>
         </div>

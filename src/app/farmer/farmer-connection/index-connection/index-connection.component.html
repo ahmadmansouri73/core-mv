@@ -5,12 +5,61 @@
 </div>
 
 
-<div class="row" *ngIf="connections.length == 0">
-  <div class="col-12">
-    <div class="alert alert-warning" role="alert">
+
+<div class="row justify-content-center" *ngIf="loading == true ||  connections.length == 0">
+  <div class="col-10 border border-info p-2" style="border-radius: 12px;">
+    <h3 class="text-center mt-2" *ngIf="loading">
+      <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
+      </div>
+    </h3>
+
+    <div class="alert alert-warning" *ngIf="loading == false && connections.length == 0" role="alert">
       <h4 class="alert-heading rtl text-right">درود بر شما </h4>
       <p class="rtl text-right">هیچ ارتباط  یافت نشد</p>
+    </div>
 
+  </div>
+
+</div>
+
+
+
+<div class="row justify-content-center   ">
+  <div *ngFor="let item of connections" class="col-10 border border-info shadow-lg bg-light p-3" style="border-radius: 12px;" >
+    <div class="row">
+      <div class="col-12">
+        <p class="rtl p-1 text-dark text-right">نام فروشگاه : <span class="text-muted">{{item.vendor.brand_name}}</span></p>
+      </div>
+      <div class="col-12">
+        <p class="rtl p-1 text-dark text-right"> تاریخ ارتباط : <span class="text-muted">{{item.created_at|date}}</span></p>
+
+      </div>
+      <div class="col-12">
+        <p class="rtl p-1 text-dark text-right"> وضعیت : <span class="text-muted">{{item.status_title}}</span></p>
+      </div>
+      <div class="col-12">
+        <hr>
+      </div>
+
+      <div class="col-6">
+        <p class="rtl p-1 text-dark text-right">شهر : <span class="text-muted">{{item.vendor.city.name}}</span></p>
+      </div>
+      <div class="col-6">
+        <p class="rtl p-1 text-dark text-right">استان : <span class="text-muted">{{item.vendor.province.name}}</span></p>
+      </div>
+      <div class="col-12">
+        <p class="rtl  text-dark p-1 text-right">آدرس : <span class="text-muted">{{item.vendor.address}}</span></p>
+      </div>
+      <div class="col-12">
+        <hr>
+      </div>
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-12 text-center">
+            <input type="button" (click)="invoice(item.vendor.id_vendor)" class="btn btn-info w-75" value="پرونده ها">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

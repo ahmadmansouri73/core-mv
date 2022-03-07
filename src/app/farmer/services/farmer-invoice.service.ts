@@ -9,8 +9,17 @@ export class FarmerInvoiceService {
 
   constructor(private HttpClient: HttpClient) { }
 
-  invoices() {
-    return this.HttpClient.get(conf.baseUrl + 'farmer/invoice/all-invoice-product')
+  invoices(filter: any = {}) {
+
+    let query = '?'
+    for (let data in filter) {
+      if (filter[data] != null && filter[data].toString().trim() != '') {
+        query += `${data}=${filter[data]}&`
+      }
+    }
+
+    query =  query.replace(/[&,?]$/,"")
+    return this.HttpClient.get(conf.baseUrl + 'farmer/invoice/all-invoice-product' + query)
   }
 
   invoice(id: number) {

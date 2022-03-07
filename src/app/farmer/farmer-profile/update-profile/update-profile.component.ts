@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
 
 
-  Provinces: any[] = []
+  provinces: any[] = []
   cities: any[] = []
 
   constructor(
@@ -48,24 +48,21 @@ export class UpdateProfileComponent implements OnInit {
     )
     .subscribe(data => {
       if (data.status) {
-        this.router.navigate(['./profile'])
+        this.router.navigate(['/farmer/profile'])
       }
     })
   }
 
 
   ngOnInit(): void {
-    this.UserService.observableUser.subscribe(data => this.form.patchValue(data))
-
-
-    this.ProvinceService.provinces.subscribe(data => this.Provinces = data.data)
+    this.ProvinceService.provinces.subscribe(data => this.provinces = data.data)
 
 
 
     this.form.controls['province_id'].valueChanges
     .pipe(
-      filter(next => next != null),
       tap(_ => {
+
         this.cities = []
         this.form.controls['city_id'].setValue([])
       }),
@@ -74,6 +71,9 @@ export class UpdateProfileComponent implements OnInit {
     .subscribe(data => {
       this.cities = data.data
     })
+
+    this.UserService.observableUser.subscribe(data => this.form.patchValue(data))
+
   }
 
 }

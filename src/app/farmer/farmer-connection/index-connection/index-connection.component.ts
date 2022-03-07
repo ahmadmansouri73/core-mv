@@ -1,3 +1,5 @@
+import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 import { FarmerConnectionService } from './../../services/farmer-connection.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,11 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexConnectionComponent implements OnInit {
 
-  constructor(private farmerConnectionService: FarmerConnectionService) { }
+  constructor(
+    private farmerConnectionService: FarmerConnectionService,
+    private router: Router
+  ) { }
 
   connections: any[] = []
+
+  loading = false
+  invoice(id: number) {
+    this.router.navigate(['/farmer/invoice'] , {queryParams: {vendor_id: id}})
+  }
   ngOnInit(): void {
-    this.farmerConnectionService.connections().subscribe(data => this.connections = data.data)
+    this.farmerConnectionService.connections()
+    .pipe(finalize(() => this.loading = false))
+    .subscribe(data => this.connections = data.data)
   }
 
 }
