@@ -1,3 +1,9 @@
+
+<div class="row">
+  <div class="col-12 mt-5 ">
+  </div>
+</div>
+
 <div class="row">
   <div class="col-12">
     <h4 class="header-title">ارتباط ها</h4>
@@ -24,31 +30,66 @@
 
 
 
-<div class="row justify-content-center   ">
-  <div *ngFor="let item of connections" class="col-10 border border-info shadow-lg bg-light p-3" style="border-radius: 12px;" >
-    <div class="row">
-      <div class="col-12">
-        <p class="rtl p-1 text-dark text-right">نام فروشگاه : <span class="text-muted">{{item.vendor.brand_name}}</span></p>
+<div class="row justify-content-center ">
+  <div *ngFor="let item of connections" class="col-10 border border-info shadow-lg bg-light p-2 mt-3 mb-3" style="border-radius: 12px;" >
+    <div class="row flex-row-reverse">
+      <div class="col-6 border-left border-info">
+        <p class="rtl p-1 text-dark text-center border-info border-bottom p-2">كد رهگیری</p>
+        <p class="rtl p-1 text-center  text-muted">
+          {{item.id_farmer_connection_vendor}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="rtl p-2 text-dark text-center border-info border-bottom"> تاریخ ارتباط </p>
+        <p class="text-center text-muted rtl">
+          {{item.created_at|date}}
+        </p>
       </div>
       <div class="col-12">
-        <p class="rtl p-1 text-dark text-right"> تاریخ ارتباط : <span class="text-muted">{{item.created_at|date}}</span></p>
-
+        <br>
       </div>
-      <div class="col-12">
-        <p class="rtl p-1 text-dark text-right"> وضعیت : <span class="text-muted">{{item.status_title}}</span></p>
+      <div class="col-6 border-left border-info">
+        <p class="rtl p-2 border-bottom border-info text-dark text-center"> وضعیت </p>
+        <p class="rtl text-center text-muted">{{item.status_title}}</p>
       </div>
       <div class="col-12">
         <hr>
       </div>
 
-      <div class="col-6">
-        <p class="rtl p-1 text-dark text-right">شهر : <span class="text-muted">{{item.vendor.city.name}}</span></p>
+      <div class="col-12">
+        <h4 class="text-right text-muted float-right pr-3 pt-2 pb-2 border-bottom w-75">اطلاعات فروشگاه </h4>
+      </div>
+
+      <div class="col-6 border-left border-info">
+        <p class="rtl p-2 text-dark   border-bottom border-info text-center">نام فروشگاه</p>
+        <p class="rtl  text-muted  text-center">{{item.vendor.brand_name}}</p>
       </div>
       <div class="col-6">
-        <p class="rtl p-1 text-dark text-right">استان : <span class="text-muted">{{item.vendor.province.name}}</span></p>
+        <p class="rtl p-2 text-dark   border-bottom border-info text-center">شماره تماس</p>
+        <p class="rtl  text-muted  text-center">{{item.vendor.office_phone}}</p>
+
       </div>
       <div class="col-12">
-        <p class="rtl  text-dark p-1 text-right">آدرس : <span class="text-muted">{{item.vendor.address}}</span></p>
+        <br>
+      </div>
+
+      <div class="col-6 border-left border-info">
+        <p class="rtl p-2 text-dark   border-bottom border-info text-center">استان </p>
+        <p class="rtl  text-muted  text-center">{{item.vendor.city.name}}</p>
+
+      </div>
+      <div class="col-6 ">
+        <p class="rtl p-2 text-dark border-bottom border-info text-center">شهر </p>
+        <p class="rtl  text-muted  text-center">{{item.vendor.city.name}}</p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
+      <div class="col-12">
+        <p class="rtl  text-dark p-3 border-bottom border-info  text-center">آدرس </p>
+        <p class="rtl text-center text-muted">
+         {{item.vendor.address}}
+        </p>
       </div>
       <div class="col-12">
         <hr>
@@ -61,5 +102,11 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12 mb-5 ">
   </div>
 </div>

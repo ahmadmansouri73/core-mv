@@ -1,3 +1,19 @@
+
+
+<div class="row justify-content-center" *ngIf="loading == true ">
+  <div class="col-10 border border-info p-2" style="border-radius: 12px;">
+    <h3 class="text-center mt-2" *ngIf="loading">
+      <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
+      </div>
+    </h3>
+
+  </div>
+
+</div>
+
+
+
+
 <div class="row justify-content-center" *ngIf="status_show == false && invoice ">
   <div class="col-10 border-info border bg-light p-2 shadow-lg "  style="border-radius: 12px;">
 
@@ -52,7 +68,7 @@
           وضعیت پرونده
         </p>
         <p class="text-center rtl text-muted">
-          {{invoice.status}}
+          {{invoice.status_title}}
         </p>
       </div>
 

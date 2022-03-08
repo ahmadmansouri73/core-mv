@@ -5,25 +5,49 @@
 </div>
 
 <div class="row flex-row-reverse">
-  <div class="col-6">
-    <p class="text-right p-2 rtl">نام :  {{user?.full_name|| 'none'}}</p>
+
+
+
+  <div class="col-6 border-left border-info">
+    <p class="rtl p-2 text-dark   border-bottom border-info text-center">نام </p>
+    <p class="rtl  text-muted  text-center">{{user.full_name}}</p>
+
+  </div>
+  <div class="col-6 ">
+    <p class="rtl p-2 text-dark border-bottom border-info text-center">تایپ </p>
+    <p class="rtl  text-muted  text-center">{{user_type?.title}}</p>
+  </div>
+  <div class="col-12">
+    <br>
   </div>
 
-  <div class="col-6">
-    <p class="text-right p-2 rtl">تایپ :  {{user_type?.title}}</p>
+  <div class="col-6 border-left border-info">
+    <p class="text-center text-dark border-info border-bottom p-2 rtl">شماره مبایل  </p>
+    <p class="text-center text-muted rtl">
+      {{user?.call_number|| 'none'}}
+    </p>
+  </div>
+
+  <div class="col-12">
+    <br>
+  </div>
+
+  <div class="col-6 border-left border-info">
+    <p class="rtl p-2 text-dark   border-bottom border-info text-center">استان </p>
+    <p class="rtl  text-muted  text-center">{{user.province?.name}}</p>
+
+  </div>
+  <div class="col-6 ">
+    <p class="rtl p-2 text-dark border-bottom border-info text-center">شهر </p>
+    <p class="rtl  text-muted  text-center">{{user.city?.name}}</p>
   </div>
   <div class="col-12">
-    <p class="text-right p-2 rtl">شماره مبایل :  {{user?.call_number|| 'none'}}</p>
+    <br>
   </div>
-  <div class="col-6">
-    <p class="text-right p-2 rtl">استان :  {{user?.province?.name|| 'none'}}</p>
-  </div>
-  <div class="col-6">
-    <p class="text-right p-2 rtl">شهر :  {{user?.city?.name|| 'none'}}</p>
-  </div>
+
   <div class="col-12">
-    <p class="text-right pl-2 pr-2 pb-0 rtl ">آدرس:</p>
-    <p class="text-right pl-2 pr-2 rtl">{{user?.address|| 'none'}}</p>
+    <p class="text-center border-info border-bottom p-3 rtl text-dark ">آدرس</p>
+    <p class="text-center p-2 text-muted rtl">{{user?.address|| 'none'}}</p>
   </div>
 
   <div class="col-12 mt-2 mb-2">
