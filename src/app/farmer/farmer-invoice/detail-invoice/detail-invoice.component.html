@@ -1,5 +1,16 @@
 
 
+<div class="row">
+  <div class="col-12 mt-5 ">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h4 class="header-title">جزئیات صورتحساب </h4>
+  </div>
+</div>
+
 <div class="row justify-content-center" *ngIf="loading == true ">
   <div class="col-10 border border-info p-2" style="border-radius: 12px;">
     <h3 class="text-center mt-2" *ngIf="loading">
@@ -10,9 +21,6 @@
   </div>
 
 </div>
-
-
-
 
 <div class="row justify-content-center" *ngIf="status_show == false && invoice ">
   <div class="col-10 border-info border bg-light p-2 shadow-lg "  style="border-radius: 12px;">
@@ -26,7 +34,7 @@
     <div class="row flex-row-reverse">
 
       <div class="col-12">
-        <h4 class="text-right p-1 pr-3 border-bottom w-75 float-right  text-muted rtl"> جزئیات پرونده</h4>
+        <h4 class="text-right p-1 pr-3 border-bottom w-75 float-right  text-muted rtl"> جزئیات صورتحساب</h4>
 
       </div>
 
@@ -265,5 +273,12 @@
     [payment]="get_payment_invoice().payment"
   ></app-payment-invoice-product>
 
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-12 mb-5 ">
   </div>
 </div>

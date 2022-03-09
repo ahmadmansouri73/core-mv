@@ -20,6 +20,8 @@
   height: auto;
   min-height: auto;
   background-size:100%;
+  color: white;
+
 }
 
 @media only screen and (max-width: 575px) {
