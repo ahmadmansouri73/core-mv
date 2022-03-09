@@ -1,70 +1,90 @@
 <div class="row">
-  <div class="col-md-12">
-    <h4 class="header-title">پروفایل</h4>
+  <div class="col-12 mt-5 ">
   </div>
 </div>
 
-<div class="row flex-row-reverse">
 
 
 
-  <div class="col-6 border-left border-info">
-    <p class="rtl p-2 text-dark   border-bottom border-info text-center">نام </p>
-    <p class="rtl  text-muted  text-center">{{user.full_name}}</p>
 
+<div class="row justify-content-center mt-2 mb-2">
+  <div class="col-11  text-dark shadow bg-light  text-center border border-info" style="border-radius: 12px;">
+    <h4 class="m-auto p-2 w-100 text-center text-dark">پروفایل</h4>
   </div>
-  <div class="col-6 ">
-    <p class="rtl p-2 text-dark border-bottom border-info text-center">تایپ </p>
-    <p class="rtl  text-muted  text-center">{{user_type?.title}}</p>
-  </div>
-  <div class="col-12">
-    <br>
-  </div>
+</div>
 
-  <div class="col-6 border-left border-info">
-    <p class="text-center text-dark border-info border-bottom p-2 rtl">شماره مبایل  </p>
-    <p class="text-center text-muted rtl">
-      {{user?.call_number|| 'none'}}
-    </p>
-  </div>
 
-  <div class="col-12">
-    <br>
-  </div>
+<div class="row justify-content-center">
 
-  <div class="col-6 border-left border-info">
-    <p class="rtl p-2 text-dark   border-bottom border-info text-center">استان </p>
-    <p class="rtl  text-muted  text-center">{{user.province?.name}}</p>
+  <div  class="col-11 border border-info shadow-lg bg-light mt-2 mb-2 p-3" style="border-radius: 12px;" >
+    <div class="row flex-row-reverse">
 
-  </div>
-  <div class="col-6 ">
-    <p class="rtl p-2 text-dark border-bottom border-info text-center">شهر </p>
-    <p class="rtl  text-muted  text-center">{{user.city?.name}}</p>
-  </div>
-  <div class="col-12">
-    <br>
-  </div>
+      <div class="col-6 border-left border-info">
+        <p class="rtl p-2 text-dark   border-bottom border-info text-center">نام </p>
+        <p class="rtl  text-muted  text-center">{{user.full_name}}</p>
 
-  <div class="col-12">
-    <p class="text-center border-info border-bottom p-3 rtl text-dark ">آدرس</p>
-    <p class="text-center p-2 text-muted rtl">{{user?.address|| 'none'}}</p>
-  </div>
-
-  <div class="col-12 mt-2 mb-2">
-    <hr>
-  </div>
-
-  <div class="col-12 mt-2 mb-2">
-    <div class="row">
-      <div class="col-6 text-center">
-        <input type="button" (click)="update()" class="btn btn-info w-75 text-center" value="بروز رسانی">
       </div>
-      <div class="col-6 text-center">
-        <input type="button" (click)="logout()" class="btn btn-danger w-75 text-center" value="خروج">
+      <div class="col-6 ">
+        <p class="rtl p-2 text-dark border-bottom border-info text-center">تایپ </p>
+        <p class="rtl  text-muted  text-center">{{user_type?.title}}</p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
 
+      <div class="col-6 border-left border-info">
+        <p class="text-center text-dark border-info border-bottom p-2 rtl">شماره مبایل  </p>
+        <p class="text-center text-muted rtl">
+          {{user?.call_number|| 'none'}}
+        </p>
+      </div>
+
+      <div class="col-12">
+        <br>
+      </div>
+
+      <div class="col-6 border-left border-info">
+        <p class="rtl p-2 text-dark   border-bottom border-info text-center">استان </p>
+        <p class="rtl  text-muted  text-center">{{user.province?.name}}</p>
+
+      </div>
+      <div class="col-6 ">
+        <p class="rtl p-2 text-dark border-bottom border-info text-center">شهر </p>
+        <p class="rtl  text-muted  text-center">{{user.city?.name}}</p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
+
+      <div class="col-6 border-left border-info">
+        <p class="text-center border-info border-bottom p-3 rtl text-dark ">آدرس</p>
+        <p class="text-center p-2 text-muted rtl">{{user?.address|| 'none'}}</p>
+      </div>
+
+      <div class="col-12 mt-2 mb-2">
+        <hr>
+      </div>
+
+      <div class="col-12 mt-2 mb-2">
+        <div class="row">
+          <div class="col-6 text-center">
+            <input type="button" (click)="update()" class="btn btn-info w-75 text-center" value="بروز رسانی">
+          </div>
+          <div class="col-6 text-center">
+            <input type="button" (click)="logout()" class="btn btn-danger w-75 text-center" value="خروج">
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
 
+
+</div>
+
+
+<div class="row">
+  <div class="col-12 mb-5 ">
+  </div>
 </div>
