@@ -27,7 +27,7 @@ export class IndexProfileComponent implements OnInit {
 
   logout() {
     this.AuthService.logOut()
-    this.rotuer.navigate(['/farmer/auth'])
+    this.rotuer.navigate(['/'])
   }
 
   update() {

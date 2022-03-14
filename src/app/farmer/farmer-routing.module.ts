@@ -5,14 +5,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes  } from '@angular/router';
 
 const routes: Routes = [
-  {path: '' , redirectTo: 'index' , pathMatch: 'full'},
-  {path: '' ,canActivate:[FDashboardGuard],  canLoad:[FDashboardGuard] , component: FarmerDashboardComponent , children: [
-    {path: 'index' , component: MenuDashboardComponent},
-    {path: 'connection' , loadChildren: () => import('./farmer-connection/farmer-connection.module').then(m => m.FarmerConnectionModule)},
-    {path: 'invoice' , loadChildren: () => import('./farmer-invoice/farmer-invoice.module').then(m => m.FarmerInvoiceModule)},
-    {path: 'profile' , loadChildren: () => import('./farmer-profile/farmer-profile.module').then(m => m.FarmerProfileModule)}
-  ]},
-  {path: 'auth',  loadChildren: () =>  import('./f-auth/f-auth.module').then(m => m.FAuthModule)}
+  {
+    path: '',
+    redirectTo: 'index',
+    pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>  import('./f-auth/f-auth.module')
+      .then(m => m.FAuthModule)
+  },
+  {
+    path: '',
+    canLoad:[FDashboardGuard],
+    canActivate:[FDashboardGuard],
+    loadChildren: () => import('./farmer-boot/farmer-boot.module')
+      .then(m => m.FarmerBootModule)
+  },
 
 ];
 

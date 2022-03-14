@@ -24,7 +24,7 @@ export class VLoginComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(null , [Validators.required , Validators.pattern(regex.phone) , Validators.pattern(regex.digit)]),
-    password: new FormControl(null , [Validators.required , Validators.minLength(6)]),
+    password: new FormControl(null , [Validators.required , Validators.minLength(4)]),
   })
   user: string = ''
 

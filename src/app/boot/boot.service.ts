@@ -16,7 +16,7 @@ export class BootService {
       if (data.status)
       {
         const modules = data.data.module_app
-        this.conf.next({vendor: modules.vendor.status , store: modules.store.status , farmer: true})
+        this.conf.next({vendor: modules.vendor.status , store: modules.store.status , farmer: modules.farmer.status})
       }
 
     })

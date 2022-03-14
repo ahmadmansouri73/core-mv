@@ -63,7 +63,7 @@ export class HttpErrorHandleInterceptor implements HttpInterceptor {
     if (status === 401) {
       this.authService.logOut();
       this.notify.error('forbidden system , logout');
-      this.router.navigate(['/vendor/auth'])
+      this.router.navigate(['/'])
 
     }
     if (status === 403) {

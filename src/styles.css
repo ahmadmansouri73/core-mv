@@ -21,7 +21,18 @@ html, body {
 .rtl {
   direction: rtl;
 }
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
 
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+}
 
 /*html, body {*/
 /*  !*height: 100%;*!*/

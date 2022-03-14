@@ -89,7 +89,6 @@ export class VRegisterComponent implements OnInit {
 
       }, () => {
         this.submitStepTwo = false
-
       })
     }
   }

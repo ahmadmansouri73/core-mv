@@ -15,6 +15,7 @@ export class DashboardGuard implements CanActivate, CanLoad{
     private router: Router){}
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    console.log('vendor canLoad');
 
     return this.authSerivce.observableAttempAuth.pipe(map(data => {
 
