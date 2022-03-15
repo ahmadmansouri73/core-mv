@@ -1,1 +1,40 @@
-<p>root works!</p>
+<div class="row mt-5 justify-content-center">
+  <div class="col-11 p-2 border border-info" style="border-radius: 12px;">
+    <h4 class="text-center header text-primary position-absolute rtl">خانه میوه  </h4>
+
+    <div class="row">
+      <div class="col-12 text-center ">
+        <img style="border-radius: 100%" width="130" height="130" class="text-center mt-5 mb-4" [src]="'assets/img/ahmadagha.png'">
+        <p class="text-center text-muted rtl">طراحی و اجرا توسط احمد سياه منصور</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-11">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-11">
+        <div class="row">
+          <div class="col-12 border pb-4 ">
+
+            <p class="text-center rtl text-muted  p-3">سامانه ها </p>
+
+            <div class="row">
+              <div class="col-6 text-center">
+                <input type="button" (click)="vendor()" class="btn btn-sm btn-info w-75  text-center" value="فروشنده">
+              </div>
+              <div class="col-6 text-center">
+                <input type="button" (click)="farmer()" class="btn btn-sm btn-secondary w-75  text-center" value="کشاورز">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

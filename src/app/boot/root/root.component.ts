@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RootComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+
+  farmer() {
+    this.router.navigate(['./farmer'])
+  }
+
+  vendor() {
+    this.router.navigate(['./vendor'])
+  }
 
   ngOnInit(): void {
   }
