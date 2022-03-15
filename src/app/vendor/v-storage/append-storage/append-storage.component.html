@@ -1,6 +1,11 @@
-<h4 class="header-title">ثبت</h4>
+<div class="row mt-5">
+  <div class="col-12">
 
-<div class="row">
+  </div>
+</div>
+<h4 class="header-title"> ثبت مخزن </h4>
+
+<div class="row mt-5 mb-5">
   <div class="col-md-5 d-none d-sm-none d-md-block">
 
   </div>
@@ -14,7 +19,7 @@
 
         <div class="col-md-6">
           <label for="category_id" class="text-muted rtl float-right p-2"> دسته بندی</label>
-          <select id="category_id" formControlName="category_id" class="form-control" >
+          <select id="category_id" formControlName="category_id" class="form-control rtl" >
             <option [ngValue]="null"></option>
 
             <option *ngFor="let item of categories" [ngValue]="item">{{item.category_name}}</option>
@@ -23,7 +28,7 @@
 
         <div class="col-md-6">
           <label for="fruit_category_id" class="text-muted rtl float-right p-2">دسته بندی میوه</label>
-          <select id="fruit_category_id" formControlName="fruit_category_id" class="form-control" >
+          <select id="fruit_category_id" formControlName="fruit_category_id" class="form-control rtl" >
             <option [ngValue]="null"></option>
 
             <option *ngFor="let item of fruit_categories" [ngValue]="item">{{item.fruit_category_name}}</option>
@@ -33,20 +38,20 @@
 
         <div class="col-md-6">
           <label for="fruit_id" class="text-muted rtl float-right p-2">میوه</label>
-          <select id="fruit_id" formControlName="fruit_id" class="form-control" >
+          <select id="fruit_id" formControlName="fruit_id" class="form-control rtl" >
             <option [ngValue]="null"></option>
             <option *ngFor="let item of fruits" [ngValue]="item">{{item.fruit_name}}</option>
           </select>
         </div>
 
 
-        <!-- <div class="col-md-6">
+        <div class="col-md-6">
           <label for="value_type_id" class="text-muted rtl float-right p-2">واحد اندازه گیری</label>
-          <select id="value_type_id" formControlName="value_type_id" class="form-control" >
+          <select id="value_type_id" formControlName="value_type_id" class="form-control rtl" >
             <option [ngValue]="null"></option>
             <option *ngFor="let item of value_types" [ngValue]="item">{{item.type_name}}</option>
           </select>
-        </div> -->
+        </div>
 
 
         <div class="col-md-6">
@@ -68,55 +73,87 @@
 
       </div>
 
-      <div class="row" [hidden]="step != 2">
-        <div class="col-md-12">
-
-          <div class="row flex-row-reverse">
-            <div class="col-md-6">
-                <table class="table table-striped table-hover  center">
-                    <tbody>
-                        <tr>
-                            <td class="text-muted text-right">نام مخزن : </td>
-                            <td class="text-center">{{form.value['storage_name']}}</td>
-
-                        </tr>
-                         <tr>
-                            <td class="text-muted text-right ">دسته بندی : </td>
-                            <td  class="text-center">{{form.value['category_id']?.category_name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted text-right">  دسته بندی میوه : </td>
-                            <td  class="text-center">{{form.value['fruit_category_id']?.fruit_category_name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted text-right"> میوه : </td>
-                            <td  class="text-center">{{form.value['fruit_id']?.fruit_name}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+      <div class="row justify-content-center" [hidden]="step != 2">
+        <div class="col-11 border shadow bg-light border-info p-2" style="border-radius: 13px;">
+          <div class="row">
+            <div class="col-12">
+              <div class="row flex-row-reverse">
+                <div class="col-6 border-left border-info">
+                  <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                    {{form.value['category_id']?.category_name}}
+                  </p>
+                  <p class="text-center text-muted rtl">
+                    {{form.value['fruit_id']?.fruit_name}}
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                    نام مخزن
+                  </p>
+                  <p class="text-center text-muted rtl">
+                    {{form.value['storage_name']}}
+                  </p>
+                </div>
+                <div class="col-12">
+                  <br>
+                </div>
+                <div class="col-6 border-left border-info">
+                  <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                    قیمت
+                  </p>
+                  <p class="text-center text-muted rtl">
+                    {{form.value['price']|number}} &nbsp; (تومن)
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                    مقدار
+                  </p>
+                  <p class="text-center text-muted rtl">
+                    {{form.value['value']}} - كيلوگرم
+                  </p>
+                </div>
+                <div class="col-12">
+                  <br>
+                </div>
+                <div class="col-6 border-left border-info">
+                  <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                    وضعیت
+                  </p>
+                  <p class="text-center text-muted rtl">
+                    فعال
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                    توضیحات
+                  </p>
+                  <p class="text-center text-muted rtl">
+                    {{ 'تنظیم نشده'}}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="col-md-6">
-                <table class="table table-striped table-hover  center">
-                    <tbody>
-                        <tr>
-                            <td class="text-muted text-right">مقدار : </td>
-                            <td  class="text-center">{{form.value['value']}} - كيلوگرم</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted text-right">  قیمت  : </td>
-                            <td *ngIf="form.value['price'] != null" class="text-center">{{form.value['price']|number}} &nbsp; (تومن)</td>
-                        </tr>
-
-                    </tbody>
-                </table>
+            <div class="col-12">
+              <hr>
             </div>
-        </div>
-
-        <div class="row justify-content-center mt-5" style="height: 100%;">
-            <div class="col-md-12 mt-3 mb-3">
-                <input type="submit" value="ثبت"  class="btn btn-success btn-block" [disabled]="form.invalid">
+            <div class="col-12 ">
+              <div class="row  flex-row-reverse">
+                <div class="col-6 text-center">
+                  <input type="submit" [disabled]="form.invalid" value="ثبت" class="btn btn-info btn-sm btn-block" >
+                </div>
+                <div class="col-6 text-center">
+                  <input type="button" class="btn btn-primary btn-sm btn-block" (click)="step = 1" value="تغییر ">
+                </div>
+              </div>
             </div>
-        </div>
+
+
+
+          </div>
+
+
+
 
         </div>
       </div>
@@ -130,209 +167,3 @@
 
 
 
-<!-- <nb-card size="medium">
-    <nb-card-header></nb-card-header>
-
-    <nb-card-body>
-        <nb-stepper orientation="horizontal">
-            <nb-step [stepControl]="one"  label="نام گذاری">
-
-                <form [formGroup]="one"  class="step-container">
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <input type="text" placeholder="نام مخزن  ذخیر سازی" nbInput fullWidth  formControlName="storage_name">
-
-                            <button type="submit" [status]="one.invalid ? 'default': 'primary' " class="mt-2" fullWidth nbButton nbStepperNext>تایید</button>
-
-                        </div>
-
-                        <div class="col-md-4">
-
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <p class="text-center p-1 ">
-                                نام مخزن ذخیر سازی میوه
-                            </p>
-                        </div>
-                    </div>
-
-                </form>
-            </nb-step>
-
-            <nb-step [stepControl]="two" label="دست بندی">
-                <form [formGroup]="two"  class="step-container">
-
-
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <form [formGroup]="two">
-
-                                <div class="row">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="category_id" class="text-muted p-2"> دسته بندی</label>
-                                            <nb-select [status]="(two.controls['category_id'].dirty && two.controls['category_id'].invalid  ) ? 'danger': (two.controls['category_id'].dirty && two.controls['category_id'].valid )? 'success' : 'basic' " formControlName="category_id" fullWidth="">
-                                                <nb-option  [value]="null">انتخاب کنید</nb-option>
-                                                <nb-option *ngFor="let item of categories" [value]="item">{{item.category_name}}</nb-option>
-                                            </nb-select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="category_id" class="text-muted p-2"> دسته بندی میوه</label>
-
-                                            <nb-select [status]="(two.controls['fruit_category_id'].dirty && two.controls['fruit_category_id'].invalid  ) ? 'danger': (two.controls['fruit_category_id'].dirty && two.controls['fruit_category_id'].valid )? 'success' : 'basic' " formControlName="fruit_category_id" fullWidth="">
-                                                <nb-option  [value]="null">انتخاب کنید</nb-option>
-                                                <nb-option *ngFor="let item of fruit_categories" [value]="item">{{item.fruit_category_name}}</nb-option>
-                                            </nb-select>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="category_id" class="text-muted p-2"> میوه</label>
-
-                                            <nb-select [status]="(two.controls['fruit_id'].dirty && two.controls['fruit_id'].invalid  ) ? 'danger': (two.controls['fruit_id'].dirty && two.controls['fruit_id'].valid )? 'success' : 'basic' " formControlName="fruit_id" fullWidth="">
-                                                <nb-option  [value]="null">انتخاب کنید</nb-option>
-                                                <nb-option *ngFor="let item of fruits" [value]="item">{{item.fruit_name}}</nb-option>
-                                            </nb-select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center mt-5">
-                                    <div class="col-md-12 ">
-                                        <button type="submit" [status]="two.invalid ? 'default': 'primary' " class="mt-2" fullWidth nbButton nbStepperNext>تایید</button>
-                                    </div>
-                                </div>
-
-
-                            </form>
-
-                        </div>
-                        <div class="col-md-2">
-
-                        </div>
-                        <div class="col-md-4">
-                            <p class="text-center text-muted">
-                                دست بندی ها
-                            </p>
-                        </div>
-                    </div>
-
-
-
-
-                </form>
-            </nb-step>
-
-            <nb-step label="قیمت گذاری" [stepControl]="tree">
-                <form [formGroup]="tree">
-                    <div class="row">
-                        <div class="col-md-4">
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="category_id"   class="text-muted p-2">مقدار</label>
-                                    <input type="text"
-                                    appOnlyNumbers
-                                    [status]="(tree.controls['value'].dirty && tree.controls['value'].invalid  && tree.controls['value'].touched ) ? 'danger': (tree.controls['value'].dirty && tree.controls['value'].valid  && tree.controls['value'].touched )? 'success' : 'basic' "
-                                    nbInput fullWidth="" formControlName="value">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="category_id" class="text-muted p-2"> واحد اندازه گیری</label>
-                                    <nb-select
-                                    [status]="(tree.controls['value_type_id'].dirty && tree.controls['value_type_id'].invalid  ) ? 'danger': (tree.controls['value_type_id'].dirty && tree.controls['value_type_id'].valid )? 'success' : 'basic' "
-                                    formControlName="value_type_id" fullWidth="">
-                                        <nb-option  [value]="null">انتخاب کنید</nb-option>
-                                        <nb-option *ngFor="let item of value_types" [value]="item">{{item.type_name}}</nb-option>
-                                    </nb-select>
-                                </div>
-                                <div class="col-md-12 mt-3">
-                                    <label for="category_id"  class="text-muted p-2">قیمت</label>
-                                    <input type="text"
-                                    appOnlyNumbers
-                                    [status]="(tree.controls['price'].dirty && tree.controls['price'].invalid  && tree.controls['price'].touched ) ? 'danger': (tree.controls['price'].dirty && tree.controls['price'].valid  && tree.controls['price'].touched )? 'success' : 'basic' "
-                                    nbInput fullWidth="" formControlName="price">
-                                </div>
-
-                                <div class="col-md-12 mt-5">
-                                    <button type="submit" [status]="tree.invalid ? 'default': 'primary' " fullWidth nbButton nbStepperNext>تایید</button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-
-                        <div class="col-md-4">
-
-                        </div>
-                    </div>
-                </form>
-            </nb-step>
-
-
-            <nb-step [hidden]="true">
-                <div class="step-container">
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <table class="table table-striped table-hover  center">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-muted">نام مخزن : </td>
-                                        <td class="text-center">{{one.value['storage_name']}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-md-4">
-                            <table class="table table-striped table-hover  center">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-muted">دسته بندی : </td>
-                                        <td  class="text-center">{{two.value['category_id']?.category_name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">  دسته بندی میوه : </td>
-                                        <td  class="text-center">{{two.value['fruit_category_id']?.fruit_category_name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted"> میوه : </td>
-                                        <td  class="text-center">{{two.value['fruit_id']?.fruit_name}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-md-4">
-                            <table class="table table-striped table-hover  center">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-muted">مقدار : </td>
-                                        <td  class="text-center">{{tree.value['value']}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">  قیمت  : </td>
-                                        <td  class="text-center">{{tree.value['price']|number}} &nbsp; (تومن)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted"> واحد اندازه گیری : </td>
-                                        <td  class="text-center">{{tree.value['value_type_id']?.type_name}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-center mt-5" style="height: 100%;">
-                        <div class="col-md-4 mt-5">
-                            <input type="button" nbButton fullWidth="" value="ثبت" status="success" (click)="submit()">
-                        </div>
-                    </div>
-
-                </div>
-              </nb-step>
-
-        </nb-stepper>
-    </nb-card-body>
-</nb-card> -->

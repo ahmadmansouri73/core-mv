@@ -21,6 +21,6 @@ export class VDashboardComponent implements OnInit {
 
   public logout(): void {
     this.authService.logOut()
-    this.router.navigate(['/vendor/auth/login'])
+    this.router.navigate(['/'])
   }
 }

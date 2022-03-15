@@ -1,49 +1,72 @@
 
-<div class="row   flex-row-reverse p-4">
+<div class="row  bg-white flex-row-reverse mt-5 pl-3 pr-3 mb-5 h-auto" >
   <div class=" col-md-12 col-12 col-sm-12">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="row">
-        <div class="col-md-10">
-          <h4 class="header-title">ورود به سیستم</h4>
-        </div>
-        <div class="col-2">
-          <img height="60" [src]="'assets/img/ahmadagha.png'">
-        </div>
-        <div class="col-md-12 col-sm-12 col-12">
-          <label class="p-3 text-muted rtl float-right" for="username">نام کاربری</label>
-          <input type="text"
-          placeholder="شماره مبایل "
+        <div class="col-12">
+          <div class="row justify-content-center">
+            <div class="col-11 border-info shadow p-3 bg-light border" style="border-radius: 12px;">
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="text-center text-muted border-bottom p-2 border-info">ورود به سیستم</h4>
+                </div>
+                <div class="col-6 text-center">
+                  <img height="50" width="50" class="text-center " [src]="'assets/img/ahmadagha.png'">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                  <label class="p-3 text-muted rtl float-right" for="username">نام کاربری</label>
+                  <input type="text"
+                  placeholder="شماره مبایل "
 
-          [ngClass]="{
-            'border-danger': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].invalid),
-            'border-success': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].valid)
-          }"
-          class="form-control rtl" autocomplete="off"
-          appOnlyNumbers
-          formControlName="username" id="username">
-        </div>
+                  [ngClass]="{
+                    'border-danger': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].invalid),
+                    'border-success': (this.form.controls['username'].dirty && this.form.controls['username'].touched && this.form.controls['username'].valid)
+                  }"
+                  class="form-control rtl" autocomplete="off"
+                  appOnlyNumbers
+                  formControlName="username" id="username">
+                </div>
 
-        <div class="col-md-12 col-sm-12 col-12">
-          <label class="p-3 text-muted rtl float-right" for="password">پسورد</label>
-          <input type="text"  class="form-control rtl"  formControlName="password" id="password">
-        </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                  <label class="p-3 text-muted rtl float-right" for="password">پسورد</label>
+                  <input type="text"  class="form-control rtl"  formControlName="password" id="password">
+                </div>
 
-        <div class="col-md-12 mt-3 col-12 col-sm-12">
-          <button type="submit"  class="text-center btn btn-primary btn-block"  [disabled]="form.invalid  "   >
+                <div class="col-md-12 mt-3 col-12 col-sm-12">
+                  <button type="submit"  class="text-center btn btn-primary btn-block"  [disabled]="form.invalid  "   >
 
-            {{is_submit ? '' : 'تایید'}}
-            <div *ngIf="is_submit" class="spinner-border spinner-border-sm small text-light  " role="status">
-              <span class="sr-only"></span>
+                    {{is_submit ? '' : 'تایید'}}
+                    <div *ngIf="is_submit" class="spinner-border spinner-border-sm small text-light  " role="status">
+                      <span class="sr-only"></span>
+                    </div>
+
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-12 text-right">
+                  <a class="text-center border border-info  p-2 m-2 w-50 border-secondary" routerLink="../register">ثبت نام</a>
+                </div>
+              </div>
             </div>
-
-          </button>
+          </div>
         </div>
       </div>
     </form>
   </div>
 
-  <div class="col-12 mt-5 text-right">
-    <a class="text-center border-bottom border-info pb-2 w-50 border-secondary" routerLink="../register">ثبت نام</a>
-  </div>
+
 
 </div>

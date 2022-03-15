@@ -1,3 +1,4 @@
+import { NotifyService } from './../core/services/ui/notify.service';
 import { UserTypeService } from './../core/services/user-type.service';
 import { BootService } from './boot.service';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,10 @@ import { User } from './User';
 })
 export class FarmerBootGuard implements CanLoad{
 
-  constructor(private bootService: BootService , private userTypeService: UserTypeService){}
+  constructor(
+    private bootService: BootService,
+    private notifyservice: NotifyService,
+    private userTypeService: UserTypeService){}
 
 
 
@@ -21,6 +25,9 @@ export class FarmerBootGuard implements CanLoad{
       let type_validation = true
       if (this.userTypeService.getType()  ) {
         type_validation = this.userTypeService.getType().id_type == User.FARMER
+        if (type_validation == false) {
+          this.notifyservice.info('app vendor is login')
+        }
       }
 
       console.log('Type Valid: ', type_validation);

@@ -1,9 +1,27 @@
 .dashboard {
-  margin-top: 0;
   background: #ffffff;
   box-shadow: 0 9px 20px #cbcbcb;
   border-radius: 10px;
+  height: 100vh;
+  margin: 0;
+
+  overflow:scroll;
+  padding: 0;
+
   /*padding-bottom: 10px;*/
+}
+
+.img {
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  min-width: 20%;
+  width: 20%;
+  height: auto;
+  min-height: auto;
+  background-size:100%;
+  color: white;
+
 }
 
 @media only screen and (max-width: 575px) {

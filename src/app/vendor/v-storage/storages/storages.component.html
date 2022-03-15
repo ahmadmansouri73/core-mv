@@ -1,13 +1,23 @@
-<div class="row">
+
+<div class="row mt-5">
+  <div class="col-12">
+  </div>
+</div>
+
+<div class="row mb-5">
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-12">
-        <h5 class="header-title">انبار</h5>
+        <h5 class="header-title">مخزن</h5>
       </div>
     </div>
-    <div class="row flex-row-reverse">
-      <div class="col-md-4 col-sm-6 col-6">
-        <input type="button" (click)="create()" class="btn btn-outline-info btn-block" value="ایجاد">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-11">
+            <input type="button" (click)="create()" class="btn btn-info btn-block" value="ایجاد">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -18,38 +28,68 @@
 
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-12 col-12 col-sm-12  invoice_box_list">
+      <div class="col-md-12 col-12 col-sm-12  ">
         <p *ngIf="storages.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
         <div  *ngFor="let item of storages;let index = index">
 
-          <div class="col-md-12 mt-3 mb-3 shadow border border-info " style="border-radius: 12px;">
+          <div class="col-12 mt-3 mb-3 p-2 shadow border border-info " style="border-radius: 12px;">
             <div class="row flex-row-reverse">
-              <div class="col-md-6 col-sm-6 col-6 text-center pt-2">
-                {{item.category.category_name}} - {{item.fruit.fruit_name}}
+              <div class="col-6 border-left border-info">
+                <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                  {{item.category.category_name}}
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{item.fruit.fruit_name}}
+                </p>
               </div>
-              <div class="col-md-6 col-sm-6 col-6 text-center pr-3 pt-2">
-                {{item.storage_name}}
+              <div class="col-6">
+                <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                  نام مخزن
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{item.storage_name}}
+                </p>
               </div>
               <div class="col-12">
-                <hr class="text-info">
+                <br>
+              </div>
+              <div class="col-6 border-left border-info">
+                <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                  قیمت
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{item.price && item.price != '0' ? (item.price|number) + ' تومن ' : ' تنظیم نشده '}}
+                </p>
+              </div>
+              <div class="col-6">
+                <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                  مقدار
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{item.value|| 'تنظیم نشده'}} -  {{item.valueType.type_name|| 'تنظیم نشده'}}
+                </p>
+              </div>
+              <div class="col-12">
+                <br>
+              </div>
+              <div class="col-6 border-left border-info">
+                <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                  وضعیت
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{item.status == 1? 'فعال' : 'غیرفعال'}} - {{item.status|| 'تنظیم نشده'}}
+                </p>
+              </div>
+              <div class="col-6">
+                <p class="text-center text-dark p-2 border-bottom border-info rtl">
+                  توضیحات
+                </p>
+                <p class="text-center text-muted rtl">
+                  {{item.description|| 'تنظیم نشده'}}
+                </p>
               </div>
             </div>
-            <div class="row flex-row-reverse">
-              <div class="col-md-6 col-sm-6 col-6">
-                <p class="text-right">قیمت: {{item.price && item.price != '0' ? (item.price|number) + ' تومن ' : ' تنظیم نشده '}}   </p>
-              </div>
-              <div class="col-md-6 col-sm-6 col-6">
-                <p class="text-right">مقدار: {{item.value|| 'تنظیم نشده'}} -  {{item.valueType.type_name|| 'تنظیم نشده'}}</p>
-              </div>
-              <div class="col-md-12 col-sm-12 col-12">
-                <p class="text-right">وضعیت: {{item.status == 1? 'فعال' : 'غیرفعال'}} - {{item.status|| 'تنظیم نشده'}} </p>
-              </div>
-              <div class="mt-2 col-12 col-sm-12 col-md-12">
-                <p class="text-right">توضیحات: {{item.description|| 'تنظیم نشده'}}</p>
-              </div>
-            </div>
-
-            <div class="row flex-row-reverse">
+            <div class="row mt-2 flex-row-reverse">
               <div class="col-md-6 col-sm-6 col-6">
                 <input type="button" (click)="update(item.id_vendor_storage)" class="btn btn-link btn-sm btn-block" value="بروز رسانی">
               </div>

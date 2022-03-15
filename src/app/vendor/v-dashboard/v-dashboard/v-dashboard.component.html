@@ -1,35 +1,27 @@
-<div class="row dashboard pb-5 bt-5">
-  <div class="col-md-12">
-    <nav class="navbar p-2">
-      <!--<nav class="navbar navbar-expand-lg p-2">-->
-      <div class="dashboard_navbar_user" id="navbar_user_details" role="button" data-toggle="dropdown" aria-haspopup="true"
-           aria-expanded="false">
-        <div class="d-flex align-items-center p-2">
-          <div class="navbar_user_image">
 
-            <img
-              class="img-fluid"
-              [src]="userService.user.logo_address_image|| 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'"  >
-            <!--               [src]="avatarUrl" class="img-fluid">-->
 
-          </div>
-          <div class="navbar_user_info">
-            <span>{{userService?.user?.brand_name}}</span>
-          </div>
-        </div>
-        <div class="dropdown-menu rtl text-right" aria-labelledby="navbar_user_details">
-          <a (click)="logout()" class="dropdown-item" style="color: #de1503" href="#"><i class="fa fa-power-off"></i> خروج
-            از حساب</a>
-        </div>
+
+<div class="container-fluid bg-white overflow-auto h-100 " style="height: 100vh;">
+  <nav class="navbar w-100 m-0  p-3  fixed-top  border  bg-light text-dark">
+    <div class="row ">
+      <div class="col-6 text-center">
+        <img style="border-radius: 100%;" class="img " src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' alt="alt" >
       </div>
-      <button routerLink="/" class="navbar-toggler m-2" type="button" data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-             <img height="60" [src]="'assets/img/ahmadagha.png'">
-      </button>
-    </nav>
 
-    <hr style="margin-top: 0">
-    <router-outlet></router-outlet>
+      <div class="col-6 text-center">
+        <a routerLink="." class="w-100 text-center h-100" style="height: 100%">
+          <img style="border-radius: 100%" class="img " [src]="'assets/img/ahmadagha.png'">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row" style="margin-top: 10%; margin-bottom: 10%; ">
+    <div class="col-12 ">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
 </div>
+
+

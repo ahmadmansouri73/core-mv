@@ -45,7 +45,7 @@ export class AppendStorageComponent implements OnInit {
     fruit_category_id: new FormControl(null , Validators.required),
     fruit_id: new FormControl(null , Validators.required),
     value: new FormControl(null , [Validators.required , Validators.pattern(regex.digit_or_float)]),
-    // value_type_id: new FormControl(null, Validators.required),
+    value_type_id: new FormControl(null, Validators.required),
     price: new FormControl(null , Validators.pattern(regex.digit)),
   })
 

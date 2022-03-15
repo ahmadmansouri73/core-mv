@@ -39,6 +39,7 @@ export class BootModule {
         if (auth.status == true) {
           let id: number = auth.data.type_id
 
+
           switch (id) {
             case User.BUYER:
               // farmer routing module farmer

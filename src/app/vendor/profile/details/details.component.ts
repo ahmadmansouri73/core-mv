@@ -1,3 +1,5 @@
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Router } from '@angular/router';
 import { ImageUploadingService } from './../../../core/services/image-uploading.service';
 import { UpdateProfileService } from './../../v-data/services/update-profile.service';
 import { UserService } from './../../../core/services/user.service';
@@ -17,7 +19,9 @@ export class DetailsComponent implements OnInit {
     private imageCompressorService: ImageCompressorService,
     private imageUploadingService: ImageUploadingService,
     private userService: UserService,
+    private router: Router,
     private updateProfileService: UpdateProfileService,
+    private authService: AuthService,
 
   ) { }
 
@@ -36,6 +40,12 @@ export class DetailsComponent implements OnInit {
 
   }
 
+
+
+  public logout(): void {
+    this.authService.logOut()
+    this.router.navigate(['/'])
+  }
   user: any
   ngOnInit(): void {
 
