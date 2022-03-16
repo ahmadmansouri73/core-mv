@@ -89,12 +89,17 @@
                 </p>
               </div>
             </div>
+            <div class="row">
+              <div class="col-12">
+                <hr>
+              </div>
+            </div>
             <div class="row mt-2 flex-row-reverse">
               <div class="col-md-6 col-sm-6 col-6">
-                <input type="button" (click)="update(item.id_vendor_storage)" class="btn btn-link btn-sm btn-block" value="بروز رسانی">
+                <input type="button" (click)="update(item.id_vendor_storage)" class="btn btn-info btn-sm btn-block" value="بروز رسانی">
               </div>
               <div class="col-md-6 col-sm-6 col-6">
-                <input type="button" (click)="item.status == 1 ? not_active(item.id_vendor_storage) : active(item.id_vendor_storage) " class="btn btn-link text-info  btn-sm btn-block" value="تغییر وضعیت">
+                <input type="button" (click)="item.status == 1 ? not_active(item.id_vendor_storage) : active(item.id_vendor_storage) " class="btn btn-primary btn-sm btn-block" value="تغییر وضعیت">
               </div>
             </div>
 

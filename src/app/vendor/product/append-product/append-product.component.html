@@ -1,13 +1,13 @@
-<div class="row">
-  <div class="col-md-5">
+<div class="row mt-5"><div class="col-12"></div></div>
 
-  </div>
-  <div class="col-md-7">
+<div class="row">
+
+  <div class="col-12">
     <div class="row p-2">
       <div class="col-12">
         <h4 class="header-title">ثبت محصول</h4>
       </div>
-      <div class="col-md-12" *ngIf="step == 1">
+      <div class="col-12" *ngIf="step == 1">
         <form [formGroup]="form" (ngSubmit)="submit()">
           <div class="row flex-row-reverse">
             <div class="col-md-12">
@@ -100,10 +100,12 @@
         <div class="row">
           <div class="col-12">
             <app-view-new-product *ngIf="form.valid" [item]="form.value"></app-view-new-product>
-
           </div>
-          <div class="col-md-12 mt-5">
-            <input type="button" value="ثبت" class="btn btn-block btn-primary" [disabled]="is_submit || form.invalid" (click)="submit()">
+          <div class="col-6 mt-5">
+            <input type="button" value="تغییر" class="btn btn-block btn-info btn-sm" (click)="step = 1">
+          </div>
+          <div class="col-6 mt-5">
+            <input type="button" value="ثبت" class="btn btn-block btn-sm btn-primary" [disabled]="is_submit || form.invalid" (click)="submit()">
           </div>
         </div>
       </div>
