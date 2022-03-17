@@ -76,13 +76,13 @@
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl w-100 text-right text-secondary p-2" for="logo_address_image">لوگو</label>
-              <app-image-picker [default_image]="image.baseAddress + logo_address_image" (image)="setFileLogo($event)"></app-image-picker>
+              <app-image-picker [default_image]=" logo_address_image" (image)="setFileLogo($event)"></app-image-picker>
             </div>
 
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl text-right  w-100 text-secondary p-2" for="image_address">عکس پس زمینه</label>
-              <app-image-picker [default_image]="image.baseAddress + image_address" (image)="setFileImage($event)"></app-image-picker>
+              <app-image-picker [default_image]="image_address" (image)="setFileImage($event)"></app-image-picker>
             </div>
 
 
@@ -91,7 +91,7 @@
           <div class="row mt-5 justify-content-center">
             <div class="col-md-12">
               <button type="submit" [disabled]="form.invalid || is_submit"  class="btn btn-primary btn-block">ثبت</button>
-            </div>  
+            </div>
           </div>
         </form>
       </div>

@@ -29,11 +29,10 @@ export class ListFarmerInvoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let query: any =  this.activatedRoute.snapshot.params;
-
-    this.farmerInvoiceService.allInvoiceProduct({
-      farmer_id: query.farmer_id
-    }).subscribe(data => {
+    
+    this.farmerInvoiceService.allInvoiceProduct(
+      this.activatedRoute.snapshot.queryParams
+    ).subscribe(data => {
       this.invoices = data.data
     })
 

@@ -9,6 +9,7 @@ import { CreateFarmerInvoiceProductComponent } from './create-farmer-invoice-pro
 import { AppendProductFarmerInvoiceComponent } from './append-product-farmer-invoice/append-product-farmer-invoice.component';
 import { AppendDeliveryFarmerInvoiceComponent } from './append-delivery-farmer-invoice/append-delivery-farmer-invoice.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { DetailInvoiceComponent } from './detail-invoice/detail-invoice.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     ListFarmerInvoiceComponent,
     CreateFarmerInvoiceProductComponent,
     AppendProductFarmerInvoiceComponent,
-    AppendDeliveryFarmerInvoiceComponent
+    AppendDeliveryFarmerInvoiceComponent,
+    DetailInvoiceComponent
   ],
   imports: [
     CommonModule,

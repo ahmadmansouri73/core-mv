@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: '' , redirectTo: 'menu' , pathMatch: 'full'},
   {path: '' , component: VDashboardComponent , children: [
       {path: 'features' , loadChildren: () => import('../v-routing-features/v-routing-features.module').then(m => m.VRoutingFeaturesModule)},
+      {path: 'farmers' , loadChildren: () => import('../v-router-farmer/v-router-farmer.module').then(m => m.VRouterFarmerModule)},
       {path: 'menu' , component: MenuComponent },
       {path: 'profile' , loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)},
       {path: 'category' , loadChildren: ()=>import('../category/category.module').then(m => m.CategoryModule)},
