@@ -5,19 +5,28 @@
 </div>
 
 
-<div class="row">
-  <div class="col-12">
-    <h4 class="header-title">ورود</h4>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
+<div class="row justify-content-center">
+
+  <div class="col-11 border-info border p-2 " style="border-radius: 13px;">
+
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-8 text-center">
+            <h4 class="text-center text-muted border-bottom p-2 border-info">ورود </h4>
+          </div>
+          <div class="col-4 text-center">
+            <img height="50" width="50" class="text-center " [src]="'assets/img/ahmadagha.png'">
+          </div>
+        </div>
+      </div>
+    </div>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <div class="row p-2" [hidden]="step_form == 2">
+      <div class="row" [hidden]="step_form == 2">
         <div class="col-12">
           <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-12">
               <label for="call_number" class="text-muted float-right text-right rtl p-2">شماره مبایل</label>
               <input type="number" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
 
@@ -29,7 +38,7 @@
         <div class="col-12">
           <div class="row justify-content-center">
             <div class="col-12 text-center  mt-4">
-              <input type="button" value="ارسال" class="btn btn-info w-75" (click)="register_phone()">
+              <input type="button" value="ارسال" class="btn btn-info btn-sm btn-block" (click)="register_phone()">
             </div>
           </div>
         </div>

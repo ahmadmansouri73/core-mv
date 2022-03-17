@@ -1,57 +1,88 @@
+<div class="row mt-5">
+  <div class="col-12"></div>
+</div>
+
 <div class="row">
   <div class="col-12">
     <h3 class="header-title">کشاورز</h3>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-12 text-right">
-    <input type="button" value="ایجاد کشاورز جدید" class="btn btn-outline-success w-50" (click)="create()">
+<div class="row justify-content-center">
+  <div class="col-11 text-center">
+    <input type="button" value="ایجاد کشاورز جدید" class="btn btn-info btn-block btn-sm" (click)="create()">
   </div>
   <div class="col-12">
     <hr>
   </div>
 </div>
 
-<div class="row h-100">
+<div class="row">
   <div class="col-12">
     <p *ngIf="farmers.length == 0" class="text-center rtl m-5">پرونده ای وجود ندارد!</p>
     <div  *ngFor="let item of farmers;let index = index">
 
       <div class="col-md-12 mt-3 mb-3 shadow border border-info " style="border-radius: 12px;">
         <div class="row flex-row-reverse">
-
-          <div class=" col-12 text-center pr-3 pt-2">
-            <p class="rtl">
-              نام - {{item.farmer_name_set_vendor ? item.farmer_name_set_vendor : item.farmer.full_name }}
+          <div class="col-6 border-left border-info">
+            <p class="text-center text-dark border-bottom border-info p-2 ">
+              نام و نام خانوادگی
+            </p>
+            <p class="text-center text-muted ">
+              {{item.farmer_name_set_vendor ? item.farmer_name_set_vendor : item.farmer.full_name }}
+            </p>
+          </div>
+          <div class="col-6">
+            <p class="text-center text-dark border-info border-bottom p-2">
+              تلفن تماس
+            </p>
+            <p class="text-center text-muted ">
+              {{item.farmer?.call_number || 'تنظیم نشده'}}
             </p>
           </div>
           <div class="col-12">
-            <hr class="text-info">
+            <br>
           </div>
-        </div>
-        <div class="row flex-row-reverse">
-          <div class="col-md-6 col-sm-6 col-6">
-            <p class="text-right rtl"> استان: {{item.farmer?.province?.name|| 'تنظیم نشده'}} </p>
+          <div class="col-6 border-left border-info">
+            <p class="text-center text-dark border-info border-bottom p-2">
+              استان
+            </p>
+            <p class="text-center text-muted ">
+              {{item.farmer?.province?.name|| 'تنظیم نشده'}}
+            </p>
           </div>
-          <div class="col-md-6 col-sm-6 col-6">
-            <p class="text-right rtl">شهر: {{item.farmer?.city?.name|| 'تنظیم نشده'}} </p>
+          <div class="col-6">
+            <p class="text-center text-dark border-info border-bottom p-2">
+              شهر
+            </p>
+            <p class="text-center text-muted ">
+              {{item.farmer?.city?.name|| 'تنظیم نشده'}}
+            </p>
           </div>
-          <div class="col-md-12 col-sm-12 col-12">
-            <p class="text-right rtl">آدرس: {{item.farmer?.address || 'تنظیم نشده'}} </p>
+          <div class="col-12">
+            <br>
           </div>
-          <div class="col-md-12 col-sm-12 col-12">
-            <p class="text-right rtl">تلفن تماس: {{item.farmer?.call_number || 'تنظیم نشده'}} </p>
+          <div class="col-6 border-left border-info">
+            <p class="text-center text-dark border-bottom border-info p-2 ">
+              آدرس
+            </p>
+            <p class="text-center text-muted ">
+              {{item.farmer?.address || 'تنظیم نشده'}}
+            </p>
+          </div>
+          <div class="col-6">
+            <p class="text-center text-dark border-info border-bottom p-2">
+              برچسب
+            </p>
+            <input type="button" (click)="open_dialog_append_fruit(item.farmer_id)"  class="btn btn-sm btn-info btn-block" value="اضافه کردن">
+          </div>
+          <div class="col-12">
+            <hr>
           </div>
         </div>
 
+
         <div class="row" >
-          <div class="col-12 ">
-            <h4 class="rtl float-right text-right w-auto border-bottom border-info pr-2 pl-2">
-              کشت
-              <i (click)="open_dialog_append_fruit(item.farmer_id)"  class="text-primary small p-3 m-3">اضافه کردن</i>
-            </h4>
-          </div>
           <div class="col-12 p-3 text-right" >
             <p *ngIf="item.farmer?.supportFruitFarmers.length == 0">هیج کشت انتخاب نشده</p>
             <i
@@ -60,15 +91,15 @@
           </div>
         </div>
 
-        <div class="row  flex-row-reverse">
-          <div class="col-12 m-3">
+        <div class="row mt-2 mb-2 flex-row-reverse">
+          <div class="col-12">
             <hr>
           </div>
           <div class="col-md-6 col-sm-6 col-6">
-            <input type="button" (click)="invoice(item.farmer_id)" class="btn btn-link btn-sm btn-block" value="پرونده ها">
+            <input type="button" (click)="invoice(item.farmer_id)" class="btn btn-info btn-sm btn-block" value="پرونده ها">
           </div>
           <div class="col-md-6 col-sm-6 col-6">
-            <input type="button" (click)="remove(item.id_farmer_connection_vendor)" class="btn btn-link text-info  btn-sm btn-block" value="حذف">
+            <input type="button" (click)="remove(item.id_farmer_connection_vendor)" class="btn btn-danger  btn-sm btn-block" value="حذف">
           </div>
         </div>
 

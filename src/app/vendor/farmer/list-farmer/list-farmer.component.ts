@@ -26,7 +26,9 @@ export class ListFarmerComponent implements OnInit {
 
 
   open_dialog_append_fruit(id: number){
-    let ref =  this.matDialog.open(AppendSupportFruitFarmerComponent)
+    let ref =  this.matDialog.open(AppendSupportFruitFarmerComponent , {
+      width: '100%'
+    })
 
     ref.afterClosed()
     .pipe(
@@ -67,7 +69,7 @@ export class ListFarmerComponent implements OnInit {
 
 
   invoice(farmer_id: number): void {
-    this.Router.navigate(['/vendor/dashboard/invoice/index' , farmer_id])
+    this.Router.navigate(['/vendor/dashboard/invoice/index']  , {queryParams: {farmer_id: farmer_id}})
   }
 
   ngOnInit(): void {

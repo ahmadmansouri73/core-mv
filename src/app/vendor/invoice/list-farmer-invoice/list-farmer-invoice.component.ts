@@ -1,4 +1,4 @@
-import { filter, map } from 'rxjs';
+import { filter, map, tap, switchMap } from 'rxjs';
 import { FarmerService } from './../../v-data/services/farmer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FarmerInvoiceService } from './../../v-data/services/farmer-invoice.service';
@@ -24,17 +24,27 @@ export class ListFarmerInvoiceComponent implements OnInit {
   public farmer: any
 
 
+  public loading: boolean = false
+
+  detail_invoice(id: number) {
+
+  }
+
   create_invoice() {
     this.router.navigate(['/vendor/dashboard/invoice/create-invoice-product'])
   }
 
   ngOnInit(): void {
-    
-    this.farmerInvoiceService.allInvoiceProduct(
-      this.activatedRoute.snapshot.queryParams
-    ).subscribe(data => {
+
+
+
+    this.activatedRoute.queryParams
+    .pipe(tap(_ => this.loading = true), switchMap(next => this.farmerInvoiceService.allInvoiceProduct(next)))
+    .subscribe((data: any) => {
+      this.loading = false
       this.invoices = data.data
     })
+
 
 
 

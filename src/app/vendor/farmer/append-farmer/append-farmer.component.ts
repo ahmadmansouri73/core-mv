@@ -5,7 +5,7 @@ import { CityService } from './../../../core/services/city.service';
 import { ProvinceService } from './../../../core/services/province.service';
 import { NotifyService } from './../../../core/services/ui/notify.service';
 import { FarmerService } from './../../v-data/services/farmer.service';
-import { Subject, filter, delay, switchMap, tap, Observable, of } from 'rxjs';
+import { Subject, filter, delay, switchMap, tap, Observable, of, window } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -65,6 +65,10 @@ export class AppendFarmerComponent implements OnInit {
 
       })
     }
+  }
+
+  call_back() {
+    history.back()
   }
 
 

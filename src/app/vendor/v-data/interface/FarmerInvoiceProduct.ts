@@ -10,6 +10,7 @@ export interface FarmerInvoiceProduct {
   created_at: number
   updated_at: number
   delete: number
+  status_title: string
   farmer: any,
   farmerInvoiceProductDelivery: any[],
   farmerInvoiceProductDetail: any[],
