@@ -16,21 +16,13 @@
           </div>
           <div class="col-6 border-info border-left">
             <p class="text-center p-2 text-dark rtl border-bottom border-info">
-              میوه
-            </p>
-            <p class="text-center text-muted rtl">
-              {{data.fruit.fruit_name}}
-            </p>
-          </div>
-          <div class="col-6">
-            <p class="text-center p-2 text-dark rtl border-bottom border-info">
               مقدار
             </p>
             <p class="text-center text-muted rtl">
               {{data.value}} - {{data.valueType.type_name}}
             </p>
           </div>
-          <div class="col-6 border-info border-left">
+          <div class="col-6">
             <p class="text-center p-2 text-dark rtl border-bottom border-info">
               تعداد جعبه
             </p>
@@ -38,6 +30,7 @@
               {{data.count_box|| 'تنظیم نشده'}}
             </p>
           </div>
+
 
           <div class="col-12">
             <hr>
@@ -77,8 +70,14 @@
           </div>
           <div class="col-12 mt-5">
             <div class="row justify-content-center">
-              <div class="col-11">
-                <input type="button" (click)="ok.emit()" class="btn btn-info  btn-block" value="تایید">
+              <div class="col-4">
+                <input type="button" (click)="ok.emit()" class="btn w-100 btn-primary btn-sm  btn-block" value="تایید">
+              </div>
+              <div class="col-4">
+                <input type="button"  class="btn w-100 btn-info btn-sm btn-block" value="فاکتور">
+              </div>
+              <div class="col-4">
+                <input type="button"  class="btn w-100  btn-danger btn-sm  btn-block" value="حذف">
               </div>
             </div>
           </div>
