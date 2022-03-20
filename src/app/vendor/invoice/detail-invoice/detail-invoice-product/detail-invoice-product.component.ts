@@ -15,7 +15,6 @@ export class DetailInvoiceProductComponent implements OnInit {
 
   @Output() ok = new EventEmitter()
   @Input() payment: any[] = []
-  @Input() fruit: any = null
 
 
 

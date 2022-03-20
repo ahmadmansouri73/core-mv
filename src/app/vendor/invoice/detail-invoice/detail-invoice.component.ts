@@ -36,9 +36,16 @@ export class DetailInvoiceComponent implements OnInit {
   }
 
   index_product(item: any) {
+
+    let payments: any[] = this.invoice.paymentFarmerInvoiceProducts
+    let filter =  payments.filter(data => data.farmer_invoice_product_detail_id == item.id_farmer_invoice_product_detail)
+
     this.index_page = {
       page: 3,
-      data: item
+      data: {
+        payments: filter ,
+        product: item
+      }
     }
 
   }

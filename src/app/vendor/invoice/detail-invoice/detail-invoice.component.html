@@ -266,7 +266,7 @@
 </div>
 
 
-<app-detail-invoice-delivery (ok)="page = 1" *ngIf="index_page.page == 2" [data]="index_page.data"></app-detail-invoice-delivery>
-<app-detail-invoice-product (ok)="page = 1" *ngIf="index_page.page == 3" [data]="index_page.data"></app-detail-invoice-product>
-<app-info-invoice (ok)="page = 1" *ngIf="index_page.page == 4"></app-info-invoice>
+<app-detail-invoice-delivery (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 2" [data]="index_page.data"></app-detail-invoice-delivery>
+<app-detail-invoice-product (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 3" [data]="index_page.data.product" [payment]="index_page.data.payments"></app-detail-invoice-product>
+<app-info-invoice (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 4"></app-info-invoice>
 
