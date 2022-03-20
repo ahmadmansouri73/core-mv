@@ -24,7 +24,7 @@ export class FarmerRegisterService {
     }) , filter(next => next.status == true) , switchMap(_ => this.authService.attempAuth()))
   }
 
-  register_phone(call_number: string): Observable<any> {
+  register_phone(call_number: string|number): Observable<any> {
     return this.httpClient.get(conf.baseUrl + 'farmer/auth/confirm?call_number=' + call_number)
   }
 

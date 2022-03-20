@@ -27,7 +27,7 @@ export class ListFarmerInvoiceComponent implements OnInit {
   public loading: boolean = false
 
   detail_invoice(id: number) {
-
+    this.router.navigate(['/vendor/dashboard/invoice/detail' ,id])
   }
 
   create_invoice() {

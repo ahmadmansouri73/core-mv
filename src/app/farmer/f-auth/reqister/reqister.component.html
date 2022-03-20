@@ -10,13 +10,16 @@
   <div class="col-11 border-info border p-2 " style="border-radius: 13px;">
 
     <div class="row justify-content-center">
-      <div class="col-12">
+      <div class="col-10">
         <div class="row">
           <div class="col-8 text-center">
             <h4 class="text-center text-muted border-bottom p-2 border-info">ورود </h4>
           </div>
           <div class="col-4 text-center">
             <img height="50" width="50" class="text-center " [src]="'assets/img/ahmadagha.png'">
+          </div>
+          <div class="col-12">
+            <hr>
           </div>
         </div>
       </div>
@@ -28,7 +31,7 @@
           <div class="row justify-content-center">
             <div class="col-12">
               <label for="call_number" class="text-muted float-right text-right rtl p-2">شماره مبایل</label>
-              <input type="number" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
+              <input type="tel" class="form-control rtl" formControlName="call_number" appOnlyNumbers id="call_number" >
 
             </div>
           </div>
