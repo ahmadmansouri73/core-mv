@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { FarmerInvoiceService } from './../../../v-data/services/farmer-invoice.service';
 
 @Component({
   selector: 'app-detail-invoice-product',
@@ -7,7 +8,10 @@ import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 })
 export class DetailInvoiceProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private farmerInvoiceService: FarmerInvoiceService
+
+  ) { }
 
   @Input() data: any
 

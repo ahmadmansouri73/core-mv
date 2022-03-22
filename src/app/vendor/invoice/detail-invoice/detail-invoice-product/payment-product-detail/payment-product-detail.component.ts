@@ -15,7 +15,7 @@ export class PaymentProductDetailComponent implements OnInit {
   constructor(
     private valueTypeService: ValueTypeService,
     private notifyService: NotifyService,
-    private MatDialogRef: MatDialogRef<PaymentProductDetailComponent>
+    private MatDialogRef: MatDialogRef<PaymentProductDetailComponent>,
   ) { }
 
 
@@ -30,9 +30,7 @@ export class PaymentProductDetailComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value , 'form value');
-
-      this.MatDialogRef.close({status: true})
+      this.MatDialogRef.close(this.form.value)
     }
     else
     {

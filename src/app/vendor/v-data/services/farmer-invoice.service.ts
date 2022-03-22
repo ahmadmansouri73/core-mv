@@ -48,6 +48,14 @@ export class FarmerInvoiceService {
     })
   }
 
+  public paymentProductInvoice(id_invoice: number , id_product: number ,  item: any): Observable<any>{
+    return this.HttpClient.post(conf.baseUrl + 'farmer/invoice/payment-invoice-product', {
+      id_farmer_invoice_product: id_invoice,
+      id_farmer_invoice_product_detail: id_product,
+      details: item
+    })
+  }
+
 
 
 }
