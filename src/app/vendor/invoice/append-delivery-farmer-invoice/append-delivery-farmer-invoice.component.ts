@@ -31,7 +31,7 @@ export class AppendDeliveryFarmerInvoiceComponent implements OnInit {
     status_give_price_BS: new FormControl(null ),
     description: new FormControl(null ),
     image_path: new FormControl(null),
-    amount_rent_delivery: new FormControl(null, [Validators.pattern(regex.digit)] ),
+    amount_rent_delivery: new FormControl(null, [Validators.required ,  Validators.pattern(regex.digit)] ),
     status_give_price_rent: new FormControl(1),
   })
 

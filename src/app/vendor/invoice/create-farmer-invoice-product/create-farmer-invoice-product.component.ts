@@ -69,7 +69,8 @@ export class CreateFarmerInvoiceProductComponent implements OnInit {
 
   append_product () {
     let dialog = this.matDialog.open(AppendProductFarmerInvoiceComponent , {
-      width: '100%'
+      width: '100%',
+      
     })
 
 
