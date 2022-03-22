@@ -14,7 +14,7 @@
       <label  class="rtl float-right text-secondary p-2" for="description">کرایه راننده</label>
       <input type="number" appOnlyNumbers id="amount_rent_delivery" formControlName="amount_rent_delivery" class="form-control rtl" >
       <br>
-      <small class="text-right right rtl text-dark">تومان {{form.controls['amount_rent_delivery'].value|number}}</small>
+      <small *ngIf="form.controls['amount_rent_delivery'].value != null" class="text-right right rtl text-dark">تومان {{form.controls['amount_rent_delivery'].value|number}}</small>
     </div>
   </div>
 
