@@ -1,3 +1,3 @@
 export const conf = {
-  baseUrl:  'https://api.khanehmive.ir/' // 'http://localhost/fruit/web/'
+  baseUrl:  'http://localhost/fruit/web/' // 'https://api.khanehmive.ir/'
 }
