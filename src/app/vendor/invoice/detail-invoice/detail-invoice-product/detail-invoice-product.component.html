@@ -49,6 +49,7 @@
                   <th>قیمت پایانی</th>
                   <th>وضعیت</th>
                   <th>تاریخ ثبت</th>
+                  <th>action</th>
                 </tr>
 
               </thead>
@@ -62,6 +63,9 @@
                   <td>{{item.final_amount_price|number}}</td>
                   <td>{{item.status}}</td>
                   <td>{{item.created_at}}</td>
+                  <td>
+                    <input type="button" (click)="delete_payment(item)" class="btn btn-danger btn-sm  rtl" value="delete">
+                  </td>
                 </tr>
 
               </tbody>
@@ -78,7 +82,7 @@
                 <input type="button" (click)="create_payment()"  class="btn w-100 btn-info btn-sm btn-block" value="فاکتور">
               </div>
               <div class="col-4">
-                <input type="button"  class="btn w-100  btn-danger btn-sm  btn-block" value="حذف">
+                <input type="button" (click)="delete_product()"  class="btn w-100  btn-danger btn-sm  btn-block" value="حذف">
               </div>
             </div>
           </div>

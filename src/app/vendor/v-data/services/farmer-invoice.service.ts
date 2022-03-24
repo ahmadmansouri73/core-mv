@@ -38,6 +38,10 @@ export class FarmerInvoiceService {
     return this.HttpClient.get<Response<any>>( this.url + 'invoice-product?id_invoice=' + id);
   }
 
+
+  // create invoice
+
+
   public createInvoiceProduct(item: {invoice: any , products: any[] , deliveries: any[]}): Observable<Response<any>> {
     return this.HttpClient.post<Response<any>>(this.url + 'create-invoice-product' , {
       invoice: {
@@ -55,6 +59,33 @@ export class FarmerInvoiceService {
       details: item
     })
   }
+
+
+
+  // delete actions
+
+
+  public delete_invoice(): Observable<Response<any>>{
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + '');
+  }
+
+  public delete_product_detail(id_invoice: number , id_product: number): Observable<Response<any>> {
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + 'farmer/invoice/delete-invoice-product-detail?id_invoice=' + id_invoice + '&id_product=' + id_product);
+  }
+
+  public delete_product_delivery(): Observable<Response<any>>  {
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + '');
+  }
+
+  public delete_payment_product(): Observable<Response<any>>  {
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + '');
+  }
+
+
+  public delete_product_payment(id_invoice: number,id_payment: number,id_product: number): Observable<Response<any>>  {
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + 'farmer/invoice/delete-invoice-payment?id_invoice=' + id_invoice + '&id_payment=' + id_payment + '&id_product=' + id_product)
+  }
+
 
 
 

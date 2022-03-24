@@ -29,8 +29,27 @@ export class DetailInvoiceProductComponent implements OnInit {
   @Output() updateInvoice = new EventEmitter()
 
 
+  delete_payment(item: any): void {
+    this.farmerInvoiceService.delete_product_payment(item.farmer_invoice_product_id , item.id_payment_farmer_invoice_product , item.farmer_invoice_product_detail_id)
+    .pipe(
+      filter(data => data.status == true),
+      tap(data => this.notifyService.success(data.message))
+    )
+    .subscribe(_ => this.updateInvoice.emit())
+  }
 
-  create_payment(){
+
+
+  delete_product(): void {
+    this.farmerInvoiceService.delete_product_detail(this.data.farmer_invoice_product_id,this.data.id_farmer_invoice_product_detail).subscribe(data => {
+      if (data.status == true) {
+        this.notifyService.success(data.message)
+        this.updateInvoice.emit()
+      }
+    })
+  }
+
+  create_payment(): void {
     let dialog  = this.matDialog.open(PaymentProductDetailComponent , {
       width: '100%',
       data: this.data
