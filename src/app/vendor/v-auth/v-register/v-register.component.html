@@ -1,6 +1,6 @@
-<div class="row bg-white flex-row-reverse justify-content-center mt-2">
+<div class="row bg-white flex-row-reverse justify-content-center mt-3">
 
-  <div class=" col-md-11 shadow bg-light col-11 col-sm-11 border border-info mt-3 mb-3 p-3" style="border-radius: 12px;">
+  <div class=" col-11 p-3 shadow bg-light border border-info " style="border-radius: 12px;">
 
 
     <div class="row">
@@ -17,159 +17,164 @@
         <hr>
       </div>
     </div>
+
+
     <div class="row">
-      <div [hidden]="step != 1" class="row">
-        <div class="col-md-12">
-          <form [formGroup]="form" (ngSubmit)="callNumberConfirm()">
-            <div class="row flex-row-reverse">
-              <div class="col-12 col-sm-6 col-md-6">
-                <label for="brand_name" class="p-3 rtl float-right text-muted">نام فروشگاه</label>
-                <input
-                  id="brand_name"
-                  formControlName="brand_name"
-                  class="form-control rtl"
-                  [ngClass]="{'border-danger': (form.controls['brand_name'].dirty && form.controls['brand_name'].invalid  && form.controls['brand_name'].touched )   , 'border-success':  (form.controls['brand_name'].dirty && form.controls['brand_name'].valid  && form.controls['brand_name'].touched && checking.value == false )}"
-                  type="text" >
-              </div>
+      <div class="col-12">
+        <div [hidden]="step != 1" class="row">
+          <div class="col-md-12">
+            <form [formGroup]="form" (ngSubmit)="callNumberConfirm()">
+              <div class="row flex-row-reverse">
+                <div class="col-12 col-sm-6 col-md-6">
+                  <label for="brand_name" class="p-3 rtl float-right text-muted">نام فروشگاه</label>
+                  <input
+                    id="brand_name"
+                    formControlName="brand_name"
+                    class="form-control rtl"
+                    [ngClass]="{'border-danger': (form.controls['brand_name'].dirty && form.controls['brand_name'].invalid  && form.controls['brand_name'].touched )   , 'border-success':  (form.controls['brand_name'].dirty && form.controls['brand_name'].valid  && form.controls['brand_name'].touched && checking.value == false )}"
+                    type="text" >
+                </div>
 
-              <div class="col-12 col-sm-6 col-md-6">
-                <label for="office_phone" class="p-3 rtl float-right text-muted">شماره تماس</label>
-                <input
-                  appOnlyNumbers
-                  class="form-control rtl"
-                  formControlName="office_phone"
-                  [ngClass]="{'border-danger': (form.controls['office_phone'].dirty && form.controls['office_phone'].invalid   )  , 'border-success':  (form.controls['office_phone'].valid  )}"
-                  type="text"
-                  id="office_phone">
-              </div>
-
-
-              <div class="col-12 col-sm-6 col-md-6">
-                <label for="province_id" class="p-3 rtl float-right text-muted">استان</label>
-                <select id="province_id" formControlName="province_id" class="form-control  rtl">
-                  <option [ngValue]="null"></option>
-                  <option *ngFor="let item of provinces" [ngValue]="item?.id">{{item?.name}}</option>
-                </select>
-              </div>
-
-              <div class="col-12 col-sm-6 col-md-6">
-                <label for="city_id" class="p-3 rtl float-right text-muted">شهر</label>
-                <select id="city_id" formControlName="city_id" class="form-control  rtl">
-                  <option *ngFor="let item of cities" [ngValue]="item?.id">{{item?.name}}</option>
-                </select>
-              </div>
+                <div class="col-12 col-sm-6 col-md-6">
+                  <label for="office_phone" class="p-3 rtl float-right text-muted">شماره تماس</label>
+                  <input
+                    appOnlyNumbers
+                    class="form-control rtl"
+                    formControlName="office_phone"
+                    [ngClass]="{'border-danger': (form.controls['office_phone'].dirty && form.controls['office_phone'].invalid   )  , 'border-success':  (form.controls['office_phone'].valid  )}"
+                    type="text"
+                    id="office_phone">
+                </div>
 
 
-              <div class="col-12 col-sm-12 col-md-12">
-                <label for="address" class="p-3 rtl float-right text-muted">آدرس</label>
-                <textarea
-                   formControlName="address"
-                   class="form-control rtl"
-                   [ngClass]="{'border-danger': (form.controls['address'].dirty && form.controls['address'].invalid   )  , 'border-success':  (form.controls['address'].valid  )}"
+                <div class="col-12 col-sm-6 col-md-6">
+                  <label for="province_id" class="p-3 rtl float-right text-muted">استان</label>
+                  <select id="province_id" formControlName="province_id" class="form-control  rtl">
+                    <option [ngValue]="null"></option>
+                    <option *ngFor="let item of provinces" [ngValue]="item?.id">{{item?.name}}</option>
+                  </select>
+                </div>
 
-                   id="address"></textarea>
-              </div>
-
-
-              <div class="col-md-12">
-
-                <div class="row flex-row-reverse">
-                  <div class="col-md-6 col-sm-6 col-12">
-                    <label for="owner_first_name" class="p-3 rtl float-right text-muted">نام</label>
-                    <input
-                      class="form-control rtl"
-                      type="text"
-                      formControlName="owner_first_name"
-                      [ngClass]="{'border-danger': (form.controls['owner_first_name'].dirty && form.controls['owner_first_name'].invalid   )  , 'border-success':  (form.controls['owner_first_name'].valid  )}"
-
-                      id="owner_first_name" >
-                  </div>
-
-                  <div class="col-md-6 col-sm-6 col-12">
-                    <label for="owner_last_name" class="p-3 rtl float-right text-muted">نام خانوادگی</label>
-                    <input
-                      id="owner_last_name"
-                      type="text"
-                      class="form-control rtl"
-                      [ngClass]="{'border-danger': (form.controls['owner_last_name'].dirty && form.controls['owner_last_name'].invalid   )  , 'border-success':  (form.controls['owner_last_name'].valid  )}"
-
-                      formControlName="owner_last_name">
-                  </div>
+                <div class="col-12 col-sm-6 col-md-6">
+                  <label for="city_id" class="p-3 rtl float-right text-muted">شهر</label>
+                  <select id="city_id" formControlName="city_id" class="form-control  rtl">
+                    <option *ngFor="let item of cities" [ngValue]="item?.id">{{item?.name}}</option>
+                  </select>
+                </div>
 
 
-                  <div class="col-md-12 col-12 col-sm-12">
-                    <label for="owner_call_number" class="p-3 rtl float-right text-muted">شماره مبایل</label>
-                    <input type="text"
-                           id="owner_call_number"
-                           class="form-control rtl"
-                           appOnlyNumbers
-                           [ngClass]="{'border-danger': (form.controls['owner_call_number'].dirty && form.controls['owner_call_number'].invalid   )  , 'border-success':  (form.controls['owner_call_number'].valid  )}"
+                <div class="col-12 col-sm-12 col-md-12">
+                  <label for="address" class="p-3 rtl float-right text-muted">آدرس</label>
+                  <textarea
+                     formControlName="address"
+                     class="form-control rtl"
+                     [ngClass]="{'border-danger': (form.controls['address'].dirty && form.controls['address'].invalid   )  , 'border-success':  (form.controls['address'].valid  )}"
 
-                           formControlName="owner_call_number">
-                  </div>
-
-                  <div class="col-md-12 mt-3 mb-3 col-12 col-sm-12">
-                    <button type="submit"
-                            class="btn btn-primary btn-block "
-                            [disabled]="form.invalid || checking.value != false "
-                    >
+                     id="address"></textarea>
+                </div>
 
 
+                <div class="col-md-12">
 
-                      {{submitStepOne ? '' : 'تایید'}}
-                      <div *ngIf="submitStepOne" class="spinner-border spinner-border-sm small text-light  " role="status">
-                        <span class="sr-only"></span>
-                      </div>
+                  <div class="row flex-row-reverse">
+                    <div class="col-md-6 col-sm-6 col-12">
+                      <label for="owner_first_name" class="p-3 rtl float-right text-muted">نام</label>
+                      <input
+                        class="form-control rtl"
+                        type="text"
+                        formControlName="owner_first_name"
+                        [ngClass]="{'border-danger': (form.controls['owner_first_name'].dirty && form.controls['owner_first_name'].invalid   )  , 'border-success':  (form.controls['owner_first_name'].valid  )}"
 
-                    </button>
+                        id="owner_first_name" >
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-12">
+                      <label for="owner_last_name" class="p-3 rtl float-right text-muted">نام خانوادگی</label>
+                      <input
+                        id="owner_last_name"
+                        type="text"
+                        class="form-control rtl"
+                        [ngClass]="{'border-danger': (form.controls['owner_last_name'].dirty && form.controls['owner_last_name'].invalid   )  , 'border-success':  (form.controls['owner_last_name'].valid  )}"
+
+                        formControlName="owner_last_name">
+                    </div>
+
+
+                    <div class="col-md-12 col-12 col-sm-12">
+                      <label for="owner_call_number" class="p-3 rtl float-right text-muted">شماره مبایل</label>
+                      <input type="text"
+                             id="owner_call_number"
+                             class="form-control rtl"
+                             appOnlyNumbers
+                             [ngClass]="{'border-danger': (form.controls['owner_call_number'].dirty && form.controls['owner_call_number'].invalid   )  , 'border-success':  (form.controls['owner_call_number'].valid  )}"
+
+                             formControlName="owner_call_number">
+                    </div>
+
+                    <div class="col-md-12 mt-3 mb-3 col-12 col-sm-12">
+                      <button type="submit"
+                              class="btn btn-primary btn-block "
+                              [disabled]="form.invalid || checking.value != false "
+                      >
+
+
+
+                        {{submitStepOne ? '' : 'تایید'}}
+                        <div *ngIf="submitStepOne" class="spinner-border spinner-border-sm small text-light  " role="status">
+                          <span class="sr-only"></span>
+                        </div>
+
+                      </button>
+                    </div>
+
                   </div>
 
                 </div>
 
+
+
               </div>
 
 
 
-            </div>
 
 
+            </form>
 
-
-
-          </form>
-
+          </div>
         </div>
       </div>
-
-      <div [hidden]="step == 1" class="row">
-        <div class="col-md-12">
-          <div class="col-md-12 text-center">
+      <div class="col-12">
+        <div [hidden]="step == 1" class="row">
+          <div class="col-12 text-center">
             <p class="text-center mt-1">کد فعال سازی به شماره موبایل {{form.controls['owner_call_number']?.value}} ارسال شد</p>
             <app-v-confirm (code)="setCode($event)" ></app-v-confirm>
           </div>
 
-        </div>
 
-
-        <div class="col-md-12 mt-5 ">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <button type="button"
-                (click)="submit()"
-                class="btn btn-primary mt-3 mb-3 btn-block "
-                [disabled]="form.controls['code'].value?.length !=  6  || submitStepTwo "
-              >
-                {{submitStepTwo ? '' : 'تایید'}}
-                <div *ngIf="submitStepTwo" class="spinner-border spinner-border-sm small text-light  " role="status">
-                  <span class="sr-only"></span>
-                </div>
-              </button>
+          <div class="col-md-12 mt-5 ">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <button type="button"
+                  (click)="submit()"
+                  class="btn btn-primary mt-3 mb-3 btn-block "
+                  [disabled]="form.controls['code'].value?.length !=  6  || submitStepTwo "
+                >
+                  {{submitStepTwo ? '' : 'تایید'}}
+                  <div *ngIf="submitStepTwo" class="spinner-border spinner-border-sm small text-light  " role="status">
+                    <span class="sr-only"></span>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
+
+
         </div>
-
-
       </div>
+
+
+
 
     </div>
 

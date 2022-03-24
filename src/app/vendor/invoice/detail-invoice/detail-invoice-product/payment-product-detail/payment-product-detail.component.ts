@@ -16,6 +16,7 @@ export class PaymentProductDetailComponent implements OnInit {
     private valueTypeService: ValueTypeService,
     private notifyService: NotifyService,
     private MatDialogRef: MatDialogRef<PaymentProductDetailComponent>,
+
   ) { }
 
 
@@ -24,6 +25,7 @@ export class PaymentProductDetailComponent implements OnInit {
     amount_price: new FormControl(null , [Validators.required , Validators.pattern(regex.digit)]),
     wage_percentage: new FormControl(null , [Validators.pattern(regex.digit_or_float)]),
     amount_wage: new FormControl(null , [ Validators.pattern(regex.digit_or_float)]),
+    value_type_id: new FormControl(null , [Validators.required]),
     final_amount_price: new FormControl(null , [Validators.required , Validators.pattern(regex.digit)]),
   })
 

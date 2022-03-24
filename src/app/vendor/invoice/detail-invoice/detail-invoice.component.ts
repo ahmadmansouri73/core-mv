@@ -57,6 +57,18 @@ export class DetailInvoiceComponent implements OnInit {
     }
   }
 
+
+  update_invoice(){
+    this.loading = true ;
+    this.index_page =  {
+      page: this.page,
+      data: null
+    }
+    let params: any = this.activatedRoute.snapshot.params
+    this.farmerInvoiceService.oneInvoiceProduct(params.id).pipe(finalize(() => this.loading = false)).subscribe(data => this.invoice = data.data)
+  }
+
+
   ngOnInit(): void {
     this.loading = true ;
     let params: any = this.activatedRoute.snapshot.params

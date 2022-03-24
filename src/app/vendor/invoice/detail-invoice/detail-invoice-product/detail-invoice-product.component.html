@@ -32,10 +32,10 @@
           </div>
 
 
-          <div class="col-12">
+          <div class="col-12" *ngIf="payment.length != 0">
             <hr>
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="payment.length != 0">
               <h4 class="text-center border-info m-auto text-muted  p-3 border-bottom w-75">جزئیات صورتحساب </h4>
 
             <table class="table overflow-auto table-responsive-sm table-sm border-dark bg-light table-bordered w-100 mt-3 mb-3 table-hover">
@@ -55,7 +55,7 @@
               <tbody>
                 <tr *ngFor="let item of payment;let index = index">
                   <td>{{index + 1}}</td>
-                  <td>{{item.value}} - {{item.valueType.type_name}}</td>
+                  <td>{{item.value}} - {{item?.valueType?.type_name}}</td>
                   <td>{{item.amount_price|number}}</td>
                   <td>{{item.wage_percentage}}</td>
                   <td>{{item.amount_wage|number}}</td>
@@ -68,13 +68,14 @@
             </table>
 
           </div>
+
           <div class="col-12 mt-5">
             <div class="row justify-content-center">
               <div class="col-4">
                 <input type="button" (click)="ok.emit()" class="btn w-100 btn-primary btn-sm  btn-block" value="تایید">
               </div>
               <div class="col-4">
-                <input type="button"  class="btn w-100 btn-info btn-sm btn-block" value="فاکتور">
+                <input type="button" (click)="create_payment()"  class="btn w-100 btn-info btn-sm btn-block" value="فاکتور">
               </div>
               <div class="col-4">
                 <input type="button"  class="btn w-100  btn-danger btn-sm  btn-block" value="حذف">

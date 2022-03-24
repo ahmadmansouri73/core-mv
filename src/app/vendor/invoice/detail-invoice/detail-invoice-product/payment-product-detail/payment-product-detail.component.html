@@ -1,12 +1,19 @@
-<div class="row justify-content-center">
+
+<div class="rowo">
+  <div class="col-12">
+    <h4 class="header-title">ثبت فاکتور</h4>
+  </div>
+</div>
+
+<div class="row z justify-content-center">
   <div class="col-11">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="row flex-row-reverse">
-        <div class="col-12">
+        <div class="col-6 m-0 p-1">
           <label for="value" class="text-right right rtl text-muted float-right p-2">مقدار</label>
-          <input type="text" class="form-control rtl" id="value" autocomplete="off" formControlName="value">
+          <input type="number" class="form-control rtl" id="value" autocomplete="off" formControlName="value">
         </div>
-        <div class="col-12">
+        <div class="col-6 m-0 p-1">
           <label for="value_type_id" class="text-right right rtl text-muted float-right p-2">واحد</label>
           <select formControlName="value_type_id" id="value_type_id" class="form-control rtl">
             <option [ngValue]="null">
@@ -18,29 +25,31 @@
           </select>
         </div>
 
-        <div class="col-12">
+        <div class="col-6 m-0 p-1">
           <label for="amount_price" class="text-right right rtl text-muted float-right p-2">قیمت</label>
-          <input type="text" class="form-control rtl" id="amount_price" autocomplete="off" formControlName="amount_price">
+          <input type="text" class="form-control rtl" autocomplete="off" id="amount_price"  currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="amount_price">
+
         </div>
 
-        <div class="col-12">
+        <div class="col-6 m-0 p-1">
           <label for="wage_percentage" class="text-right right rtl text-muted float-right p-2">درصد دستمزد</label>
-          <input type="text" class="form-control rtl" id="wage_percentage" autocomplete="off" formControlName="value">
+          <input type="number" class="form-control rtl" id="wage_percentage" autocomplete="off" formControlName="wage_percentage">
         </div>
 
-        <div class="col-12">
+        <div class="col-6 m-0 p-1">
           <label for="amount_wage" class="text-right right rtl text-muted float-right p-2">مبلغ دستمزد</label>
-          <input type="text" class="form-control rtl" id="amount_wage" autocomplete="off" formControlName="amount_wage">
+          <input type="text" class="form-control rtl" autocomplete="off" id="amount_wage"  currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="amount_wage">
         </div>
 
-        <div class="col-12">
+        <div class="col-6 m-0 p-1">
           <label for="final_amount_price" class="text-right right rtl text-muted float-right p-2"> مبلغ نهایی</label>
-          <input type="text" class="form-control rtl" id="final_amount_price" autocomplete="off" formControlName="final_amount_price">
+          <input type="text" class="form-control rtl" autocomplete="off" id="final_amount_price"  currencyMask [options]="{suffix: ' تومن ',prefix: '', thousands: ',' , decimal: '' , precision: 0 }" formControlName="final_amount_price">
+
         </div>
 
 
-        <div class="col-12 mt-2 mb-2">
-          <input type="submit" class="btn btn-primary btn-sm btn-block" value="submit">
+        <div class="col-12 mt-2 mb-2 p-1 ">
+          <input type="submit" class="btn btn-primary btn-lg w-100  btn-block" value="ایجاد">
         </div>
       </div>
     </form>
