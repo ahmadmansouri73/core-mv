@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-12">
+    <h4 class="header-title">ثبت محصول</h4>
+  </div>
+</div>
 <form class="w-100 m-0 p-0" [formGroup]="form" (ngSubmit)="submit()">
   <div class="row flex-row-reverse">
     <div class="col-6 m-0 p-1">
@@ -30,14 +35,14 @@
     </div>
     <div class="col-6 m-0 p-1">
       <label  class="rtl float-right text-secondary p-2" for="value">مقدار</label>
-      <input type="number" formControlName="value" id="value" class="form-control rtl" >
+      <input type="number" min="0" formControlName="value" id="value" class="form-control rtl" >
       <br>
       <small class="text-dark p-2 text-right right float-right">{{form.controls['value'].value}} - {{form.controls['value_type'].value?.type_name}}</small>
     </div>
 
     <div class="col-6 m-0 p-1">
       <label  class="rtl float-right text-secondary p-2" for="value">جعبه</label>
-      <input type="number" formControlName="count_box" id="value" class="form-control rtl" >
+      <input type="number" min="0" formControlName="count_box" id="value" class="form-control rtl" >
     </div>
   </div>
 

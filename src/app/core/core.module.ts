@@ -17,11 +17,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 2000,
       positionClass: 'toast-top-center',
-      preventDuplicates: true,
+      preventDuplicates: false,
       progressBar: false,
-      closeButton: true
+      closeButton: false
     })
   ],
   providers: [
