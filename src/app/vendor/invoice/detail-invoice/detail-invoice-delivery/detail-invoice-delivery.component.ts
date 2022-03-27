@@ -1,3 +1,6 @@
+import { filter, tap } from 'rxjs';
+import { FarmerInvoiceService } from './../../../v-data/services/farmer-invoice.service';
+import { NotifyService } from './../../../../core/services/ui/notify.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,16 +10,37 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DetailInvoiceDeliveryComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private notifyService: NotifyService,
+    private farmerInvoiceService: FarmerInvoiceService
+  ) { }
 
   @Input() data: any
 
+  @Output() updateInvoice = new EventEmitter()
 
   @Output() ok = new EventEmitter()
 
 
-  
+
   ngOnInit(): void {
+    console.log(this.data);
   }
+
+
+  update_delivery() {
+
+  }
+
+  delete_delivery() {
+    this.farmerInvoiceService.delete_product_delivery(this.data.farmer_invoice_product_id , this.data.id_farmer_invoice_product_delivery)
+    .pipe(
+      filter(data => data.status == true),
+      tap(data => this.notifyService.success(data.message))
+    )
+    .subscribe(_ => this.updateInvoice.emit())
+  }
+
+
 
 }

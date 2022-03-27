@@ -16,6 +16,7 @@ import { DetailInvoiceDeliveryComponent } from './detail-invoice/detail-invoice-
 import { InfoInvoiceComponent } from './detail-invoice/info-invoice/info-invoice.component';
 import { UpdateProductDetailComponent } from './detail-invoice/detail-invoice-product/update-product-detail/update-product-detail.component';
 import { PaymentProductDetailComponent } from './detail-invoice/detail-invoice-product/payment-product-detail/payment-product-detail.component';
+import { DeleteInvoiceComponent } from './detail-invoice/info-invoice/delete-invoice/delete-invoice.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { PaymentProductDetailComponent } from './detail-invoice/detail-invoice-p
     DetailInvoiceDeliveryComponent,
     InfoInvoiceComponent,
     UpdateProductDetailComponent,
-    PaymentProductDetailComponent
+    PaymentProductDetailComponent,
+    DeleteInvoiceComponent
   ],
   imports: [
     CommonModule,

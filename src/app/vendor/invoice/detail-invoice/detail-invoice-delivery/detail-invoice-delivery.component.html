@@ -1,1 +1,53 @@
-<p>detail-invoice-delivery works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="row justify-content-center flex-row-reverse">
+      <div class="col-11 p-2 border bg-light border-info" style="border-radius: 13px;">
+
+        <div class="row flex-row-reverse">
+          <div class="col-6 border-left border-info ">
+            <p class="border-bottom border-info text-dark text-center p-2">
+              راننده
+            </p>
+            <p class="text-center text-muted">
+              {{data.full_name_driver|| 'none'}}
+            </p>
+          </div>
+
+          <div class="col-6">
+            <p class="text-center text-dark p-2 border-bottom border-info">
+              کرایه حمل و نقل
+            </p>
+            <p class="text-center text-muted">
+              {{data.amount_rent_delivery|number}} - تومان
+            </p>
+          </div>
+
+          <div class="col-6 border-left border-info ">
+            <p class="border-bottom border-info text-dark text-center p-2">
+              هزینه باسکول
+            </p>
+            <p class="text-center text-muted">
+              {{data.amount_BS ? (data.amount_BS|number) : '0'}} - تومان
+            </p>
+          </div>
+
+
+
+          <div class="col-12 mt-5">
+            <div class="row">
+              <div class="col-6">
+                <input type="button" (click)="ok.emit()" class="btn btn-info btn-block btn-sm" value="تاييد">
+              </div>
+              <div class="col-6">
+                <input type="button" (click)="delete_delivery()" class="btn btn-danger btn-block btn-sm" value="حذف">
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

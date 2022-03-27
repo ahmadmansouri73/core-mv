@@ -1,5 +1,5 @@
 import { finalize } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FarmerInvoiceService } from './../../v-data/services/farmer-invoice.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +12,8 @@ export class DetailInvoiceComponent implements OnInit {
 
   constructor(
     private farmerInvoiceService: FarmerInvoiceService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
 
@@ -58,16 +59,25 @@ export class DetailInvoiceComponent implements OnInit {
   }
 
 
+  back() {
+    window.history.back()
+  }
+
   update_invoice(){
-    this.loading = true ;
     this.index_page =  {
       page: this.page,
       data: null
     }
+    this.loading = true
+    this.invoice = undefined
     let params: any = this.activatedRoute.snapshot.params
     this.farmerInvoiceService.oneInvoiceProduct(params.id).pipe(finalize(() => this.loading = false)).subscribe(data => this.invoice = data.data)
   }
 
+
+  delete_invoice() {
+    this.router.navigate(['/vendor/dashboard/invoice'])
+  }
 
   ngOnInit(): void {
     this.loading = true ;

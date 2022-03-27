@@ -65,27 +65,33 @@ export class FarmerInvoiceService {
   // delete actions
 
 
-  public delete_invoice(): Observable<Response<any>>{
-    return this.HttpClient.get<Response<any>>(conf.baseUrl + '');
+  public delete_invoice(id_invoice: number): Observable<Response<any>>{
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + 'farmer/invoice/delete-invoice-product?id_invoice=' + id_invoice );
   }
 
   public delete_product_detail(id_invoice: number , id_product: number): Observable<Response<any>> {
     return this.HttpClient.get<Response<any>>(conf.baseUrl + 'farmer/invoice/delete-invoice-product-detail?id_invoice=' + id_invoice + '&id_product=' + id_product);
   }
 
-  public delete_product_delivery(): Observable<Response<any>>  {
-    return this.HttpClient.get<Response<any>>(conf.baseUrl + '');
+  public delete_product_delivery(id_invoice: number , id_delivery: number): Observable<Response<any>>  {
+    return this.HttpClient.get<Response<any>>(conf.baseUrl + 'farmer/invoice/delete-invoice-product-delivery?id_invoice=' + id_invoice + '&id_delivery=' + id_delivery);
   }
-
-  public delete_payment_product(): Observable<Response<any>>  {
-    return this.HttpClient.get<Response<any>>(conf.baseUrl + '');
-  }
-
 
   public delete_product_payment(id_invoice: number,id_payment: number,id_product: number): Observable<Response<any>>  {
     return this.HttpClient.get<Response<any>>(conf.baseUrl + 'farmer/invoice/delete-invoice-payment?id_invoice=' + id_invoice + '&id_payment=' + id_payment + '&id_product=' + id_product)
   }
 
+
+  // append invoice
+
+  public append_product_invoice(id_invoice: number , item: any): Observable<Response<any>>{
+    return this.HttpClient.post<Response<any>>(conf.baseUrl + 'farmer/invoice/append-invoice-product-details?id_invoice=' + id_invoice , item)
+  }
+
+
+  public append_delivery_invoice(id_invoice: number , item: any): Observable<Response<any>>{
+    return this.HttpClient.post<Response<any>>(conf.baseUrl + 'farmer/invoice/append-invoice-product-delivery?id_invoice=' + id_invoice  , item)
+  }
 
 
 

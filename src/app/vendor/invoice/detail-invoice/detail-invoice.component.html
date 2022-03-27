@@ -244,20 +244,40 @@
                 <br>
               </div>
 
-              <div class="col-6 border-left border-info">
-                <p class="text-center text-dark  border-bottom border-info ">
+
+              <div class="col-6 border-left border-info" >
+                <p class="text-center p-2 text-dark rtl border-bottom border-info">
                   اطلاعات
                 </p>
+                <p class="text-center" >
+                  <input type="button" (click)="index_delivery(driver)" class="btn btn-block w-75 m-auto btn-info btn-sm " value="جزئیات">
+                </p>
 
-                <input type="button" (click)="index_delivery(driver)" class="btn btn-info btn-sm btn-block" value="جزئیات">
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
 
+
+
+      <div class="col-12">
+        <hr>
+      </div>
+
+
+      <div class="col-12">
+        <div class="row flex-row-reverse">
+          <div class="col-6 p-3">
+            <input type="button" (click)="index_invoice()" class="btn btn-sm btn-info btn-block" value="آپدیت">
+          </div>
+
+          <div class="col-6 p-3">
+            <input type="button" (click)="back()"  class="btn btn-sm btn-primary btn-block" value="تاييد">
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -266,7 +286,7 @@
 </div>
 
 
-<app-detail-invoice-delivery (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 2" [data]="index_page.data"></app-detail-invoice-delivery>
+<app-detail-invoice-delivery (updateInvoice)="update_invoice()" (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 2" [data]="index_page.data"></app-detail-invoice-delivery>
 <app-detail-invoice-product (updateInvoice)="update_invoice()" (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 3" [data]="index_page.data.product" [payment]="index_page.data.payments"></app-detail-invoice-product>
-<app-info-invoice (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 4"></app-info-invoice>
+<app-info-invoice (deleteInvoice)="delete_invoice()" (updateInvoice)="update_invoice()" (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 4" [data]="invoice"></app-info-invoice>
 

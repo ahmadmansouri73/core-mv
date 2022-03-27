@@ -1,1 +1,106 @@
-<p>info-invoice works!</p>
+<div class="row justify-content-center">
+  <div class="col-11 border-info border p-3 shadow " style="border-radius: 13px;">
+    <div class="row flex-row-reverse">
+
+      <div class="col-12 text-center  mb-5">
+        <h4 class="text-center border-info m-auto text-muted  p-3 border-bottom w-75">جزئیات صورتحساب </h4>
+      </div>
+
+
+      <div class="col-6 border-info border-left ">
+        <p class="text-center text-dark p-2 border-bottom  border-info">
+          كد سفارش
+
+        </p>
+        <p class="text-center text-muted">
+          {{data.id_farmer_invoice_product}}
+
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center text-dark p-2 border-bottom  border-info">
+          كد هرگیری
+        </p>
+        <p class="text-center text-muted">
+          {{data.code_unique}}
+        </p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
+
+      <div class="col-6 border-info border-left ">
+        <p class="text-center text-dark p-2 border-bottom  border-info">
+          تاریخ ثبت
+
+        </p>
+        <p class="text-center text-muted">
+          {{data.created_at}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center text-dark p-2 border-bottom  border-info">
+          وضعیت پرونده
+
+        </p>
+        <p class="text-center text-muted">
+          {{data.status_title}}
+        </p>
+      </div>
+      <div class="col-12">
+        <hr>
+      </div>
+
+
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-11 border-info border-bottom text-right p-3">
+            <div class="row flex-row-reverse">
+              <div class="col-10">
+                <p class="text-center text-dark">
+                  براي اضافه كردن محصول جديد براي صورتحساب كليد كنيد
+                </p>
+              </div>
+              <div class="col-2 text-center">
+                <input type="button" class="btn btn-sm btn-block btn-info" (click)="create_product()" value="+">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-11 border-info border-bottom text-right p-3">
+            <div class="row flex-row-reverse">
+              <div class="col-10">
+                <p class="text-center text-dark">
+                  براي اضافه كردن راننده جديد براي صورتحساب كليد كنيد
+                </p>
+              </div>
+              <div class="col-2 text-center">
+                <input type="button" (click)="create_delivery()" class="btn btn-sm btn-block btn-info" value="+">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-12 mt-5">
+        <div class="row">
+          <div class="col-6 p-3">
+            <input type="button"  (click)="delete()" class="btn btn-danger btn-lg btn-block" value="حذف">
+          </div>
+          <div class="col-6 p-3">
+            <input type="button"  (click)="ok.emit()" class="btn btn-primary btn-lg btn-block" value="تاييد">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
