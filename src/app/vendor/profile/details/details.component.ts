@@ -26,7 +26,20 @@ export class DetailsComponent implements OnInit {
   ) { }
 
 
+  ok() {
+    this.router.navigate(['/vendor/dashboard'])
+
+  }
+
+  password() {
+    this.router.navigate(['/vendor/dashboard/profile/reset-password'])
+  }
+
+
+
   private changeLogo = new Subject<{image: string , size: number}>()
+
+
 
   logo: any
   uploadLogo(event: any) {

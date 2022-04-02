@@ -1,9 +1,125 @@
-<pre>
-  {{user|json}}
-</pre>
-
+<div class="row mt-5"><div class="col-12"></div></div>
 <div class="row">
   <div class="col-12">
-    <input type="button" (click)="logout()" value="logout" class="btn btn-sm btn-danger">
+    <h4 class="header-title">پروفایل</h4>
   </div>
 </div>
+<div class="row justify-content-center ">
+  <div class="col-11 border-info border shadow bg-light  p-3" style="border-radius: 13px;">
+    <div class="row flex-row-reverse">
+
+      <div class="col-12 text-center  mb-5">
+        <h4 class="text-center border-info m-auto text-muted  p-3 border-bottom w-75">اطلاعات فروشگاه</h4>
+      </div>
+
+      <div class="col-6 border-info border-left ">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          وضعیت
+        </p>
+        <p class="text-center text-muted">
+          {{user.status_title}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          نام فروشگاه
+        </p>
+        <p class="text-center text-muted">
+          {{user.brand_name}}
+        </p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
+
+      <div class="col-6 border-info border-left ">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          تلفن فروشگاه
+        </p>
+        <p class="text-center text-muted">
+          {{user.office_phone}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          آدرس
+        </p>
+        <p class="text-center text-muted">
+        {{user.address}}
+        </p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
+
+
+      <div class="col-6 border-info border-left ">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          استان
+        </p>
+        <p class="text-center text-muted">
+          {{user.province.name}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          شهر
+        </p>
+        <p class="text-center text-muted">
+        {{user.city.name}}
+        </p>
+      </div>
+      <div class="col-12">
+        <br>
+      </div>
+
+
+
+
+      <div class="col-12 text-center  mb-5">
+        <h4 class="text-center border-info m-auto text-muted  p-3 border-bottom w-75">اطلاعات مالک</h4>
+      </div>
+
+
+
+      <div class="col-6 border-info border-left ">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          مالک فروشگاه
+        </p>
+        <p class="text-center text-muted">
+          {{user.owner_first_name}} {{user.owner_last_name}}
+        </p>
+      </div>
+      <div class="col-6">
+        <p class="text-center text-dark border-bottom border-info p-2 ">
+          شماره مبایل
+        </p>
+        <p class="text-center text-muted">
+        {{user.owner_call_number}}
+        </p>
+      </div>
+
+      <div class="col-12">
+        <hr>
+      </div>
+
+      <div class="col-12">
+        <div class="row flex-row-reverse">
+          <div class="col-4 p-1">
+            <input type="button" (click)="logout()" class="btn btn-danger btn-sm btn-block" value="خروج">
+          </div>
+          <div class="col-4 p-1">
+            <input type="button" (click)="password()" class="btn btn-info btn-sm btn-block" value="پسورد">
+          </div>
+          <div class="col-4 p-1">
+            <input type="button" (click)="ok()" class="btn btn-primary btn-sm btn-block" value="تایید">
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+

@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../core/services/ui/notify.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +15,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private productService: ProductVendorService
+    private productService: ProductVendorService,
+    private notifyService: NotifyService
   ) { }
 
 
@@ -37,9 +39,12 @@ export class ProductsComponent implements OnInit {
       this.productService.active(id)
       .pipe(
         finalize(() => this.is_submit = false),
-        filter(next => next.status),
-        tap(_ => this.product = []),
-        switchMap(next => this.productService.search()))
+        filter(next => next.status == true),
+        tap(data => {
+          this.product = []
+          this.notifyService.success(data.message)
+        }),
+        switchMap(_ => this.productService.search()))
       .subscribe(data => {
         this.product = data.data
       })
@@ -54,8 +59,11 @@ export class ProductsComponent implements OnInit {
       .pipe(
         finalize(() => this.is_submit = false),
         filter(next => next.status),
-        tap(_ => this.product = []),
-        switchMap(next => this.productService.search()))
+        tap(data => {
+          this.product = []
+          this.notifyService.success(data.message)
+        }),
+        switchMap(_ => this.productService.search()))
       .subscribe(data => {
         this.product = data.data
       })

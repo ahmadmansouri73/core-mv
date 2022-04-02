@@ -61,11 +61,10 @@ export class AppendStorageComponent implements OnInit {
       fruit_id : this.form.value['fruit_id'].id_fruit,
       storage_name : this.form.value['storage_name'],
       value : this.form.value['value'],
-      // value_type_id : this.form.value['value_type_id'].id,
+      value_type_id : this.form.value['value_type_id'].id,
       price : this.form.value['price'],
     }
 
-    console.log(item_submit);
 
     this.is_submit = true
     this.storageService.append(item_submit)

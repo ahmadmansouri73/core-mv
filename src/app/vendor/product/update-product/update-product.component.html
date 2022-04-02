@@ -1,8 +1,5 @@
-<div class="row">
-  <div class="col-md-5">
-
-  </div>
-  <div class="col-md-7">
+<div class="row mt-5">
+  <div class="col-12">
     <div class="row p-2">
       <div class="col-12">
         <h4 class="header-title">بروز رسانی محصول</h4>
@@ -48,11 +45,11 @@
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2" for="value">مقدار </label>
-              <input type="text"
+              <input type="number"
                 class="form-control rtl"
+                min="0"
                 autocomplete="off"
                 formControlName="value"
-                currencyMask [options]="{suffix:'',prefix: '', thousands: '', decimal: '.' , precision: 3 }"
               >
             </div>
             <div class="col-ms-12 col-12 col-md-6">

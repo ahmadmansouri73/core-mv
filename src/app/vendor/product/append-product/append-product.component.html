@@ -47,12 +47,12 @@
               </select>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
-              <label class="rtl float-right text-secondary p-2" for="value">   مقدار  -  {{form.controls['value_type'].value?.type_name}} </label>
-              <input type="text" class="form-control rtl"
+              <label class="rtl float-right text-secondary p-2" for="value">   مقدار  <span *ngIf="form.controls['value_type'].value"> -  {{form.controls['value_type'].value?.type_name}} </span></label>
+              <input type="number" class="form-control rtl" min="0"
                 autocomplete="off"
                 formControlName="value"
-                currencyMask [options]="{suffix: form.controls['value_type'].value?.type_name ? '  ' + form.controls['value_type'].value?.type_name + '  ': '',prefix: '', thousands: '' , decimal: '.' , precision: 3 }"
               >
+              <p class="text-right rtl right text-dark p-2 w-100" *ngIf="form.controls['value'].value != null">{{form.controls['value'].value}} <span *ngIf="form.controls['value_type'].value != null"> - {{form.controls['value_type'].value.type_name}}</span></p>
             </div>
             <div class="col-ms-12 col-12 col-md-6">
               <label class="rtl float-right text-secondary p-2"  for="product_price">قیمت</label>
@@ -76,13 +76,13 @@
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl w-100 text-right text-secondary p-2" for="logo_address_image">لوگو</label>
-              <app-image-picker (image)="setFileLogo($event)"></app-image-picker>
+              <app-image-picker [default_image]="form.controls['logo_address_image'].value?.image" (image)="setFileLogo($event)"></app-image-picker>
             </div>
 
 
             <div class="col-sm-12 col-12 col-md-12">
               <label class="rtl text-right  w-100 text-secondary p-2" for="logo_address_image">عکس پس زمینه</label>
-              <app-image-picker (image)="setFileImage($event)"></app-image-picker>
+              <app-image-picker  [default_image]="form.controls['image_address'].value?.image" (image)="setFileImage($event)"></app-image-picker>
             </div>
 
 
