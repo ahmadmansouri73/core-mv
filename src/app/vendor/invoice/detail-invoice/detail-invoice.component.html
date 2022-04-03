@@ -24,7 +24,7 @@
 
 </div>
 
-<div class="row justify-content-center mt-2" *ngIf="invoice && index_page.page == 1">
+<div class="row mb-5 justify-content-center mt-2" *ngIf="invoice && index_page.page == 1">
   <div class="col-11 border-info border bg-light p-2 shadow-lg "  style="border-radius: 12px;">
 
 
@@ -116,7 +116,7 @@
           استان
         </p>
         <p class="text-center rtl text-muted">
-          {{invoice.farmer.province.name}}
+          {{invoice.farmer.province?.name}}
         </p>
       </div>
 
@@ -125,7 +125,7 @@
           شهر
         </p>
         <p class="text-center rtl text-muted">
-          {{invoice.farmer.city.name}}
+          {{invoice.farmer.city?.name}}
         </p>
       </div>
 
@@ -268,14 +268,14 @@
 
 
       <div class="col-12">
-        <div class="row flex-row-reverse">
+        <div class="row justify-content-center flex-row-reverse">
           <div class="col-6 p-3">
-            <input type="button" (click)="index_invoice()" class="btn btn-sm btn-info btn-block" value="آپدیت">
+            <input type="button" (click)="index_invoice()" class="btn btn-sm btn-info btn-block" value="بروز رسانی">
           </div>
 
-          <div class="col-6 p-3">
-            <input type="button" (click)="back()"  class="btn btn-sm btn-primary btn-block" value="تاييد">
-          </div>
+          <!-- <div class="col-6 p-3">
+            <input type="button"   class="btn btn-sm btn-primary btn-block" value="تاييد">
+          </div> -->
         </div>
       </div>
 
@@ -284,6 +284,12 @@
 
   </div>
 </div>
+
+
+<div *ngIf="invoice && index_page.page == 1" class="w-auto fixed-bottom text-center m-2">
+  <input type="button" (click)="back()" class="btn btn-primary btn-block btn-sm" value="تاييد">
+</div>
+
 
 
 <app-detail-invoice-delivery (updateInvoice)="update_invoice()" (ok)="index_page = {page: 1 , data: null}" *ngIf="index_page.page == 2" [data]="index_page.data"></app-detail-invoice-delivery>

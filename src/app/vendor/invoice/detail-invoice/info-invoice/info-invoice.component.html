@@ -56,12 +56,12 @@
         <div class="row justify-content-center">
           <div class="col-11 border-info border-bottom text-right p-3">
             <div class="row flex-row-reverse">
-              <div class="col-10">
+              <div class="col-9">
                 <p class="text-center text-dark">
                   براي اضافه كردن محصول جديد براي صورتحساب كليد كنيد
                 </p>
               </div>
-              <div class="col-2 text-center">
+              <div class="col-3 text-center">
                 <input type="button" class="btn btn-sm btn-block btn-info" (click)="create_product()" value="+">
               </div>
             </div>
@@ -70,12 +70,12 @@
 
           <div class="col-11 border-info border-bottom text-right p-3">
             <div class="row flex-row-reverse">
-              <div class="col-10">
+              <div class="col-9">
                 <p class="text-center text-dark">
                   براي اضافه كردن راننده جديد براي صورتحساب كليد كنيد
                 </p>
               </div>
-              <div class="col-2 text-center">
+              <div class="col-3 text-center">
                 <input type="button" (click)="create_delivery()" class="btn btn-sm btn-block btn-info" value="+">
               </div>
             </div>
@@ -86,13 +86,14 @@
 
 
       <div class="col-12 mt-5">
-        <div class="row">
+        <div class="row flex-row-reverse">
+
           <div class="col-6 p-3">
-            <input type="button"  (click)="delete()" class="btn btn-danger btn-lg btn-block" value="حذف">
+            <input type="button"  (click)="delete()" class="btn btn-danger btn-sm  btn-block" value=" حذف پرونده">
           </div>
-          <div class="col-6 p-3">
+          <!-- <div class="col-6 p-3">
             <input type="button"  (click)="ok.emit()" class="btn btn-primary btn-lg btn-block" value="تاييد">
-          </div>
+          </div>  -->
         </div>
       </div>
 
@@ -103,4 +104,11 @@
 
     </div>
   </div>
+</div>
+
+
+
+
+<div class="w-auto fixed-bottom text-center m-2">
+  <input type="button" (click)="ok.emit()" class="btn btn-primary btn-block btn-sm" value="تاييد">
 </div>

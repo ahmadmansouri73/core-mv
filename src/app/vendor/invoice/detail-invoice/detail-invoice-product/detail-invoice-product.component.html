@@ -1,5 +1,5 @@
-<div class="row mt-5"><div class="col-12"></div></div>
-<div class="row ">
+<!-- <div class="row mt-5"><div class="col-12"></div></div> -->
+<div class="row mt-5 mb-5">
   <div class="col-12" >
 
     <div class="row justify-content-center">
@@ -74,15 +74,13 @@
           </div>
 
           <div class="col-12 mt-5">
-            <div class="row justify-content-center">
-              <div class="col-4">
-                <input type="button" (click)="ok.emit()" class="btn w-100 btn-primary btn-sm  btn-block" value="تایید">
+            <div class="row flex-row-reverse">
+
+              <div class="col-6 p-3">
+                <input type="button" (click)="create_payment()"  class="btn btn-info btn-sm btn-block" value="  ثبت فاکتور مالی ">
               </div>
-              <div class="col-4">
-                <input type="button" (click)="create_payment()"  class="btn w-100 btn-info btn-sm btn-block" value="فاکتور">
-              </div>
-              <div class="col-4">
-                <input type="button" (click)="delete_product()"  class="btn w-100  btn-danger btn-sm  btn-block" value="حذف">
+              <div class="col-6 p-3">
+                <input type="button" (click)="delete_product()"  class="btn  btn-danger btn-sm  btn-block" value=" حذف محصول">
               </div>
             </div>
           </div>
@@ -93,6 +91,12 @@
 
   </div>
 </div>
+
+
+<div class="w-auto fixed-bottom text-center m-2">
+  <input type="button" (click)="ok.emit()" class="btn btn-primary btn-block btn-sm" value="تاييد">
+</div>
+
 
 
 

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-5 mt-5">
   <div class="col-12">
     <div class="row justify-content-center flex-row-reverse">
       <div class="col-11 p-2 border bg-light border-info" style="border-radius: 13px;">
@@ -32,14 +32,15 @@
           </div>
 
 
+          <div class="col-12">
+            <hr>
+          </div>
 
-          <div class="col-12 mt-5">
-            <div class="row">
+          <div class="col-12 mt-1">
+            <div class="row flex-row-reverse">
+
               <div class="col-6">
-                <input type="button" (click)="ok.emit()" class="btn btn-info btn-block btn-sm" value="تاييد">
-              </div>
-              <div class="col-6">
-                <input type="button" (click)="delete_delivery()" class="btn btn-danger btn-block btn-sm" value="حذف">
+                <input type="button" (click)="delete_delivery()" class="btn btn-danger btn-block btn-sm" value=" حذف راننده">
               </div>
             </div>
           </div>
@@ -50,4 +51,8 @@
     </div>
   </div>
 
+</div>
+
+<div class="w-auto fixed-bottom text-center m-2">
+  <input type="button" (click)="ok.emit()" class="btn btn-primary btn-block btn-sm" value="تاييد">
 </div>

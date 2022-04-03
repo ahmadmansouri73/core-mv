@@ -29,6 +29,7 @@
     "moment-jalaali": "^0.9.4",
     "ng-image-fullscreen-view": "^2.0.0",
     "ng-otp-input": "^1.8.5",
+    "ng-persian-datepicker": "^4.0.1",
     "ngx-cookie-service": "^13.1.2",
     "ngx-currency": "^2.5.3",
     "ngx-image-compress": "^13.1.9",

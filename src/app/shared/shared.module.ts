@@ -11,6 +11,7 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { ImagePickerComponent } from './image-picker/image-picker.component';
 import { ImageComponent } from './image/image.component';
 import { DigitOrFloatDirective } from './directive/digit-or-float.directive';
+import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { DigitOrFloatDirective } from './directive/digit-or-float.directive';
     MatDialogModule,
     NgxCurrencyModule,
     NgSelectModule,
+    NgPersianDatepickerModule
 
 
 
