@@ -4,7 +4,7 @@
     <h4 class="header-title">پروفایل</h4>
   </div>
 </div>
-<div class="row justify-content-center ">
+<div class="row mb-5 mt-5 justify-content-center ">
   <div class="col-11 border-info border shadow bg-light  p-3" style="border-radius: 13px;">
     <div class="row flex-row-reverse">
 
@@ -49,7 +49,7 @@
         </p>
       </div>
       <div class="col-12">
-        <br>
+        <br>\
       </div>
 
 
@@ -92,7 +92,7 @@
       </div>
       <div class="col-6">
         <p class="text-center text-dark border-bottom border-info p-2 ">
-          شماره مبایل
+          شماره موبايل
         </p>
         <p class="text-center text-muted">
         {{user.owner_call_number}}
@@ -105,15 +105,13 @@
 
       <div class="col-12">
         <div class="row flex-row-reverse">
-          <div class="col-4 p-1">
+          <div class="col-6 p-3">
             <input type="button" (click)="logout()" class="btn btn-danger btn-sm btn-block" value="خروج">
           </div>
-          <div class="col-4 p-1">
+          <div class="col-6 p-3">
             <input type="button" (click)="password()" class="btn btn-info btn-sm btn-block" value="پسورد">
           </div>
-          <div class="col-4 p-1">
-            <input type="button" (click)="ok()" class="btn btn-primary btn-sm btn-block" value="تایید">
-          </div>
+
         </div>
       </div>
 
@@ -123,3 +121,7 @@
   </div>
 </div>
 
+
+<div class="w-auto fixed-bottom text-center m-2">
+  <input type="button"  (click)="ok()" class="btn btn-primary btn-block btn-sm" value="تاييد">
+</div>

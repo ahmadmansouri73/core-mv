@@ -33,7 +33,7 @@ export class ReqisterComponent implements OnInit {
 
 
     if (regex.call_number.test(phone.toString()) == false) {
-      this.NotifyService.warning('شماره مبايل نادرست هست')
+      this.NotifyService.warning('شماره موبايل نادرست هست')
       return
     }
 
