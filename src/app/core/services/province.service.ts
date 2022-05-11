@@ -15,7 +15,6 @@ export class ProvinceService {
   private provinces$: Observable<any>
 
   public search(filter: any = {}): Observable<any> {
-
     let query = '?'
     for (let data in filter) {
       if (filter[data] != null && filter[data].toString().trim() != '') {

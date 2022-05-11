@@ -150,6 +150,9 @@
             <p class="text-center mt-1">کد فعال سازی به شماره موبایل {{form.controls['owner_call_number']?.value}} ارسال شد</p>
             <app-v-confirm (code)="setCode($event)" ></app-v-confirm>
           </div>
+          <div class="col-12 mt-2">
+            <input (click)="step = 1 " type="button" class="btn btn-link btn-sm" value="تغییر شماره">
+          </div>
 
 
           <div class="col-md-12 mt-5 ">

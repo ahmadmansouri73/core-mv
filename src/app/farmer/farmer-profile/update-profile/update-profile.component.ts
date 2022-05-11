@@ -1,7 +1,7 @@
 import { UserService } from './../../../core/services/user.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { regex } from 'src/app/shared/regex';
-import { filter, tap, switchMap } from 'rxjs';
+import { filter, tap, switchMap, delay } from 'rxjs';
 import { CityService } from 'src/app/core/services/city.service';
 import { ProvinceService } from 'src/app/core/services/province.service';
 import { NotifyService } from './../../../core/services/ui/notify.service';
@@ -66,7 +66,8 @@ export class UpdateProfileComponent implements OnInit {
         this.cities = []
         this.form.controls['city_id'].setValue([])
       }),
-      switchMap(province_id => this.CityService.search({province_id: province_id}))
+      switchMap(province_id => this.CityService.search({province_id: province_id})),
+      delay(100)
     )
     .subscribe(data => {
       this.cities = data.data

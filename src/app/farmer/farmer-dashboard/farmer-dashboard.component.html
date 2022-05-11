@@ -20,8 +20,7 @@
     </div>
   </div>
 
-  <nav class="navbar border overflow-hidden p-3 bg-light text-dark m-0  fixed-bottom"
-  >
+  <!-- <nav class="navbar border overflow-hidden p-3 bg-light text-dark m-0  fixed-bottom">
     <div class="row">
       <div class="col-4   text-center">
         <a routerLink="./profile"  class="w-100 text-center h-100" style="height: 100%">
@@ -38,6 +37,32 @@
         <a  routerLink="./invoice" class="w-100 text-center">
           <img class="img" src="assets/img/price-tag-svgrepo-com.svg" alt="alt">
         </a>
+      </div>
+    </div>
+  </nav> -->
+
+  <nav class="border w-100  fixed-bottom  p-0 m-0 border-info bg-light ">
+    <div class="row pt-2 m-0 w-100 position-relative">
+      <div [routerLink]="['./profile']" routerLinkActive="active"  class="col-3 text-center">
+        <img src="assets/profile.svg" alt="">
+        <br>
+        <span class="text-center small">حساب من</span>
+      </div>
+      <div [routerLink]="['./connection']" routerLinkActive="active" class="col-3 text-center">
+        <img src="assets/order.svg" alt="">
+        <br>
+        <span class="text-center small"> ارتباط</span>
+
+      </div>
+      <div  [routerLink]="['./invoice']" routerLinkActive="active"  class="col-3 text-center">
+        <img src="assets/cart.svg" alt="">
+        <br>
+        <span class="text-center small"> صورتحساب</span>
+      </div>
+      <div  [routerLink]="['./']"   class="col-3 text-center">
+        <img src="assets/home.svg" alt="">
+        <br>
+        <span class="text-center small"> خانه</span>
       </div>
     </div>
   </nav>
